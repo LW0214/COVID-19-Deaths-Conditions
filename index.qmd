@@ -1,1 +1,59 @@
-# Introduction
+---
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# **Conditions Contributing to COVID-19 Deaths**
+
+## 1. Introduction
+
+As of November 2023, coronavirus disease (COVID-19) had led to 1.2
+million deaths in the United States, making it one of the most severe
+health crises in recent history. It has become increasingly evident that
+the fatality rate associated with COVID-19 is not uniform across
+populations, and is largely influenced by patient-specific factors. Age
+and underlying medical conditions have emerged as key determinants in
+increasing risk of mortality from COVID-19. A range of medical
+conditions such as heart conditions, respiratory diseases, diabetes and
+obesity. However, the extent of their impact varies and this project
+aims to investigate the influence of these comorbidities on COVID-19
+mortality rates.
+
+This project will delve into the following areas:
+
+1.  **Impact of specific health conditions on covid-19 mortality rates**
+
+    This aspect aims to identify which medical conditions correlate with
+    mortality rates. Understanding this correlation allows for more
+    effective medical interventions and prioritizing resources for
+    high-risk groups.
+
+2.  **Age related vulnerability**
+
+    Explore how different age groups have been impacted by the virus.
+    This is vital in creating age-specific healthcare strategies and
+    protective measures, especially for the older segments of the
+    population.
+
+3.  **Geographical variation in covid-19 impact**
+
+    Comparing state-wise data to explore how regional disparities
+    influence outcomes
+
+4.  **Trend analysis over time**
+
+    Tracing the trajectory of the pandemic over the span of 4 years,
+    from 2020-2023, will shed light on the changing patterns of the
+    virus.
+
+5.  **Comparison between provisional and final data**
+
+    This aspect can help us gauge the reliability and completeness of
+    the provisional data and provide insights into the progression and
+    real-time tracking of the pandemic.
+
+Through the project, we aim to contribute a nuanced understanding of
+COVID-19. The findings are expected to offer valuable insights for
+healthcare professionals and policymakers in developing more effective
+strategies in managing future public health crises.
