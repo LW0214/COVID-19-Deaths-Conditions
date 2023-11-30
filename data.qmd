@@ -6,9 +6,9 @@ editor:
 
 # Data
 
-## 2.1 Technical description
+## Technical description
 
-### 2.1.1 Data Source and Collection Conditions
+### Data Source and Collection Conditions
 
 1.  Contributing to COVID-19 Deaths, by State and Age, Provisional
     2020-2023
@@ -22,23 +22,27 @@ editor:
     death-related information, which is then coded using the
     International Classification of Diseases, Tenth Revision (ICD-10).
     COVID-19 deaths are specifically coded under ICD-10 code U071.
+
+    Source:
     https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm
 
-Single-Race Population Estimates 2020-2022 by State and Single-Year Age
+2.  Single-Race Population Estimates 2020-2022 by State and Single-Year
+    Age
 
-To further our analysis, we will also be utilizing US population data
-obtained from CDC Wonder. CDC provides annual estimates of the
-population for each state in the United States, including demographic
-breakdowns by age. The CDC obtains population data by integrating
-various data sources and applying advanced statistical methodologies.
-The primary foundation is decennial census data, which offers a
-comprehensive snapshot of the US population. However, given the ten-year
-interval between censuses, the CDC supplements this with other data
-sources to capture more current population dynamics.
+    To further our analysis, we will also be utilizing US population
+    data obtained from CDC Wonder. CDC provides annual estimates of the
+    population for each state in the United States, including
+    demographic breakdowns by age. The CDC obtains population data by
+    integrating various data sources and applying advanced statistical
+    methodologies. The primary foundation is decennial census data,
+    which offers a comprehensive snapshot of the US population. However,
+    given the ten-year interval between censuses, the CDC supplements
+    this with other data sources to capture more current population
+    dynamics.
 
-https://wonder.cdc.gov/single-race-population.html
+    Source: https://wonder.cdc.gov/single-race-population.html
 
-### 2.1.2 Data Format and Dimensions
+### Data Format and Dimensions
 
 The main dataset, last updated on September 27, 2023, contains
 approximately 621K rows, 14 columns. Each row details a COVID-19 death,
@@ -48,7 +52,7 @@ Date", "Group", "Year", "Month", "State", "Condition Group",
 "Condition", "ICD10_codes", "Age Group", "Covid-19 Deaths", "Number of
 Mentions" and "Flag".
 
-### 2.1.3 Breakdown of columns
+### Breakdown of columns
 
 1.  Types in each column
 
@@ -105,25 +109,25 @@ Mentions" and "Flag".
     certificate, while "COVID-19 Deaths" is the number of times a
     condition is recorded as a contributor of death by the hospital.
 
-"Flag" column
+7.  "Flag" column
 
-Has a value if the number of deaths is \<10. For said entries, "COVID-19
-Deaths" and "Number of Mentions" are already suppressed to NAN values to
-be in accordance with NCHS confidentiality standards.
+    Has a value if the number of deaths is \<10. For said entries,
+    "COVID-19 Deaths" and "Number of Mentions" are already suppressed to
+    NAN values to be in accordance with NCHS confidentiality standards.
 
-### 2.1.4 Frequency of Updates
+### Frequency of Updates
 
 Data is created on 5/8/2022. Data is last updated by 9/27/2023, and this
 is the only update to the dataset. The dataset will no longer be
 updated. It's also stated that data for 2022 and 2023 are provisional,
 while "Estimates for 2020 and 2021 are based on final data.".
 
-### 2.1.5 Import
+### Import
 
 We imported the data by downloading its csv format and importing it to
 R.
 
-### 2.1.6 Issues
+### Issues
 
 1.  Double Counting of Deaths by Conditions
 
@@ -155,25 +159,32 @@ R.
     use "Covid 19 Deaths" rather than mentions since if it's produced by
     the hospital, it may be more authoritative and accurate.
 
-## 2.2 Research plan
+## Research plan
 
 1.  Impact of Specific Health Conditions on COVID-19 Mortality Rates
+
     Investigate how certain pre-existing conditions (like respiratory
     diseases, cardiovascular diseases, diabetes, etc.) affect the
     mortality rates among COVID-19 patients.
 
     How: Analyze 'COVID-19 Deaths' in relation to 'Conditions' and
     'Conditions group' to identify which pre-existing conditions have
-    higher mortality rates within covid-19 patients.
+    higher mortality rates within covid-19 patients. We can use
+    correlation analysis to understand the relationship between specific
+    health conditions and mortality rates. Regression analysis can also
+    be applied to control for other variables like age.
 
 2.  Age-Related Vulnerability
 
     Analyze how age groups differ in their vulnerability to COVID-19,
     considering the number of deaths and associated health conditions.
 
-    How: Comparative analysis across age groups: calculating average
-    mortality rate per age group or analyzing the frequency and type of
-    comorbidities in each age group
+    How: Conduct age-wise comparison to see how mortality rates differ
+    across age groups. Descriptive statistics (like mean, median) and
+    graphical representations (like bar charts, age-wise mortality
+    curves) would be useful here. We also plan to calculate the average
+    mortality rate per age group and analyzing the frequency and type of
+    comorbidities in each age group.
 
 3.  Geographical Variation
 
@@ -182,9 +193,14 @@ R.
     geographic factors, healthcare infrastructure, or policies might
     influence COVID-19 outcomes.
 
-    How: Use the 'State' variable to compare covid-19 impacts across
-    different jurisdictions. We can apply geographic analysis to
-    identify patterns or clusters of high mortality rates.
+    How: When analyzing geographical variations, we will only be using
+    data in years 2020-2021 (estimates for this year are based on final
+    data) as 2022 and 2023 data are provisional. We will do this by
+    aggregating the death counts by state for the years 2020-2021 to
+    reduce noise from short term fluctuations due to differences in
+    reporting. Some states report deaths on a daily basis, while other
+    states report deaths weekly or monthly. We will also normalize the
+    death counts to account for population differences between states.
 
 4.  Trends Over Time
 
@@ -203,10 +219,16 @@ R.
     of the pandemic and the accuracy of provisional data in real-time
     tracking of the pandemic.
 
-    How: Comparative analysis to assess the differences between
-    2020-2021 and 2022-2023.
+    How: Provisional data are not yet complete, counts will not include
+    all deaths However, we can estimate how complete the provisional
+    numbers are by looking at the average number of deaths reported in
+    previous years. This can be done by calculating the percentage of
+    completeness of provisional data by comparing it with the historical
+    average in 2020 and 2021. For example, if historically 90% of deaths
+    are reported within the first 30 days, we can estimate the
+    completeness of the provisional data accordingly.
 
-## 2.3 Missing value analysis
+## Missing value analysis
 
 ```{r}
 library(tidyverse)
@@ -241,23 +263,22 @@ plot <- ggplot(data.frame(nan_cols),
 plot
 ```
 
-As mentioned earlier, \"COVID-19 Deaths\"and \"Number of Mentions\"are
+As mentioned earlier, "COVID-19 Deaths"and "Number of Mentions"are
 already suppressed to NAN values if the number of deaths is \<10 and the
-\"Flag\" column is indicated for such entries. Such entries occupy 30%
-of the dataset, which is quite large. We decide to impute the entries
-for \"COVID-19 Deaths\"and \"Number of Mentions\" as the average between
-0 to 10, which is 5.
+"Flag" column is indicated for such entries. Such entries occupy 30% of
+the dataset, which is quite large. We decide to impute the entries for
+"COVID-19 Deaths"and "Number of Mentions" as the average between 0 to
+10, which is 5.
 
-At first glance, if an entry\'s column \"Group\" has values \"By
-Total\", its \"Year\" and \"Month\" are both missing, because of course
-that row is an aggregation of all past data. Similarly, if an entry\'s
-column \"Group\" has values \"By Year\", its \"Month\" values are
-missing, because that row is an aggregation of all months in that year.
-After replacing the fake missing values in these rows with a dummy value
-\"-1\", it appears that there are no actual nan values in these columns
-anymore. 
+At first glance, if an entry's column "Group" has values "By Total", its
+"Year" and "Month" are both missing, because of course that row is an
+aggregation of all past data. Similarly, if an entry's column "Group"
+has values "By Year", its "Month" values are missing, because that row
+is an aggregation of all months in that year. After replacing the fake
+missing values in these rows with a dummy value "-1", it appears that
+there are no actual nan values in these columns anymore. 
 
-Under the column \"Age Group\", there\'s a value \"Not stated\" that
-covers 10% of the entire dataset, which isn\'t much, and can be deleted.
+Under the column "Age Group", there's a value "Not stated" that covers
+10% of the entire dataset, which isn't much, and can be deleted.
 
 \

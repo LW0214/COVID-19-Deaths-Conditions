@@ -4,9 +4,7 @@ editor:
     wrap: 72
 ---
 
-# **Conditions Contributing to COVID-19 Deaths**
-
-## 1. Introduction
+# Introduction
 
 As of November 2023, coronavirus disease (COVID-19) had led to 1.2
 million deaths in the United States, making it one of the most severe

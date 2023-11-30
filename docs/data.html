@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -85,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Conditions Contributing to COVID-19 Deaths</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
@@ -130,10 +193,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="toc-section-number">2.1</span>  Description</a></li>
-  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="toc-section-number">2.2</span>  Missing value analysis</a></li>
+  <li><a href="#technical-description" id="toc-technical-description" class="nav-link active" data-scroll-target="#technical-description"><span class="toc-section-number">2.1</span>  Technical description</a>
+  <ul class="collapse">
+  <li><a href="#data-source-and-collection-conditions" id="toc-data-source-and-collection-conditions" class="nav-link" data-scroll-target="#data-source-and-collection-conditions"><span class="toc-section-number">2.1.1</span>  Data Source and Collection Conditions</a></li>
+  <li><a href="#data-format-and-dimensions" id="toc-data-format-and-dimensions" class="nav-link" data-scroll-target="#data-format-and-dimensions"><span class="toc-section-number">2.1.2</span>  Data Format and Dimensions</a></li>
+  <li><a href="#breakdown-of-columns" id="toc-breakdown-of-columns" class="nav-link" data-scroll-target="#breakdown-of-columns"><span class="toc-section-number">2.1.3</span>  Breakdown of columns</a></li>
+  <li><a href="#frequency-of-updates" id="toc-frequency-of-updates" class="nav-link" data-scroll-target="#frequency-of-updates"><span class="toc-section-number">2.1.4</span>  Frequency of Updates</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import"><span class="toc-section-number">2.1.5</span>  Import</a></li>
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="toc-section-number">2.1.6</span>  Issues</a></li>
+  </ul></li>
+  <li><a href="#research-plan" id="toc-research-plan" class="nav-link" data-scroll-target="#research-plan"><span class="toc-section-number">2.2</span>  Research plan</a></li>
+  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="toc-section-number">2.3</span>  Missing value analysis</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -155,11 +227,143 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="description" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="description"><span class="header-section-number">2.1</span> Description</h2>
+<section id="technical-description" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="technical-description"><span class="header-section-number">2.1</span> Technical description</h2>
+<section id="data-source-and-collection-conditions" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="data-source-and-collection-conditions"><span class="header-section-number">2.1.1</span> Data Source and Collection Conditions</h3>
+<ol type="1">
+<li><p>Contributing to COVID-19 Deaths, by State and Age, Provisional 2020-2023</p>
+<p>The main dataset for this project is collected and managed by the NCHS as part of the National Vital Statistics System (NVSS). The NVSS compiles official death certificate data from various jurisdictions, including the 50 states, the District of Columbia, New York City, and 5 US territories. Death certificates, completed by funeral directors and certifiers, provide both demographic and death-related information, which is then coded using the International Classification of Diseases, Tenth Revision (ICD-10). COVID-19 deaths are specifically coded under ICD-10 code U071.</p>
+<p>Source: https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm</p></li>
+<li><p>Single-Race Population Estimates 2020-2022 by State and Single-Year Age</p>
+<p>To further our analysis, we will also be utilizing US population data obtained from CDC Wonder. CDC provides annual estimates of the population for each state in the United States, including demographic breakdowns by age. The CDC obtains population data by integrating various data sources and applying advanced statistical methodologies. The primary foundation is decennial census data, which offers a comprehensive snapshot of the US population. However, given the ten-year interval between censuses, the CDC supplements this with other data sources to capture more current population dynamics.</p>
+<p>Source: https://wonder.cdc.gov/single-race-population.html</p></li>
+</ol>
 </section>
-<section id="missing-value-analysis" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</h2>
+<section id="data-format-and-dimensions" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="data-format-and-dimensions"><span class="header-section-number">2.1.2</span> Data Format and Dimensions</h3>
+<p>The main dataset, last updated on September 27, 2023, contains approximately 621K rows, 14 columns. Each row details a COVID-19 death, categorized by age group, condition, jurisdiction, year and month. The dataset includes the following columns: “Date as of”, “Start Date”, “End Date”, “Group”, “Year”, “Month”, “State”, “Condition Group”, “Condition”, “ICD10_codes”, “Age Group”, “Covid-19 Deaths”, “Number of Mentions” and “Flag”.</p>
+</section>
+<section id="breakdown-of-columns" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="breakdown-of-columns"><span class="header-section-number">2.1.3</span> Breakdown of columns</h3>
+<ol type="1">
+<li><p>Types in each column</p>
+<p>Most columns are categorical data, and the column “COVID.19.Deaths” are numerical data. The first 3 columns “Data.As.Of”, “Start.Date” and “End.Date” are timestamps.</p></li>
+<li><p>Time-related columns</p>
+<p>Column “Year” and “Month” that indicates said time periods of death recorded, thus, the smallest granularity of time interval is month. “Group” column indicates by what time interval the deaths are recorded, whose values can be “by Total”, “by Month” and “by Year”. If an entry has Group=by Year and Year=2020, then its death count is the sum of all entries’ death count where Year=2020 and Group=by Month. Similarly, if an entry has Group=by total, then its death count is the sum over the entire period of the whole dataset.</p>
+<p>The first column “Data As Of” can be dropped as all of them are “9/24/2023” which probably indicates the last date where any records are added to the database, especially since the last date in “End.Date” is “09/23/2023”. The other columns “Start.Date” and “End.Date” corresponds to “Group”, “Year” and “Month”. For example if group=by year, year=2020, then start.date=01/01/2020 and end.Date=12/31/2020. Thus, we decide that “Data As Of”, “Start.Date” and “End.Date” aren’t that useful as their information is already captured in more precise columns of “Group”, “Year” and “Month”.</p></li>
+<li><p>Geography-related columns</p>
+<p>“State” column indicates the geographical states of each record. Some has values “United States” which is already a sum of other states.</p></li>
+<li><p>Medical conditions columns</p>
+<p>The columns “Condition groups”, “Conditions”, and “ICD10_codes” are categories and subcategories describing the contributors to death by COVID-19. There’s a condition named “Covid-19” which we believe indicates the actual covid-19 deaths as indicated by the name of the data source.</p></li>
+<li><p>Age-related column</p>
+<p>There is one age-related column called the “Age Group”. There’s a value “All Ages” which is a sum of the other age groups.</p></li>
+<li><p>Death-related columns</p>
+<p>There are two death-related columns, “COVID-19 Deaths” and “Number of Mentions”. There’s little documentation about the difference between them, upon further research, we assume “Number of Mentions” may be the number of times a condition is mentioned on the death certificate, while “COVID-19 Deaths” is the number of times a condition is recorded as a contributor of death by the hospital.</p></li>
+<li><p>“Flag” column</p>
+<p>Has a value if the number of deaths is &lt;10. For said entries, “COVID-19 Deaths” and “Number of Mentions” are already suppressed to NAN values to be in accordance with NCHS confidentiality standards.</p></li>
+</ol>
+</section>
+<section id="frequency-of-updates" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="frequency-of-updates"><span class="header-section-number">2.1.4</span> Frequency of Updates</h3>
+<p>Data is created on 5/8/2022. Data is last updated by 9/27/2023, and this is the only update to the dataset. The dataset will no longer be updated. It’s also stated that data for 2022 and 2023 are provisional, while “Estimates for 2020 and 2021 are based on final data.”.</p>
+</section>
+<section id="import" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="import"><span class="header-section-number">2.1.5</span> Import</h3>
+<p>We imported the data by downloading its csv format and importing it to R.</p>
+</section>
+<section id="issues" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="issues"><span class="header-section-number">2.1.6</span> Issues</h3>
+<ol type="1">
+<li><p>Double Counting of Deaths by Conditions</p>
+<p>Death for different conditions can be double counted, for example, a person died from Covid may have both diabetes and obesity at their time of death, as the source notes that “​​To avoid counting the same death multiple times, the numbers for different conditions should not be summated.”</p></li>
+<li><p>Delay or Incomplete Data</p>
+<p>The sources notes “2022 and 2023 data are provisional. Estimates for 2020 and 2021 are based on final data.” as record reporting for recent years of 2022 and 2923 may be “affected or delayed by COVID-19 related response activities.” So we will use 2020 and 2021 data for our analysis as these are up-to-date.</p></li>
+<li><p>Discrepancy Between Covid 19 Deaths vs Mentions for Conditions Other Than Covid-19</p>
+<p>There’s another numerical column named “Mentions”. For conditions of “Covid-19”, “number of deaths” is equal to “number of mentions”, which makes sense. Yet for almost all other conditions, their “number of mentions” is almost always larger than “number of deaths”. We suspect it’s because if a person passed away due to covid-19, but had a history of diabetes, their relatives may still put it as on his death certificate despite the hospital never diagnosed it as a contributor of death. For our research, we will use “Covid 19 Deaths” rather than mentions since if it’s produced by the hospital, it may be more authoritative and accurate.</p></li>
+</ol>
+</section>
+</section>
+<section id="research-plan" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="research-plan"><span class="header-section-number">2.2</span> Research plan</h2>
+<ol type="1">
+<li><p>Impact of Specific Health Conditions on COVID-19 Mortality Rates</p>
+<p>Investigate how certain pre-existing conditions (like respiratory diseases, cardiovascular diseases, diabetes, etc.) affect the mortality rates among COVID-19 patients.</p>
+<p>How: Analyze ‘COVID-19 Deaths’ in relation to ‘Conditions’ and ‘Conditions group’ to identify which pre-existing conditions have higher mortality rates within covid-19 patients. We can use correlation analysis to understand the relationship between specific health conditions and mortality rates. Regression analysis can also be applied to control for other variables like age.</p></li>
+<li><p>Age-Related Vulnerability</p>
+<p>Analyze how age groups differ in their vulnerability to COVID-19, considering the number of deaths and associated health conditions.</p>
+<p>How: Conduct age-wise comparison to see how mortality rates differ across age groups. Descriptive statistics (like mean, median) and graphical representations (like bar charts, age-wise mortality curves) would be useful here. We also plan to calculate the average mortality rate per age group and analyzing the frequency and type of comorbidities in each age group.</p></li>
+<li><p>Geographical Variation</p>
+<p>Examine the differences in COVID-19 mortality rates and associated health conditions across different states. This could reveal how geographic factors, healthcare infrastructure, or policies might influence COVID-19 outcomes.</p>
+<p>How: When analyzing geographical variations, we will only be using data in years 2020-2021 (estimates for this year are based on final data) as 2022 and 2023 data are provisional. We will do this by aggregating the death counts by state for the years 2020-2021 to reduce noise from short term fluctuations due to differences in reporting. Some states report deaths on a daily basis, while other states report deaths weekly or monthly. We will also normalize the death counts to account for population differences between states.</p></li>
+<li><p>Trends Over Time</p>
+<p>Assess how the mortality rates and associated conditions have changed over time from 2020 to 2023. This can provide insights into the evolving nature of the pandemic and its impact on public health.</p>
+<p>How: Time series analysis can be used to track the evolution of the pandemic. For example, identifying peaks in mortality rates and changes in prevalence of comorbidity over time.</p></li>
+<li><p>Comparison Between Provisional and Final Data</p>
+<p>Compare the provisional data for 2022 and 2023 with the final data for 2020 and 2021. This could reveal insights into the progression of the pandemic and the accuracy of provisional data in real-time tracking of the pandemic.</p>
+<p>How: Provisional data are not yet complete, counts will not include all deaths However, we can estimate how complete the provisional numbers are by looking at the average number of deaths reported in previous years. This can be done by calculating the percentage of completeness of provisional data by comparing it with the historical average in 2020 and 2021. For example, if historically 90% of deaths are reported within the first 30 days, we can estimate the completeness of the provisional data accordingly.</p></li>
+</ol>
+</section>
+<section id="missing-value-analysis" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>covid_data<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Age__Provisional_2020-2023.csv"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># if group is total, fill all year and month by -1</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>covid_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Total"</span>, <span class="sc">-</span><span class="dv">1</span>, Year))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>covid_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Total"</span>, <span class="sc">-</span><span class="dv">1</span>, Month))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>new_covid <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Year"</span>, <span class="sc">-</span><span class="dv">1</span>, Month))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>new_covid <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Year"</span>, <span class="sc">-</span><span class="dv">1</span>, Month))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># count nans</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>nan_cols<span class="ot">=</span><span class="fu">colMeans</span>(<span class="fu">is.na</span>(new_covid))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>nan_cols<span class="ot">=</span><span class="fu">data.frame</span>(nan_cols)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>nan_cols <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">newColName =</span> <span class="fu">rownames</span>(nan_cols), nan_cols)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(nan_cols) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(nan_cols)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#plot nans</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(nan_cols),</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">fct_reorder</span>(newColName,<span class="sc">-</span>nan_cols),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>nan_cols)) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"NaN Percentage of All Columns"</span>) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">vjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">"NaN percentage"</span>, </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"columns"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="data_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As mentioned earlier, “COVID-19 Deaths”and “Number of Mentions”are already suppressed to NAN values if the number of deaths is &lt;10 and the “Flag” column is indicated for such entries. Such entries occupy 30% of the dataset, which is quite large. We decide to impute the entries for “COVID-19 Deaths”and “Number of Mentions” as the average between 0 to 10, which is 5.</p>
+<p>At first glance, if an entry’s column “Group” has values “By Total”, its “Year” and “Month” are both missing, because of course that row is an aggregation of all past data. Similarly, if an entry’s column “Group” has values “By Year”, its “Month” values are missing, because that row is an aggregation of all months in that year. After replacing the fake missing values in these rows with a dummy value “-1”, it appears that there are no actual nan values in these columns anymore.&nbsp;</p>
+<p>Under the column “Age Group”, there’s a value “Not stated” that covers 10% of the entire dataset, which isn’t much, and can be deleted.</p>
+<p><br>
+</p>
 
 
 </section>
