@@ -281,4 +281,85 @@ there are no actual nan values in these columns anymore. 
 Under the column "Age Group", there's a value "Not stated" that covers
 10% of the entire dataset, which isn't much, and can be deleted.
 
-\
+
+Code and Documentation for merging covid conditions dataset with population dataset
+```{r}
+library(dplyr)
+```
+
+```{r}
+population_data <- read_csv("Single-Race Population Estimates 2020-2022 by State and Single-Year Age.csv")
+
+# Modifying 'Single-Year Ages Code' column:
+# If 'Single-Year Ages Code' is "85+", replace it with "85", otherwise keep it as is.
+population_data <- population_data %>% 
+  mutate(`Single-Year Ages Code` = if_else(`Single-Year Ages Code` == "85+", "85", `Single-Year Ages Code`))
+
+population_data
+```
+
+```{r}
+# Rename the 'Single-Year Ages Code' column to 'Age' for clarity
+population_data_formatted <- population_data %>%
+  rename(Age = `Single-Year Ages Code`) %>%
+  mutate(
+    # Convert the Age column to integer type
+    Age = as.integer(Age),
+    # Categorize ages into groups based on age ranges
+    AgeGroup = case_when(
+      Age <= 24 ~ "0-24",
+      between(Age, 25, 34) ~ "25-34",
+      between(Age, 35, 44) ~ "35-44",
+      between(Age, 45, 54) ~ "45-54",
+      between(Age, 55, 64) ~ "55-64",
+      between(Age, 65, 74) ~ "65-74",
+      between(Age, 75, 84) ~ "75-84",
+      Age >= 85 ~ "85+",
+      TRUE ~ NA_character_ # Assign NA to rows not fitting any category
+    )
+  ) %>% 
+  # Rename 'Age' back to 'Single-Year Ages Code'
+  rename(`Single-Year Ages Code` = Age)
+
+# Aggregate data across all states for 'United States'
+us_data <- population_data_formatted %>% 
+  filter(!is.na(`Yearly July 1st Estimates`)) %>%
+  group_by(`Yearly July 1st Estimates`, AgeGroup) %>%
+  summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>% 
+  ungroup()
+
+# Format US data and add additional columns
+us_data_formatted <- us_data %>% 
+  # Rename 'TotalPopulation' to 'Population'
+  rename(Population = TotalPopulation) %>% 
+  # Add and set new columns to specific values or NA
+  mutate(Notes = NA,
+         States = "United States",
+         `States Code` = 00,
+         `Single-Year Ages` = NA,
+         `Single-Year Ages Code` = NA,
+         `Yearly July 1st Estimates Code` = `Yearly July 1st Estimates`
+         )
+
+# Combine US data with original data
+all_data <- rbind(us_data_formatted, population_data_formatted) %>% 
+  filter(is.na(Notes))
+
+# Select and rename relevant columns for the final data
+all_data_population <- all_data %>% 
+  select(States, AgeGroup, Population, `Yearly July 1st Estimates`) %>% 
+  rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
+```
+
+```{r}
+covid_yearly_data <- read_csv("year_covid_20_21.csv")
+
+# Merge the population data with the COVID data
+# Using a left join to keep all rows from 'covid_yearly_data'
+# and matching rows from 'all_data_population'
+covid_with_population <- left_join(
+  covid_yearly_data,
+  all_data_population, 
+  by = c("Age.Group", "State", "Year"))
+```
+
