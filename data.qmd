@@ -1,6 +1,6 @@
 ---
-editor: 
-  markdown: 
+editor:
+  markdown:
     wrap: 72
 ---
 
@@ -228,8 +228,8 @@ R.
     are reported within the first 30 days, we can estimate the
     completeness of the provisional data accordingly.
 
-## Missing value analysis
 
+## Data Preprocessing
 ```{r}
 library(tidyverse)
 library(ggplot2)
@@ -238,10 +238,13 @@ covid_data=read.csv("Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Ag
 
 # if group is total, fill all year and month by -1
 new_covid=covid_data %>% mutate(Year = ifelse(Group == "By Total", -1, Year))
-new_covid=covid_data %>% mutate(Month = ifelse(Group == "By Total", -1, Month))
+new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Total", -1, Month))
+new_covid=new_covid %>% mutate(Year = ifelse(Group == "By Year", -1, Month))
 new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Year", -1, Month))
-new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Year", -1, Month))
+```
 
+## Missing value analysis
+```{r}
 # count nans
 nan_cols=colMeans(is.na(new_covid))
 nan_cols=data.frame(nan_cols)
@@ -258,7 +261,7 @@ plot <- ggplot(data.frame(nan_cols),
   theme(axis.text.x = element_text(angle = 90,
                                    vjust = 0.5,
                                    hjust=1)) +
-  labs(y= "NaN percentage", 
+  labs(y= "NaN percentage",
        x = "columns")
 plot
 ```
@@ -281,8 +284,24 @@ there are no actual nan values in these columns anymore. 
 Under the column "Age Group", there's a value "Not stated" that covers
 10% of the entire dataset, which isn't much, and can be deleted.
 
+Preprocessing covid dataset to be joined with population dataset.
+```{r}
+# delete useless columns
+df <- subset(new_covid, select = -c(Data.As.Of,Start.Date,End.Date
+))
+df = df |> subset(Group=="By Year")
+
+df = df |> subset(Year %in% c(2020,2021))
+
+row.names(df) <- NULL
+
+# export
+
+write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
+```
 
 Code and Documentation for merging covid conditions dataset with population dataset
+
 ```{r}
 library(dplyr)
 ```
@@ -292,7 +311,7 @@ population_data <- read_csv("Single-Race Population Estimates 2020-2022 by State
 
 # Modifying 'Single-Year Ages Code' column:
 # If 'Single-Year Ages Code' is "85+", replace it with "85", otherwise keep it as is.
-population_data <- population_data %>% 
+population_data <- population_data %>%
   mutate(`Single-Year Ages Code` = if_else(`Single-Year Ages Code` == "85+", "85", `Single-Year Ages Code`))
 
 population_data
@@ -317,21 +336,21 @@ population_data_formatted <- population_data %>%
       Age >= 85 ~ "85+",
       TRUE ~ NA_character_ # Assign NA to rows not fitting any category
     )
-  ) %>% 
+  ) %>%
   # Rename 'Age' back to 'Single-Year Ages Code'
   rename(`Single-Year Ages Code` = Age)
 
 # Aggregate data across all states for 'United States'
-us_data <- population_data_formatted %>% 
+us_data <- population_data_formatted %>%
   filter(!is.na(`Yearly July 1st Estimates`)) %>%
   group_by(`Yearly July 1st Estimates`, AgeGroup) %>%
-  summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>% 
+  summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>%
   ungroup()
 
 # Format US data and add additional columns
-us_data_formatted <- us_data %>% 
+us_data_formatted <- us_data %>%
   # Rename 'TotalPopulation' to 'Population'
-  rename(Population = TotalPopulation) %>% 
+  rename(Population = TotalPopulation) %>%
   # Add and set new columns to specific values or NA
   mutate(Notes = NA,
          States = "United States",
@@ -342,12 +361,12 @@ us_data_formatted <- us_data %>%
          )
 
 # Combine US data with original data
-all_data <- rbind(us_data_formatted, population_data_formatted) %>% 
+all_data <- rbind(us_data_formatted, population_data_formatted) %>%
   filter(is.na(Notes))
 
 # Select and rename relevant columns for the final data
-all_data_population <- all_data %>% 
-  select(States, AgeGroup, Population, `Yearly July 1st Estimates`) %>% 
+all_data_population <- all_data %>%
+  select(States, AgeGroup, Population, `Yearly July 1st Estimates`) %>%
   rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
 ```
 
@@ -359,7 +378,6 @@ covid_yearly_data <- read_csv("year_covid_20_21.csv")
 # and matching rows from 'all_data_population'
 covid_with_population <- left_join(
   covid_yearly_data,
-  all_data_population, 
+  all_data_population,
   by = c("Age.Group", "State", "Year"))
 ```
-
