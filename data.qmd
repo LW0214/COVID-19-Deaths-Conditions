@@ -416,5 +416,5 @@ covid_with_population <- left_join(
   by = c("Age.Group", "State", "Year"))
 
 # export
-write.csv(df, "covid_with_population.csv", row.names=FALSE)
+write.csv(covid_with_population, "covid_with_population.csv", row.names=FALSE)
 ```
