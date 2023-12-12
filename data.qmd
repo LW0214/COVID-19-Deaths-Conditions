@@ -234,12 +234,15 @@ R.
 library(tidyverse)
 library(ggplot2)
 
-covid_data=read.csv("Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Age__Provisional_2020-2023.csv")
+covid_data=read.csv("covid.csv")
 
 # if group is total, fill all year and month by -1
+
+#when group = by total, replace all year and month by -1
 new_covid=covid_data %>% mutate(Year = ifelse(Group == "By Total", -1, Year))
 new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Total", -1, Month))
-new_covid=new_covid %>% mutate(Year = ifelse(Group == "By Year", -1, Month))
+
+# when group = by year, replace all month by -1
 new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Year", -1, Month))
 ```
 
@@ -266,12 +269,45 @@ plot <- ggplot(data.frame(nan_cols),
 plot
 ```
 
+Under the column "Age Group", there's a value "Not stated" that covers
+10% of the entire dataset, which isn't much, and can be deleted.
+
+```{r}
+# imputation for age group: not stated, delete
+new_covid=new_covid[!(new_covid$Age.Group %in% "Not stated"),]
+# sanity check if not stated is there
+new_covid$ Age.Group |> unique()
+```
+
 As mentioned earlier, "COVID-19 Deaths"and "Number of Mentions"are
 already suppressed to NAN values if the number of deaths is \<10 and the
 "Flag" column is indicated for such entries. Such entries occupy 30% of
-the dataset, which is quite large. We decide to impute the entries for
-"COVID-19 Deaths"and "Number of Mentions" as the average between 0 to
-10, which is 5.
+the dataset, which is quite large. Apparently "all ages" already calculates the suppressed counts in age group, though if a state or condition has more than 1 age groups that are both suppresed, there's no way for us to know for sure how many values are there in each of the age group. Still, we decide to impute the entries for "COVID-19 Deaths"and "Number of Mentions" as the average between 0 to 10, which is 5. The only time there'll be large over and unestimation with imputation of death count is when we want to query by each state by each condition, and by each year, but none of our analysis includes such a precise query.In our analysis, we either query across all age groups, all covid death conditions for each state; or we query across each age group, each condition but across all of US, or across all age groups, all of US and by each condition, so the number of total deaths will be quite large for a value of hundreds to thousands. And in this case, an 5 is relatively small in comparison.
+
+```{r}
+# want to check how all ages are calculated
+
+# R: check which state has nan deaths for covid-19
+subset(new_covid,is.na(COVID.19.Deaths)) |> filter(Condition.Group=="COVID-19" & Age.Group!="Not stated")
+# check Alaska
+subset(new_covid,Year==2020 & Group=="By Year" & State=="Alaska" & Condition.Group=="COVID-19" )
+# Alaska: sum of known age groups: 249, all ages: 253, 2 age groups unknown
+
+```
+
+Since we don't use "Number of Mentions" column in our analysis, we only impute for covid death.
+
+```{r}
+# impute: when flag for an age group is not "", impute COVID.19.Deaths with 5
+# sanity check: the flag should all be "one or more..."
+new_covid$Flag[is.na(new_covid$COVID.19.Deaths)] |> unique()
+# impute with 5
+new_covid$COVID.19.Deaths[is.na(new_covid$COVID.19.Deaths)] <- 5
+
+# saniry check: if these are all 5
+new_covid$COVID.19.Deaths[which(new_covid[,"Flag"] != '')] |> unique()
+```
+
 
 At first glance, if an entry's column "Group" has values "By Total", its
 "Year" and "Month" are both missing, because of course that row is an
@@ -280,9 +316,6 @@ has values "By Year", its "Month" values are missing, because that row
 is an aggregation of all months in that year. After replacing the fake
 missing values in these rows with a dummy value "-1", it appears that
 there are no actual nan values in these columns anymore. 
-
-Under the column "Age Group", there's a value "Not stated" that covers
-10% of the entire dataset, which isn't much, and can be deleted.
 
 Preprocessing covid dataset to be joined with population dataset.
 ```{r}
@@ -296,8 +329,9 @@ df = df |> subset(Year %in% c(2020,2021))
 row.names(df) <- NULL
 
 # export
-
 write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
+# sanity check:
+read_csv("year_covid_20_21.csv")
 ```
 
 Code and Documentation for merging covid conditions dataset with population dataset
@@ -380,4 +414,7 @@ covid_with_population <- left_join(
   covid_yearly_data,
   all_data_population,
   by = c("Age.Group", "State", "Year"))
+
+# export
+write.csv(df, "covid_with_population.csv", row.names=FALSE)
 ```
