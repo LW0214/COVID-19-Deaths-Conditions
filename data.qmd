@@ -338,6 +338,7 @@ Code and Documentation for merging covid conditions dataset with population data
 
 ```{r}
 library(dplyr)
+library(readr)
 ```
 
 ```{r}
@@ -381,26 +382,22 @@ us_data <- population_data_formatted %>%
   summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>%
   ungroup()
 
-# Format US data and add additional columns
-us_data_formatted <- us_data %>%
-  # Rename 'TotalPopulation' to 'Population'
-  rename(Population = TotalPopulation) %>%
-  # Add and set new columns to specific values or NA
-  mutate(Notes = NA,
-         States = "United States",
-         `States Code` = 00,
-         `Single-Year Ages` = NA,
-         `Single-Year Ages Code` = NA,
-         `Yearly July 1st Estimates Code` = `Yearly July 1st Estimates`
-         )
+# Format US data and add State column
+us_data_formatted <- us_data %>% 
+  mutate(States = "United States")
 
-# Combine US data with original data
-all_data <- rbind(us_data_formatted, population_data_formatted) %>%
-  filter(is.na(Notes))
+# Group population data for each state by age group
+population_data_grouped <- population_data_formatted %>% 
+  filter(!is.na(`Yearly July 1st Estimates`)) %>%
+  group_by(`Yearly July 1st Estimates`, AgeGroup, States) %>%
+  summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>% 
+  ungroup()
+
+# Combine US data with data for individual states
+all_data <- rbind(us_data_formatted, population_data_grouped)
 
 # Select and rename relevant columns for the final data
-all_data_population <- all_data %>%
-  select(States, AgeGroup, Population, `Yearly July 1st Estimates`) %>%
+all_data_population <- all_data %>% 
   rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
 ```
 
@@ -415,6 +412,5 @@ covid_with_population <- left_join(
   all_data_population,
   by = c("Age.Group", "State", "Year"))
 
-# export
-write.csv(covid_with_population, "covid_with_population.csv", row.names=FALSE)
+write_csv(covid_with_population,"covid_with_population.csv")
 ```
