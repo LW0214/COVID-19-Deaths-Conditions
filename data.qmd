@@ -317,6 +317,11 @@ is an aggregation of all months in that year. After replacing the fake
 missing values in these rows with a dummy value "-1", it appears that
 there are no actual nan values in these columns anymore. 
 
+We export the preprocessed dataset for covid.
+```{r}
+write.csv(new_covid, "preproc_covid.csv", row.names=FALSE)
+```
+
 Preprocessing covid dataset to be joined with population dataset.
 ```{r}
 # delete useless columns
@@ -383,21 +388,21 @@ us_data <- population_data_formatted %>%
   ungroup()
 
 # Format US data and add State column
-us_data_formatted <- us_data %>% 
+us_data_formatted <- us_data %>%
   mutate(States = "United States")
 
 # Group population data for each state by age group
-population_data_grouped <- population_data_formatted %>% 
+population_data_grouped <- population_data_formatted %>%
   filter(!is.na(`Yearly July 1st Estimates`)) %>%
   group_by(`Yearly July 1st Estimates`, AgeGroup, States) %>%
-  summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>% 
+  summarise(TotalPopulation = sum(Population, na.rm = TRUE)) %>%
   ungroup()
 
 # Combine US data with data for individual states
 all_data <- rbind(us_data_formatted, population_data_grouped)
 
 # Select and rename relevant columns for the final data
-all_data_population <- all_data %>% 
+all_data_population <- all_data %>%
   rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
 ```
 
