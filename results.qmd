@@ -1,1 +1,343 @@
 # Results
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(gganimate)
+library(lubridate)
+library(ggalluvial)
+library(readr)
+```
+
+```{r}
+covid_data <- read.csv("preproc_covid.csv")
+
+covid_data$Start.Date <- as.Date(covid_data$Start.Date,
+                                      format = "%m/%d/%Y")
+
+covid_data$End.Date <- as.Date(covid_data$End.Date,
+                                      format = "%m/%d/%Y")
+```
+
+## Underlying Health Conditions that Impact Covid-19 Deaths
+```{r}
+# Filter the data to include only the total number of cases for all ages in the United States for the years 2020 and 2021
+health_data_all_ages <- covid_data %>%
+  filter(
+    State == "United States", # Filter for the United States
+    Group == "By Year",       # Data aggregated by year
+    Year %in% c("2020", "2021"), # Only for the years 2020 and 2021
+    Age.Group == "All Ages"   # Include all age groups
+  )
+
+# Extract the total number of COVID-19 deaths for the year 2020
+deaths_2020 <- health_data_all_ages$COVID.19.Deaths[health_data_all_ages$Condition == "COVID-19" & health_data_all_ages$Year == 2020]
+
+# Extract the total number of COVID-19 deaths for the year 2021
+deaths_2021 <- health_data_all_ages$COVID.19.Deaths[health_data_all_ages$Condition == "COVID-19" & health_data_all_ages$Year == 2021]
+
+# Calculate the percentage of deaths for each condition as a proportion of the total COVID-19 deaths for that year
+health_data_all_ages <- health_data_all_ages %>% 
+  mutate(
+    percentage_death = case_when(
+      Year == 2020 ~ (COVID.19.Deaths / deaths_2020)*100, # Calculate percentage for 2020
+      Year == 2021 ~ (COVID.19.Deaths / deaths_2021)*100, # Calculate percentage for 2021
+      TRUE ~ NA                                           # If not 2020 or 2021, percentage is NA
+    )
+  ) %>%
+  filter(Condition != 'COVID-19') %>% # Exclude the COVID-19 condition itself as this gives the total death
+  mutate(Year = as.factor(Year))      # Convert 'Year' to a factor for plotting purposes
+
+```
+
+```{r}
+# Prepare labels for the highest percentage death value for each condition
+right_label <- health_data_all_ages %>%
+  group_by(Condition) %>%
+  slice_max(order_by = percentage_death, n = 1)
+
+# Prepare labels for the second highest percentage death value for each condition
+left_label <- health_data_all_ages %>%
+  group_by(Condition) %>%
+  slice_max(order_by = percentage_death, n = 2) %>%
+  filter(!row_number() == 1) # To exclude the top value which is already included in right_label
+
+# Create the plot
+ggplot(health_data_all_ages, aes(x = reorder(Condition, percentage_death), y = percentage_death)) +
+  geom_line(aes(group = Condition, color = as.factor(Year))) + # Connect points with lines for each condition and color by year
+  coord_flip() + # Flip the coordinates to make the conditions appear on the y-axis
+  geom_point(aes(color = as.factor(Year))) + # Plot points for each year with different colors
+  geom_text(data = right_label, 
+            aes(label = round(percentage_death, 0), color = as.factor(Year)),
+            size = 3, hjust = -0.5) + # Add labels for the highest value to the right of the points
+  geom_text(data = left_label, 
+            aes(label = round(percentage_death, 0), color = as.factor(Year)),
+            size = 3, hjust = 1.5) + # Add labels for the second highest value to the left of the points
+  labs(title = "Prevalence of Different Health Conditions in COVID-19 Deaths (2020 vs 2021)", # Title of the plot
+       x = "Condition", 
+       y = "Percentage Death", 
+       color = "Year") 
+```
+```{r}
+# Filter the COVID data for the United States, by month, for all ages, 
+# and for the top 5 conditions only.
+top5_condition_data <- covid_data %>%
+  filter(State == "United States",
+         Group == "By Month",
+         Condition %in% c("Influenza and pneumonia", "Respiratory failure",
+                          "Hypertensive diseases", "Diabetes", "Cardiac arrest"),
+         Age.Group == "All Ages")
+
+# Group the data by quarter and year, and summarize the total COVID-19 deaths
+# for each condition within each quarter-year.
+top5_condition_quarter <- top5_condition_data %>% 
+  mutate(Quarter = ceiling(Month/3),  # Calculate the quarter number from the month
+         Quarter_Year = paste0(Year, "_Q", Quarter)) %>%  # Create a new column combining year and quarter
+  group_by(Quarter_Year, Condition) %>% 
+  summarize(COVID.19.Deaths = sum(COVID.19.Deaths))  # Sum the deaths for each quarter and condition
+
+# Create the line chart
+# Each condition will have its own line and points, colored uniquely.
+ggplot(top5_condition_quarter, aes(x = Quarter_Year, y = COVID.19.Deaths, group = Condition, color = Condition)) +
+  geom_line() +  
+  geom_point() + 
+  theme_minimal() +
+  labs(x = "Quarter", y = "Number of COVID-19 Deaths", 
+       title = "COVID-19 Deaths by Condition Over Quarters", color = "Condition") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
+
+```
+
+```{r}
+# Filter the COVID data for the United States by year for 2020 and 2021, excluding the 'COVID-19' condition
+# and removing unspecified or 'All Ages' age groups.
+health_data_age_group <- covid_data %>%
+  filter(
+    State == "United States",
+    Group == "By Year",
+    Year %in% c("2020", "2021"),
+    Condition != 'COVID-19'
+  ) %>% 
+  filter(!Age.Group %in% c("Not stated", "All Ages"))
+
+# Recategorize the age groups into broader categories and convert to a factor with specified levels.
+health_data_age_groups <- health_data_age_group %>% 
+  mutate(
+    Age_Group = case_when(
+      Age.Group == "0-24" ~ "Young (0-24)",
+      Age.Group %in% c("25-34", "35-44", "45-54") ~ "Middle-Aged (25-54)",
+      TRUE ~ "Old (55+)"
+    )
+  ) %>% 
+  mutate(Age_Group = factor(Age_Group, levels = c("Young (0-24)", "Middle-Aged (25-54)", "Old (55+)"))) %>% 
+  group_by(Condition, Age_Group) %>% 
+  summarise(COVID.19.Deaths = sum(COVID.19.Deaths)) %>% 
+  ungroup()
+
+# Calculate the top conditions within each age group and sort them.
+top_conditions_by_age_group <- health_data_age_groups %>%
+  group_by(Age_Group, Condition) %>%
+  summarize(COVID.19.Deaths = sum(COVID.19.Deaths, na.rm = TRUE)) %>%
+  arrange(Age_Group, desc(COVID.19.Deaths)) %>%
+  group_by(Age_Group) %>%
+  slice_max(COVID.19.Deaths, n = 5) %>%
+  ungroup()
+
+# Join with the original data to create a flag for the top conditions for use in coloring the plot.
+health_data_age_groups <- health_data_age_groups %>%
+  left_join(top_conditions_by_age_group, by = c("Age_Group", "Condition"), suffix = c("", ".top")) %>%
+  mutate(Is_Top_Condition = ifelse(!is.na(COVID.19.Deaths.top), "Top 5", "Other")) %>%
+  select(-COVID.19.Deaths.top) # Remove the auxiliary column after creating the flag.
+
+# Create a bar chart, flipping the coordinates for a horizontal chart,
+# and using facets to create separate plots for each age group.
+ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = COVID.19.Deaths, fill = Is_Top_Condition)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  coord_flip() +
+  facet_wrap(~Age_Group, scales = "free_x") +
+  scale_fill_manual(values = c("Top 5" = "red3", "Other" = "darkgrey")) +
+  labs(
+    x = "Health Conditions", 
+    y = "Number of Deaths"
+  ) +
+  theme_minimal()
+```
+
+## Age Group (Over and Under 65) Analysis
+```{r}
+# Filter the COVID data to include only US data for the 'COVID-19' condition group, 
+# and exclude unspecified or 'All Ages' age groups. Then, create a new categorical variable 
+# based on age to separate data into '65 and Older' and 'Under 65'.
+age_group_data <- covid_data %>%
+  filter(State == "United States",
+         Group == "By Month",
+         Condition.Group == 'COVID-19') %>% 
+  filter(!Age.Group %in% c("Not stated", "All Ages")) %>% 
+  mutate(Over_Under_65 = ifelse(Age.Group %in% c("65-74", "75-84", "85+"),
+                                "65 and Older",
+                                "Under 65"))
+
+# Define the start and end dates for the period of interest.
+start_date <- as.Date("2020-04-01")
+end_date <- as.Date("2022-09-01")
+  
+# Group data by month and age category, and summarize total deaths. 
+# Then filter the data to include only the dates within the defined period.
+monthly_deaths_age_group <- age_group_data %>%
+                            group_by(Start.Date, Over_Under_65) %>%
+                            summarize(TotalDeaths = sum(COVID.19.Deaths, na.rm = TRUE)) %>%
+                            ungroup() %>% 
+                            filter(between(Start.Date, start_date, end_date))
+
+# Convert the 'Over_Under_65' column to a factor with specified levels for proper ordering in the plot.
+monthly_deaths_age_group$Over_Under_65 <- factor(monthly_deaths_age_group$Over_Under_65, 
+                                                 levels = c("Under 65", "65 and Older"))
+
+# Create a sequence of breaks for the x-axis (dates).
+date_breaks <- seq(start_date, end_date, by = "month")
+
+# Create the bar chart
+age_bar_chart <- ggplot(monthly_deaths_age_group, aes(x = Start.Date, y = TotalDeaths, fill = Over_Under_65)) +
+     geom_bar(stat = "identity", position = position_dodge()) + 
+  # Annotate periods of interest with colored rectangles
+  annotate("rect", xmin = as.Date("2021-06-01"), xmax = as.Date("2021-12-01"), ymin = -Inf, ymax = Inf, fill = "yellow", alpha = 0.2) +
+  annotate("rect", xmin = as.Date("2021-12-01"), xmax = as.Date("2022-10-01"), ymin = -Inf, ymax = Inf, fill = "orange", alpha = 0.2) +
+  # Add vertical lines to mark specific events
+  geom_vline(xintercept = as.Date("2020-12-15"), linetype = "dotted", color = "blue", size = 1) +
+  geom_vline(xintercept = as.Date("2021-09-22"), linetype = "dotted", color = "blue", size = 1) +
+  # Add text annotations for vaccine approvals and variant emergence
+  annotate("text", x = as.Date("2020-10-15"), y = 50000, label = "First vaccine approved", color = "black", size = 4, vjust = -1) +
+  annotate("text", x = as.Date("2021-7-22"), y = 50000, label = "First booster approved", color = "black", size = 4, vjust = -1) +
+  annotate("text", x = as.Date("2021-8-01"), y = 80000, label = "Delta variant", color = "red", size = 4, vjust = -1) +
+  annotate("text", x = as.Date("2022-4-15"), y = 80000, label = "Omicron variants", color = "red", size = 4, vjust = -1) +
+     labs(title = "Monthly COVID-19 Deaths in the US (Over and Under 65)",
+          x = "Time",
+          y = "Total Deaths",
+          fill = "Age Group") +
+  # Format the x-axis with the predefined date breaks
+  scale_x_date(breaks = date_breaks, date_labels = "%Y-%m") +
+     theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# Print the plot
+age_bar_chart
+```
+
+```{r}
+# Load COVID-19 data with population and filter it for the United States, 
+# excluding 'All Ages' category, and then group by 'Age.Group'.
+age_group_death_and_pop <- read_csv("covid_with_population.csv") %>% 
+  filter(State == "United States",
+         Condition.Group == 'COVID-19',
+         Age.Group != 'All Ages') %>% 
+  group_by(Age.Group) %>%
+  summarize(COVID.19.Deaths = sum(COVID.19.Deaths, na.rm = TRUE), 
+            TotalPopulation = sum(TotalPopulation, na.rm = TRUE))
+
+# Calculate the proportion of COVID-19 deaths and the proportion of the total population 
+# for each age group.
+age_group_death_and_pop <- age_group_death_and_pop %>%
+  mutate(
+    ProportionDeaths = COVID.19.Deaths / sum(COVID.19.Deaths),
+    ProportionPopulation = TotalPopulation / sum(TotalPopulation)
+  )
+
+# Reshape the data to long format for plotting. 
+# This creates a new column 'Category' for plotting purposes.
+long_data <- age_group_death_and_pop %>%
+  pivot_longer(
+    cols = c("ProportionDeaths", "ProportionPopulation"),
+    names_to = "Category",
+    values_to = "Proportion"
+  ) %>%
+  mutate(Category = factor(Category, levels = c("ProportionPopulation", "ProportionDeaths")))
+
+# Create a stacked bar chart to visualize the proportions.
+# The chart will have two panels (facets) side by side for each category 
+# (ProportionPopulation and ProportionDeaths).
+ggplot(long_data, aes(x = Category, y = Proportion, fill = Age.Group)) +
+  geom_bar(stat = "identity", position = "fill") +
+  facet_wrap(~Category, ncol = 2, scales = "free_x") +
+  theme_minimal() +
+  labs(
+    title = "Death and Population Proportions Across Age Groups (2020-2021)",
+    fill = "Age Group"
+  ) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  theme(
+    panel.spacing.x = unit(0, "lines"), # Remove space between facets
+    strip.text = element_blank()       # Remove facet labels for a cleaner look
+  )
+
+
+```
+
+## Trend Analysis Over Time
+```{r}
+# Filter the COVID data to include only United States data,
+# aggregated by month for all age groups, specifically for the COVID-19 condition group.
+us_data_monthly <- covid_data %>%
+  filter(
+    State == "United States",
+    Group == "By Month",
+    Age.Group == "All Ages",
+    Condition.Group == 'COVID-19'
+  )
+
+# Creating the plot
+g <- ggplot(us_data_monthly, aes(x = Start.Date,
+                                 y = COVID.19.Deaths)) +
+  geom_line() +  
+  geom_point() +  
+  scale_x_date(date_breaks = "3 month",  # Set breaks on the x-axis to every 3 months.
+               date_labels = "%Y-%m") +  # Format the date labels as Year-Month.
+  labs(
+    title = "Monthly COVID-19 Deaths in the US",  
+    x = "Month-Year",  
+    y = "Total Deaths" 
+  ) +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))  # Rotate the x-axis labels for better readability.
+
+print(g)
+```
+
+```{r}
+# Summarize data by Year and Month
+monthly_deaths <- us_data_monthly %>% 
+                  group_by(Year, Month) %>% 
+                  summarize(TotalDeaths = sum(COVID.19.Deaths, na.rm = TRUE)) %>%
+                  ungroup()
+
+# Calculate start and end points for arrows
+monthly_deaths <- monthly_deaths %>%
+                  arrange(Year, Month) %>%
+                  group_by(Year) %>%
+                  mutate(LeadMonth = ifelse(row_number() == n(), Month, lead(Month)),
+                         LeadTotalDeaths = ifelse(row_number() == n(), TotalDeaths, lead(TotalDeaths))) %>%
+                  ungroup()
+
+# Remove the last row for each year where the lead values will be NA
+monthly_deaths <- monthly_deaths %>%
+                  filter(!is.na(LeadMonth))
+
+# Function to convert numeric months to abbreviated month names
+month.abb.label <- function(month.num) {
+  month.abb[month.num]
+}
+
+p <- ggplot(
+  monthly_deaths,
+  aes(x = Month, y = TotalDeaths, group = Year, color = factor(Year))
+  ) +
+  geom_line() +
+  geom_segment(aes(xend = (Month + LeadMonth) / 2, yend = (TotalDeaths + LeadTotalDeaths) / 2), 
+               arrow = arrow(type = "closed", length = unit(2, "mm")), size = 0.5) +
+  labs(x = "Month", y = "Total Deaths", color = "Year") +
+  theme(legend.position = "top") +
+  scale_x_continuous(breaks = 1:12, labels = month.abb.label) +
+  transition_reveal(Month)
+p
+
+```
+
