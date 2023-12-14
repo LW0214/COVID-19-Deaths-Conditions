@@ -20,6 +20,24 @@ mortality rates.
 
 This project will delve into the following areas:
 
+1.  **Trend analysis over time**
+
+    Tracing the trajectory of the pandemic over the span of 4 years,
+    from 2020-2023, will shed light on the changing patterns of the
+    virus.
+    
+2.  **Geographical variation in covid-19 impact**
+
+    Comparing state-wise data to explore how regional disparities
+    influence outcomes
+
+3.  **Age related vulnerability**
+
+    Explore how different age groups have been impacted by the virus.
+    This is vital in creating age-specific healthcare strategies and
+    protective measures, especially for the older segments of the
+    population.
+
 1.  **Impact of specific health conditions on covid-19 mortality rates**
 
     This aspect aims to identify which medical conditions correlate with
@@ -27,29 +45,6 @@ This project will delve into the following areas:
     effective medical interventions and prioritizing resources for
     high-risk groups.
 
-2.  **Age related vulnerability**
-
-    Explore how different age groups have been impacted by the virus.
-    This is vital in creating age-specific healthcare strategies and
-    protective measures, especially for the older segments of the
-    population.
-
-3.  **Geographical variation in covid-19 impact**
-
-    Comparing state-wise data to explore how regional disparities
-    influence outcomes
-
-4.  **Trend analysis over time**
-
-    Tracing the trajectory of the pandemic over the span of 4 years,
-    from 2020-2023, will shed light on the changing patterns of the
-    virus.
-
-5.  **Comparison between provisional and final data**
-
-    This aspect can help us gauge the reliability and completeness of
-    the provisional data and provide insights into the progression and
-    real-time tracking of the pandemic.
 
 Through the project, we aim to contribute a nuanced understanding of
 COVID-19. The findings are expected to offer valuable insights for
