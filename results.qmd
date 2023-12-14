@@ -62,25 +62,25 @@ g <- ggplot(us_data_monthly, aes(x = Start.Date, y = COVID.19.Deaths)) +
 print(g)
 ```
 
-The graph above is a time series line chart which illustrates the monthly death toll from the start of the pandemic in early 2020 through to the third quarter of 2023 in the United States. It is a representation of the pandemic's progression over time, displaying large fluctuations in monthly death counts in the years 2020-2021, and stabilizing in 2022. It is apparent from the overlay of seasonal color-coding---blue for winter months and orange for summer months---that there is a recurring pattern in the data.
+The graph above is a time series line chart which illustrates the monthly death toll from the start of the pandemic in early 2020 through to the third quarter of 2023 in the United States. It is a representation of the pandemic's progression over time, displaying large fluctuations in monthly death counts in the years 2020-2021, and stabilizing in 2022. It is apparent from the seasonal color-coding---blue for winter months and orange for summer months---that there is a recurring pattern in the data.
 
 We observe an increase in COVID-19 deaths during both summer and winter months, with a more pronounced increase in the winter. The increase during the winter months, may be influenced by several factors:
 
 1.  **Indoor Gathering**: The colder weather drives people indoors, where the virus can spread more easily due to close contact and poor ventilation.
 
-2.  **Seasonal Viruses**: The winter months coincide with the flu season, where other respiratory viruses are also prevalent, potentially complicating and exacerbating COVID-19 cases.
+2.  **Seasonal Viruses**: The winter months coincide with the flu season, where other respiratory viruses are also prevalent, potentially worsening COVID-19 cases.
 
-3.  **Holiday Seasons**: Winter months include holidays (Christmas, New Years, etc) that typically involve family gatherings and increased social interaction, providing more opportunities for the virus to spread.
+3.  **Holiday Seasons**: Winter months include holidays (Christmas, New Years, etc) that typically involve family gatherings and increased social interaction, making it more likely for the virus to spread.
 
-Conversely, during summer, while the outdoor activities may generally reduce the transmission rate compared to winter, we still observe increases in deaths. This could be due to:
+Conversely, during summer, while outdoor activities may generally reduce the transmission rate compared to winter, we still observe increases in deaths. This could be due to:
 
-1.  **Social Activities**: Summer holidays and events can result in gatherings and increased contact among individuals, leading to potential spikes.
+1.  **Social Activities**: Summer holidays and events can result in gatherings and increased contact among individuals, leading to spikes.
 
-2.  **Air Conditioning**: Increased use of air conditioning during hot months can lead to similar indoor circulation patterns as in winter, potentially facilitating the spread of the virus.
+2.  **Air Conditioning**: Increased use of air conditioning during hot months can lead to similar indoor circulation patterns as in winter, facilitating the spread of the virus.
 
 ## Geographical Variations
 
-We have observed a recurring pattern in COVID-19 deaths over time, with seasonal factors playing a notable role in the fluctuation of death rates. While time allows us to track flow of the pandemic's impact, geography provides another critical dimension for understanding the spread and toll of the virus.
+We have observed a recurring pattern in COVID-19 deaths over time, with seasonal factors playing a notable role in the fluctuation of death rates. While time allows us to track flow of the pandemic's impact, geography provides another critical aspect for understanding the spread and toll of the virus.
 
 ```{r message=FALSE, warning=FALSE}
 # 2020
@@ -215,8 +215,8 @@ fig_21 <- fig_21 %>% layout(
   )
 
 # find min and max values for scale
-c(plot_df_20$death_rate,plot_df_21$death_rate) |> min() |> print()
-c(plot_df_20$death_rate,plot_df_21$death_rate) |> max() |> print()
+c(plot_df_20$death_rate,plot_df_21$death_rate) |> min() 
+c(plot_df_20$death_rate,plot_df_21$death_rate) |> max()
 
 fig_20
 fig_21
@@ -224,7 +224,7 @@ fig_21
 
 In examining the geographical distribution of COVID-19 death rates across the United States in 2020 and 2021, we observe regional variations. During 2020, higher death rates were observed in the Northeastern and Midwestern states, with New Jersey, New York, North Dakota, and South Dakota exhibiting higher figures. This could potentially reflect the initial outbreak hotspots. The Southern states presented varied death rates, generally hovering around an average of 120, while the Western states showed lower death rates.
 
-In 2021, a shift is evident. The Southern states, previously having moderate rates, show a significant increase in death rates. This illustrates the dynamic nature of COVID-19, potentially influenced by varying public health policies, vaccine rollouts, and virus variants. Meanwhile, the Northeastern and Midwestern states, which initially had the highest death rates in 2020, showed a notable decrease in death rates. This decrease could indicate the effectiveness of public health measures and heightened community awareness. Moreover, it's noteworthy to highlight the case of Vermont, which stands out for its consistently low death rates in both 2020 and 2021.
+In 2021, a shift is evident. The Southern states, previously having moderate rates, show a significant increase in death rates. This illustrates the dynamic nature of COVID-19, potentially influenced by varying public health policies, vaccine rollouts, and virus variants. Meanwhile, the Northeastern and Midwestern states, which initially had the highest death rates in 2020, showed a decrease in death rates. This decrease could indicate the effectiveness of public health measures and heightened community awareness. Moreover, it's noteworthy to highlight the case of Vermont, which stands out for its consistently low death rates in both 2020 and 2021.
 
 ## Age-Related Vulnerability
 
@@ -316,7 +316,7 @@ As seen previously, age has been a determinant factor in COVID-19 mortality, esp
 
 1.  **Impact of Vaccinations and Booster:** There is a noticeable decrease in deaths following the approval of the first vaccine, especially in the 65 and older age group, which likely received priority for vaccinations. We can see similar patterns after the approval and subsequent administration of booster shots. This suggests that vaccines and booster have had a positive impact in reducing COVID-19 mortality.
 
-2.  **Variant-Related Surges:** Although vaccinations have helped in reducing COVID-19 mortality, we see noticable surges in deaths after emergence of the Delta and Omicron variants. This indicates the significant challenges posed by new variants, which can be more transmissible or potentially more virulent. The spikes in deaths corresponding to these variants underscore the ongoing need for adaptation in public health responses.
+2.  **Variant-Related Surges:** Although vaccinations have helped in reducing COVID-19 mortality, we see noticable surges in deaths after emergence of the Delta and Omicron variants. This indicates the significant challenges posed by new variants, which can be more transmissible or potentially more fatal. The spikes in deaths corresponding to these variants underscore the ongoing need for adaptation in public health responses.
 
 3.  **Vulnerability of Older Adults:** The data consistently shows that older age groups are more impacted by COVID-19.
 
@@ -357,7 +357,7 @@ ggplot(long_data, aes(x = Category, y = Proportion, fill = Age.Group)) +
   facet_wrap(~Category, ncol = 2, scales = "free_x") +
   theme_minimal() +
   labs(
-    title = "Death and Population Proportions Across Age Groups (2020-2021)",
+    title = "Population and Death Proportions Across Age Groups (2020-2021)",
     fill = "Age Group"
   ) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
@@ -367,7 +367,7 @@ ggplot(long_data, aes(x = Category, y = Proportion, fill = Age.Group)) +
   )
 ```
 
-The above is a bar chart comparing the proportion of the population to the proportion of COVID-19 deaths across various age groups for the years 2020-2021. The left side of the chart displays the composition of the general population across age cohorts, while the right side shows the corresponding proportions of COVID-19 related deaths. As expected, the bar charts highlight the disproportionate impact of COVID-19 on different age groups. As the age groups get older, they show a larger discrepancy, with their proportion of deaths far exceeding their representation in the population.
+The above is a bar chart comparing the proportion of the population to the proportion of COVID-19 deaths across various age groups for the years 2020-2021. The left side of the chart displays the composition of the general population across age cohorts, while the right side shows the corresponding proportions of COVID-19 related deaths. The bar charts highlight the disproportionate impact of COVID-19 on different age groups. As we move to older age groups, the disparity becomes apparent: the proportion of deaths attributed to these groups exceeds their representation in the overall population. This disparity grows more pronounced with older age, illustrating the increased risk of older individuals to COVID-19.
 
 ## Underlying Medical Conditions Associated with COVID-19 Deaths
 
@@ -440,9 +440,9 @@ In 2020, the CDC released a detailed account of health complications accompanyin
 
 The year-over-year percentage comparison between 2020 and 2021 highlighted in the graph indicates the following:
 
-1.  **Increase in proportion involving influenza and pneumonia, respiratory failure:** The increase in proportions of people with deaths related to respiratory conditions may reflect the emergence of new, more virulent virus strains, which are more contagious and lethal. This highlights the ever-evolving challenge the virus poses.
+1.  **Increase in proportion involving influenza and pneumonia, respiratory failure:** The increase in proportions of people with deaths related to respiratory conditions may reflect the emergence of new, more virulent virus strains, which are more contagious and fatal.
 
-2.  **Decline in proportion of hypertensive diseases:** On the flip side, the observed decline in proportion of deaths associated with conditions like hypertensive diseases could be linked to the increased protective measures and medical interventions that became available over time, including the widespread administration of vaccines.
+2.  **Decline in proportion of hypertensive diseases:** On the flip side, the observed decline in proportion of deaths associated with conditions like hypertensive diseases could be linked to the increased protective measures and medical interventions that became available over time, including the administration of vaccines.
 
 3.  **Decline in proportion of vascular and unspecified dementia:** Similar to the point above, administration of COVID-19 vaccines in 2021 may have reduced the severity of the disease, particularly among the elderly and those with underlying health conditions like dementia, which could explain the decrease in associated deaths.
 
@@ -480,7 +480,7 @@ The graph above takes a closer look at the 5 most prevelant conditions in COVID-
 
 Influenza and pneumonia, as well as respiratory failure, show significant spikes at certain points, which could correlate with the direct impact of COVID-19 on respiratory health. By 2022 and into 2023, the lines representing each condition level off, indicating a stabilization in the number of deaths, which might suggest that the public health measures and medical interventions are having a positive effect, or that the most vulnerable populations had already been significantly impacted in the earlier phases of the pandemic.
 
-It is interesting to note that while these conditions generally follow the same trend, there are certain periods where we observe opposite trends. For example, in 2020 Q4 to 2021 Q1, we see an increase in deaths involving conditions such as influenza, pneumonia, cardiac arrest, and respiratory failure but a decrease in deaths involving diabetes and hypertensive diseases. These trends will be further explored in the 'Interactive Graph' section of our report.
+These trends will be further explored in the 'Interactive Graph' section of our report.
 
 ```{r message=FALSE, warning=FALSE,fig.width=10, fig.height=6}
 library(reshape2)
@@ -511,7 +511,7 @@ wide_data[is.na(wide_data)] <- 0
 ggplot(melt(wide_data), aes(x = variable, y = Condition, fill = value)) +
   geom_tile() +
   scale_fill_viridis_c(option = "D") +
-  labs(x = "Age Group", y = "Condition", fill = "COVID-19 Deaths") +
+  labs(title = "COVID-19 Deaths by Age Group and Underlying Health Conditions", x = "Age Group", y = "Condition", fill = "COVID-19 Deaths") +
   theme_minimal() +
   theme(axis.text.x = element_text(hjust = 1))
 
@@ -558,17 +558,17 @@ ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = 
   coord_flip() +
   facet_wrap(~Age_Group, scales = "free_x") +
   scale_fill_manual(values = c("Top 5" = "red3", "Other" = "darkgrey")) +
-  labs(
+  labs(title ='Top Comorbidities Associated with COVID-19 Deaths Across Age Groups',
     x = "Health Conditions", 
     y = "Number of Deaths"
   ) +
   theme_minimal()
 ```
 
-Building on the insights provided by the heat map, let's turn our focus to the comparative impact of specific health conditions within different age cohorts. The chart above distinctly categorizes the frequency of conditions found in conjunction with COVID-19 fatalities, setting apart the top five deadliest comorbidities within the age groups: young (0-24), middle-aged (25-54), and old (55+). From this chart, several points can be inferred:
+Building on the insights from the heat map, we now focus on the comparative impact of specific health conditions across different age cohorts. The chart above categorizes the frequency of conditions accompanying COVID-19 deaths, highlighting the top five deadliest comorbidities within distinct age groups: young (0-24), middle-aged (25-54), and older (55+). Several key observations emerge from this analysis:
 
-1.  **Prevalence of Obesity in Younger Age Groups:** In older age groups, other health conditions such as heart disease, respiratory diseases, and diabetes may become more prevalent and pose a greater risk of death than obesity. As a result, these conditions may overshadow obesity as a leading contributor to COVID-19 mortality in this demographic. Furthermore, obesity not being in the top 5 for the older population could indicate survivorship bias. Older individuals with severe obesity may have a higher mortality rate at a younger age, leading to a decreased representation of obesity-related deaths in the older age cohorts.
+1.  **Prevalence of Obesity in Younger Age Groups:** Interestingly, obesity appears as a significant comorbidity in the younger demographic. This contrasts with older age groups, where conditions like hypertensive disease, respiratory diseases, and diabetes predominate and pose greater mortality risks. The absence of obesity as a top comorbidity in older age groups might reflect a survivorship bias: individuals with severe obesity may face higher mortality at younger ages, thus reducing their representation among older COVID-19 fatalities.
 
 2.  **Comorbidity Trends in Middle to Older Age Group:** As we examine the middle-aged group, the visualization shifts to reveal a broader range of health issues leading to death, with top conditions like diabetes and hypertensive diseases becoming more prominent. These findings underscore the relationship between chronic conditions and COVID-19, which may not be as common in younger populations but pose a risk in the older age brackets.
 
-3.  **Co-existing conditions:** The presence of multiple conditions among the top causes of death, particularly in the older age group, suggests comorbidities are a common factor in COVID-19-related deaths.
+3.  **Multiplicity of Co-existing Conditions**: Particularly in the older age group, the presence of multiple comorbidities among the top causes of death highlights that COVID-19-related fatalities often involve an interplay of health conditions.

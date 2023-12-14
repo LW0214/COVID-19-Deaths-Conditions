@@ -167,9 +167,9 @@ R.
     changed over time from 2020 to 2023. This can provide insights into
     the evolving nature of the pandemic and its impact on public health.
 
-    How: Time series analysis can be used to track the evolution of the
-    pandemic. For example, identifying peaks in mortality rates and
-    changes in prevalence of comorbidity over time.
+    Methodology: Time series analysis can be used to track the evolution
+    of the pandemic. For example, identifying peaks in mortality rates
+    and changes in prevalence of comorbidity over time.
 
 2.  Geographical Variation
 
@@ -178,10 +178,10 @@ R.
     geographic factors, healthcare infrastructure, or policies might
     influence COVID-19 outcomes.
 
-    How: When analyzing geographical variations, we will only be using
-    data in years 2020-2021 (estimates for this year are based on final
-    data) as 2022 and 2023 data are provisional. We will do this by
-    aggregating the death counts by state for the years 2020-2021 to
+    Methodology: When analyzing geographical variations, we will only be
+    using data in years 2020-2021 (estimates for this year are based on
+    final data) as 2022 and 2023 data are provisional. We will do this
+    by aggregating the death counts by state for the years 2020-2021 to
     reduce noise from short term fluctuations due to differences in
     reporting. Some states report deaths on a daily basis, while other
     states report deaths weekly or monthly. We will also normalize the
@@ -192,11 +192,10 @@ R.
     Analyze how age groups differ in their vulnerability to COVID-19,
     considering the number of deaths and associated health conditions.
 
-    How: Conduct age-wise comparison to see how mortality rates differ
-    across age groups. Descriptive statistics (like mean, median) and
-    graphical representations (like bar charts, age-wise mortality
-    curves) would be useful here. We also plan to analyze the frequency
-    and type of comorbidities in each age group.
+    Methodology: Conduct age-wise comparison to see how mortality rates
+    differ across age groups. Descriptive statistics (like mean, median)
+    and graphical representations would be useful here. We also plan to
+    analyze the frequency and type of comorbidities in each age group.
 
 4.  Impact of Specific Health Conditions on COVID-19 Mortality Rates
 
@@ -344,18 +343,14 @@ population dataset
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
 library(readr)
-```
 
-```{r message=FALSE, warning=FALSE}
 population_data <- read_csv("Single-Race Population Estimates 2020-2022 by State and Single-Year Age.csv")
 
 # Modifying 'Single-Year Ages Code' column:
 # If 'Single-Year Ages Code' is "85+", replace it with "85", otherwise keep it as is.
 population_data <- population_data %>%
   mutate(`Single-Year Ages Code` = if_else(`Single-Year Ages Code` == "85+", "85", `Single-Year Ages Code`))
-```
 
-```{r message=FALSE, warning=FALSE}
 # Rename the 'Single-Year Ages Code' column to 'Age' for clarity
 population_data_formatted <- population_data %>%
   rename(Age = `Single-Year Ages Code`) %>%
@@ -402,9 +397,7 @@ all_data <- rbind(us_data_formatted, population_data_grouped)
 # Select and rename relevant columns for the final data
 all_data_population <- all_data %>%
   rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
-```
 
-```{r message=FALSE, warning=FALSE}
 covid_yearly_data <- read_csv("year_covid_20_21.csv")
 
 # Merge the population data with the COVID data
