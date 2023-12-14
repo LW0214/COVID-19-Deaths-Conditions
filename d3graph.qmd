@@ -4,10 +4,46 @@
   * {
     font-family: sans-serif;
   }
-</style> 
-
+</style>
+ 
 <div id="plot">
 </div>
+<!-- Add buttons -->
+<button onclick="update(data_20q1)">2020 Q1</button>
+<button onclick="update(data_20q2)">2020 Q2</button>
+<button onclick="update(data_20q3)">2020 Q3</button>
+<button onclick="update(data_20q4)">2020 Q4</button>
+<button onclick="update(data_21q1)">2021 Q1</button>
+<button onclick="update(data_21q2)">2021 Q2</button>
+<button onclick="update(data_21q3)">2021 Q3</button>
+<button onclick="update(data_21q4)">2021 Q4</button>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<h1>COVID-19 death counts of top 5 conditions by quarter in 2020-2021</h1>
+
+<p>The <span style="color:red;">percentage</span> shows the change of the current value you're <span style="color:#6a3d9a;">currently on</span> compared to the prevous value you've <span style="color:#b15928;">previously clicked</span>. Note: percentage only shows up once you've clicked on a button, red indicates percentage increase or no change, and green indicates decrease.
+
+The <span style="color:#1f78b4;">blue</span> number shows the total number of death of the quarter you're currently on.<br><br>
+
+Earlier, we’ve explored the death count of the top 5 conditions across quarters with line charts. Line chart is effective at showing trends and how different variables correlate with one another, but the tiny difference in slopes are hard to precisely demonstrate how conditions’ increase or decrease across 2 quarters compare to one another. Line charts also tend to overload viewers with information, where viewers tend to focus more on the macroscopic trends across all time periods, instead of focusing on the microscopic comparisons between 2 consecutive periods.
+
+We believe that D3 interactive graphs is better at visualizing how variables increase and decrease throughout 2 quarters with respect to one another. For each quarter, we plot the 5 conditions. The x axis is ordered where the leftmost condition always has the highest death count across quarters.
+
+From the D3 animation, we can see that death count in 2020 Q2, which is covid’s breakout, spikes almost 1500% for all conditions compared to 2020 Q1.
+
+2021 Q1 is an interesting quarter. The top 2 conditions of Influenza and Respiratory Failure reach their highest death account in the 2 years. Usually, all 5 variables are positively correlated with one another, yet in 2021 Q1, Hypertensive Disease and Diabetes decrease while Influenza and Respiratory failure increase.
+
+From 2021 Q3 and 2021 Q4, death counts for all conditions become relatively stable.
+
+From 2020 Q1 to 2021 Q4, we can see the massive death counts responsible by each condition at the end of 2 years.
+
+</p>
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="scripts/myscript.js"></script>
