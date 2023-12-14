@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>YOUR PROJECT TITLE - 3&nbsp; Results</title>
+<title>Conditions Contributing to COVID-19 Deaths - 3&nbsp; Results</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,9 +17,72 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -57,10 +120,17 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.3/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 </head>
@@ -69,16 +139,11 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./results.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -86,66 +151,69 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">YOUR PROJECT TITLE</a> 
+      <a href="./">Conditions Contributing to COVID-19 Deaths</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  <a href="./data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./results.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  <a href="./results.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./d3graph.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span></a>
+  <a href="./d3graph.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#covid-19-trends-over-time" id="toc-covid-19-trends-over-time" class="nav-link active" data-scroll-target="#covid-19-trends-over-time"><span class="toc-section-number">3.1</span>  COVID-19 Trends Over Time</a></li>
+  <li><a href="#geographical-variations" id="toc-geographical-variations" class="nav-link" data-scroll-target="#geographical-variations"><span class="toc-section-number">3.2</span>  Geographical Variations</a></li>
+  <li><a href="#age-related-vulnerability" id="toc-age-related-vulnerability" class="nav-link" data-scroll-target="#age-related-vulnerability"><span class="toc-section-number">3.3</span>  Age-Related Vulnerability</a></li>
+  <li><a href="#underlying-medical-conditions-associated-with-covid-19-deaths" id="toc-underlying-medical-conditions-associated-with-covid-19-deaths" class="nav-link" data-scroll-target="#underlying-medical-conditions-associated-with-covid-19-deaths"><span class="toc-section-number">3.4</span>  Underlying Medical Conditions Associated with COVID-19 Deaths</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></h1>
 </div>
 
 
@@ -160,8 +228,629 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalluvial)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"preproc_covid.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>covid_data<span class="sc">$</span>Start.Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(covid_data<span class="sc">$</span>Start.Date,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>covid_data<span class="sc">$</span>End.Date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(covid_data<span class="sc">$</span>End.Date,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="covid-19-trends-over-time" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="covid-19-trends-over-time"><span class="header-section-number">3.1</span> COVID-19 Trends Over Time</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the COVID data to include only United States data,</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># aggregated by month for all age groups, specifically for the COVID-19 condition group.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>us_data_monthly <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    State <span class="sc">==</span> <span class="st">"United States"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    Group <span class="sc">==</span> <span class="st">"By Month"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    Age.Group <span class="sc">==</span> <span class="st">"All Ages"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    Condition.Group <span class="sc">==</span> <span class="st">'COVID-19'</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>date_breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2020-01-01"</span>), <span class="fu">as.Date</span>(<span class="st">"2023-09-01"</span>), <span class="at">by =</span> <span class="st">"month"</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating the plot</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(us_data_monthly, <span class="fu">aes</span>(<span class="at">x =</span> Start.Date, <span class="at">y =</span> COVID.<span class="fl">19.</span>Deaths)) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2020-12-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2021-2-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"royalblue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2021-12-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2022-2-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"royalblue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2022-12-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2023-2-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"royalblue"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2020-06-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2020-8-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"orange1"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2021-06-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2021-8-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"orange1"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2022-06-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2022-8-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"orange1"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2023-06-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2023-8-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>,   <span class="at">fill =</span> <span class="st">"orange1"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">breaks =</span> date_breaks, <span class="at">date_labels =</span> <span class="st">"%Y-%m"</span>) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Monthly COVID-19 Deaths in the US"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Month-Year"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Deaths"</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Orange = Summer Months </span><span class="sc">\n</span><span class="st">Blue = Winter Months"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># Rotate the x-axis labels for better readability</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the plot</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>The graph above is a time series line chart which illustrates the monthly death toll from the start of the pandemic in early 2020 through to the third quarter of 2023 in the United States. It is a representation of the pandemic’s progression over time, displaying large fluctuations in monthly death counts in the years 2020-2021, and stabilizing in 2022. It is apparent from the seasonal color-coding—blue for winter months and orange for summer months—that there is a recurring pattern in the data.</p>
+<p>We observe an increase in COVID-19 deaths during both summer and winter months, with a more pronounced increase in the winter. The increase during the winter months, may be influenced by several factors:</p>
+<ol type="1">
+<li><p><strong>Indoor Gathering</strong>: The colder weather drives people indoors, where the virus can spread more easily due to close contact and poor ventilation.</p></li>
+<li><p><strong>Seasonal Viruses</strong>: The winter months coincide with the flu season, where other respiratory viruses are also prevalent, potentially worsening COVID-19 cases.</p></li>
+<li><p><strong>Holiday Seasons</strong>: Winter months include holidays (Christmas, New Years, etc) that typically involve family gatherings and increased social interaction, making it more likely for the virus to spread.</p></li>
+</ol>
+<p>Conversely, during summer, while outdoor activities may generally reduce the transmission rate compared to winter, we still observe increases in deaths. This could be due to:</p>
+<ol type="1">
+<li><p><strong>Social Activities</strong>: Summer holidays and events can result in gatherings and increased contact among individuals, leading to spikes.</p></li>
+<li><p><strong>Air Conditioning</strong>: Increased use of air conditioning during hot months can lead to similar indoor circulation patterns as in winter, facilitating the spread of the virus.</p></li>
+</ol>
+</section>
+<section id="geographical-variations" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="geographical-variations"><span class="header-section-number">3.2</span> Geographical Variations</h2>
+<p>We have observed a recurring pattern in COVID-19 deaths over time, with seasonal factors playing a notable role in the fluctuation of death rates. While time allows us to track flow of the pandemic’s impact, geography provides another critical aspect for understanding the spread and toll of the virus.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"covid_with_population.csv"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>geo_df20 <span class="ot">=</span> data <span class="sc">|&gt;</span> <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2020</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check: year should all be 2020</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df20$Year |&gt; unique()</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check: for Alabama, all conditions' population should be the same</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df20 |&gt; subset(State=="Alabama")</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># # check Alabama for covid</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df20 |&gt; subset(State=="Alabama" &amp; Condition.Group=="COVID-19"  )</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data: only select covid19, ages except all ages, states != US</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>geo_df20 <span class="ot">=</span> geo_df20 <span class="sc">|&gt;</span> <span class="fu">subset</span>(Age.Group<span class="sc">!=</span><span class="st">"All Ages"</span> <span class="sc">&amp;</span> Condition.Group<span class="sc">==</span><span class="st">"COVID-19"</span> <span class="sc">&amp;</span> State<span class="sc">!=</span><span class="st">"United States"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df20$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># for each state, calculate total population &amp; all covid deaths</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>aggr_20<span class="ot">=</span>geo_df20 <span class="sc">|&gt;</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(COVID.<span class="fl">19.</span>Deaths,TotalPopulation) <span class="sc">~</span> State, <span class="at">FUN =</span> sum,<span class="at">na.action =</span> na.pass)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_20$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_20 |&gt; filter(State=="New York City" | State=="New York")</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># add NYC to NY</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>aggr_20<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[aggr_20<span class="sc">$</span>State <span class="sc">==</span> <span class="st">"New York"</span>] <span class="ot">&lt;-</span> aggr_20<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[aggr_20<span class="sc">$</span>State <span class="sc">==</span> <span class="st">"New York"</span>]<span class="sc">+</span>aggr_20<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[aggr_20<span class="sc">$</span>State <span class="sc">==</span> <span class="st">"New York City"</span>]</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="do">## sanity check</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_20 |&gt; filter(State=="New York City" | State=="New York")</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate rate</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>aggr_20<span class="sc">$</span>death_rate<span class="ot">=</span><span class="fu">round</span>(aggr_20<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths<span class="sc">/</span>(aggr_20<span class="sc">$</span>TotalPopulation<span class="sc">/</span><span class="dv">100000</span>), <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_20</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#import state abbrev</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>df_states<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">"states.csv"</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_20$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># df_states$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co"># join state codes</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>plot_df_20 <span class="ot">&lt;-</span> aggr_20 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df_states,<span class="at">by=</span><span class="st">"State"</span>)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="co"># # check is there's nan</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="co"># subset(plot_df_20,is.na(Abbreviation))</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="co"># drop nan</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>plot_df_20<span class="ot">=</span>plot_df_20 <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(Abbreviation)</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="co">#plot_df_20</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="co"># copy</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>geo_df21<span class="ot">=</span>data <span class="sc">|&gt;</span> <span class="fu">filter</span>(Year<span class="sc">==</span><span class="dv">2021</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check: year should all be 2021</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df21$Year |&gt; unique()</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check: for Alabama, all conditions' population should be the same</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df21 |&gt; subset(State=="Alabama")</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="co"># # check Alabama for covid</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df21 |&gt; subset(State=="Alabama" &amp; Condition.Group=="COVID-19"  )</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co"># filter data: only select covid19, ages except all ages, states != US</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>geo_df21 <span class="ot">=</span> geo_df21 <span class="sc">|&gt;</span> <span class="fu">subset</span>(Age.Group<span class="sc">!=</span><span class="st">"All Ages"</span> <span class="sc">&amp;</span> Condition.Group<span class="sc">==</span><span class="st">"COVID-19"</span> <span class="sc">&amp;</span> State<span class="sc">!=</span><span class="st">"United States"</span>)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co"># geo_df21$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="co"># for each state, calculate total population &amp; all covid deaths</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>aggr_21<span class="ot">=</span>geo_df21 <span class="sc">|&gt;</span> <span class="fu">aggregate</span>(<span class="fu">cbind</span>(COVID.<span class="fl">19.</span>Deaths,TotalPopulation) <span class="sc">~</span> State, <span class="at">FUN =</span> sum,<span class="at">na.action =</span> na.pass)</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_21$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_21 |&gt; filter(State=="New York City" | State=="New York")</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="co"># add NYC to NY</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>aggr_21<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[aggr_21<span class="sc">$</span>State <span class="sc">==</span> <span class="st">"New York"</span>] <span class="ot">&lt;-</span> aggr_21<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[aggr_21<span class="sc">$</span>State <span class="sc">==</span> <span class="st">"New York"</span>]<span class="sc">+</span>aggr_21<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[aggr_21<span class="sc">$</span>State <span class="sc">==</span> <span class="st">"New York City"</span>]</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_21 |&gt; filter(State=="New York City" | State=="New York")</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate rate</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>aggr_21<span class="sc">$</span>death_rate<span class="ot">=</span><span class="fu">round</span>(aggr_21<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths<span class="sc">/</span>(aggr_21<span class="sc">$</span>TotalPopulation<span class="sc">/</span><span class="dv">100000</span>), <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_21</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co">#import state abbrev</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>df_states<span class="ot">=</span><span class="fu">read_csv</span>(<span class="st">"states.csv"</span>)</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="co"># aggr_21$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a><span class="co"># df_states$State |&gt; unique() |&gt; length()</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="co"># join state codes</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>plot_df_21 <span class="ot">&lt;-</span> aggr_21 <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(df_states,<span class="at">by=</span><span class="st">"State"</span>)</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="co"># # check is there's nan</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="co"># subset(plot_df_21,is.na(Abbreviation)) </span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="co"># drop nan</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>plot_df_21<span class="ot">=</span>plot_df_21 <span class="sc">|&gt;</span> <span class="fu">drop_na</span>(Abbreviation)</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co">#plot_df_21</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co"># create plots</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co">#common</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="co"># give state boundaries a white border</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="fu">toRGB</span>(<span class="st">"white"</span>), <span class="at">width =</span> <span class="dv">2</span>)</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co"># specify some map projection/options</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>  <span class="at">scope =</span> <span class="st">'usa'</span>,</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>  <span class="at">projection =</span> <span class="fu">list</span>(<span class="at">type =</span> <span class="st">'albers usa'</span>),</span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>  <span class="at">showlakes =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>  <span class="at">lakecolor =</span> <span class="fu">toRGB</span>(<span class="st">'white'</span>)</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="co"># 2020 plot</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>plot_df_20<span class="sc">$</span>hover <span class="ot">&lt;-</span> <span class="fu">with</span>(plot_df_20, <span class="fu">paste</span>(State, <span class="st">'&lt;br&gt;'</span>, <span class="st">"Death Rate:"</span>, death_rate, <span class="st">'&lt;br&gt;'</span>, <span class="st">"Death Count:"</span>,COVID.<span class="fl">19.</span>Deaths))</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>fig_20 <span class="ot">&lt;-</span> <span class="fu">plot_geo</span>(plot_df_20, <span class="at">locationmode =</span> <span class="st">'USA-states'</span>)</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>fig_20 <span class="ot">&lt;-</span> fig_20 <span class="sc">%&gt;%</span> <span class="fu">add_trace</span>(</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> <span class="sc">~</span>death_rate, <span class="at">locations =</span> <span class="sc">~</span>Abbreviation, <span class="at">text =</span> <span class="sc">~</span>hover,</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="sc">~</span>death_rate, <span class="at">colors =</span> <span class="st">'Purples'</span>,</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">zmin=</span><span class="dv">20</span>, <span class="at">zmax=</span><span class="dv">230</span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>fig_20 <span class="ot">&lt;-</span> fig_20 <span class="sc">%&gt;%</span> <span class="fu">colorbar</span>(<span class="at">title =</span> <span class="st">"death rate &lt;br&gt; (per 100,000 population)"</span>)</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>fig_20 <span class="ot">&lt;-</span> fig_20 <span class="sc">%&gt;%</span> <span class="fu">layout</span>(</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'2020 US COVID-19 Death Rate'</span>,</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">geo =</span> g</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="co"># 2021 plot</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>plot_df_21<span class="sc">$</span>hover <span class="ot">&lt;-</span> <span class="fu">with</span>(plot_df_21, <span class="fu">paste</span>(State, <span class="st">'&lt;br&gt;'</span>, <span class="st">"Death Rate:"</span>, death_rate, <span class="st">'&lt;br&gt;'</span>, <span class="st">"Death Count:"</span>,COVID.<span class="fl">19.</span>Deaths))</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>fig_21 <span class="ot">&lt;-</span> <span class="fu">plot_geo</span>(plot_df_21, <span class="at">locationmode =</span> <span class="st">'USA-states'</span>)</span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>fig_21 <span class="ot">&lt;-</span> fig_21 <span class="sc">%&gt;%</span> <span class="fu">add_trace</span>(</span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> <span class="sc">~</span>death_rate, <span class="at">locations =</span> <span class="sc">~</span>Abbreviation, <span class="at">text =</span> <span class="sc">~</span>hover,</span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="sc">~</span>death_rate, <span class="at">colors =</span> <span class="st">'Purples'</span>,</span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>    <span class="at">zmin=</span><span class="dv">20</span>, <span class="at">zmax=</span><span class="dv">230</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>fig_21 <span class="ot">&lt;-</span> fig_21 <span class="sc">%&gt;%</span> <span class="fu">colorbar</span>(<span class="at">title =</span> <span class="st">"death rate  &lt;br&gt; (per 100,000 population)"</span>)</span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>fig_21 <span class="ot">&lt;-</span> fig_21 <span class="sc">%&gt;%</span> <span class="fu">layout</span>(</span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'2021 US COVID-19 Death Rate'</span>,</span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>    <span class="at">geo =</span> g</span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="co"># find min and max values for scale</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(plot_df_20<span class="sc">$</span>death_rate,plot_df_21<span class="sc">$</span>death_rate) <span class="sc">|&gt;</span> <span class="fu">min</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.3</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(plot_df_20<span class="sc">$</span>death_rate,plot_df_21<span class="sc">$</span>death_rate) <span class="sc">|&gt;</span> <span class="fu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 220.4</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig_20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a7d0d5ea5c00ceb9c6a7" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-a7d0d5ea5c00ceb9c6a7">{"x":{"visdat":{"115ee6c293721":["function () ","plotlyVisDat"]},"cur_data":"115ee6c293721","attrs":{"115ee6c293721":{"locationmode":"USA-states","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"z":{},"locations":{},"text":{},"color":{},"colors":"Purples","zmin":20,"zmax":230,"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"mapType":"geo","scene":{"zaxis":{"title":"death_rate"}},"geo":{"domain":{"x":[0,1],"y":[0,1]},"scope":"usa","projection":{"type":"albers usa"},"showlakes":true,"lakecolor":"rgba(255,255,255,1)"},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5},"title":"2020 US COVID-19 Death Rate"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"death rate <br> (per 100,000 population)","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(252,251,253,1)"],["0.0416666666666667","rgba(248,246,250,1)"],["0.0833333333333333","rgba(243,242,248,1)"],["0.125","rgba(239,237,245,1)"],["0.166666666666667","rgba(232,231,242,1)"],["0.208333333333333","rgba(225,224,238,1)"],["0.25","rgba(218,218,235,1)"],["0.291666666666667","rgba(208,208,230,1)"],["0.333333333333333","rgba(198,199,225,1)"],["0.375","rgba(188,189,220,1)"],["0.416666666666667","rgba(178,177,213,1)"],["0.458333333333333","rgba(168,166,207,1)"],["0.5","rgba(158,154,200,1)"],["0.541666666666667","rgba(148,144,195,1)"],["0.583333333333333","rgba(138,135,191,1)"],["0.625","rgba(128,125,186,1)"],["0.666666666666667","rgba(121,110,178,1)"],["0.708333333333333","rgba(114,96,171,1)"],["0.75","rgba(106,81,163,1)"],["0.791666666666667","rgba(99,67,156,1)"],["0.833333333333333","rgba(92,54,150,1)"],["0.875","rgba(84,39,143,1)"],["0.916666666666667","rgba(77,28,137,1)"],["0.958333333333333","rgba(70,16,131,1)"],["1","rgba(63,0,125,1)"]],"showscale":true,"locationmode":"USA-states","z":[133.30000000000001,35.299999999999997,129.80000000000001,133.59999999999999,84.799999999999997,87.700000000000003,174.90000000000001,110,150,101.09999999999999,97.299999999999997,25.399999999999999,83.700000000000003,130.80000000000001,144,149.5,119.09999999999999,102.59999999999999,151.90000000000001,34.100000000000001,109,145.59999999999999,122.09999999999999,102.2,173.09999999999999,131,116.5,114.8,113.09999999999999,60.899999999999999,195.69999999999999,135.90000000000001,191,84.099999999999994,194,128,132.40000000000001,37.899999999999999,141.69999999999999,175.09999999999999,111,193.5,114.5,114.7,50.399999999999999,23.300000000000001,71.200000000000003,47.899999999999999,87.400000000000006,106.5,79.5],"locations":["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],"text":["Alabama <br> Death Rate: 133.3 <br> Death Count: 6706","Alaska <br> Death Rate: 35.3 <br> Death Count: 259","Arizona <br> Death Rate: 129.8 <br> Death Count: 9321","Arkansas <br> Death Rate: 133.6 <br> Death Count: 4028","California <br> Death Rate: 84.8 <br> Death Count: 33485","Colorado <br> Death Rate: 87.7 <br> Death Count: 5073","Connecticut <br> Death Rate: 174.9 <br> Death Count: 6292","Delaware <br> Death Rate: 110 <br> Death Count: 1091","District of Columbia <br> Death Rate: 150 <br> Death Count: 1006","Florida <br> Death Rate: 101.1 <br> Death Count: 21827","Georgia <br> Death Rate: 97.3 <br> Death Count: 10435","Hawaii <br> Death Rate: 25.4 <br> Death Count: 369","Idaho <br> Death Rate: 83.7 <br> Death Count: 1547","Illinois <br> Death Rate: 130.8 <br> Death Count: 16721","Indiana <br> Death Rate: 144 <br> Death Count: 9775","Iowa <br> Death Rate: 149.5 <br> Death Count: 4770","Kansas <br> Death Rate: 119.1 <br> Death Count: 3500","Kentucky <br> Death Rate: 102.6 <br> Death Count: 4623","Louisiana <br> Death Rate: 151.9 <br> Death Count: 7066","Maine <br> Death Rate: 34.1 <br> Death Count: 465","Maryland <br> Death Rate: 109 <br> Death Count: 6729","Massachusetts <br> Death Rate: 145.6 <br> Death Count: 10184","Michigan <br> Death Rate: 122.1 <br> Death Count: 12290","Minnesota <br> Death Rate: 102.2 <br> Death Count: 5833","Mississippi <br> Death Rate: 173.1 <br> Death Count: 5120","Missouri <br> Death Rate: 131 <br> Death Count: 8059","Montana <br> Death Rate: 116.5 <br> Death Count: 1266","Nebraska <br> Death Rate: 114.8 <br> Death Count: 2254","Nevada <br> Death Rate: 113.1 <br> Death Count: 3523","New Hampshire <br> Death Rate: 60.9 <br> Death Count: 839","New Jersey <br> Death Rate: 195.7 <br> Death Count: 18143","New Mexico <br> Death Rate: 135.9 <br> Death Count: 2879","New York <br> Death Rate: 191 <br> Death Count: 38402","North Carolina <br> Death Rate: 84.1 <br> Death Count: 8784","North Dakota <br> Death Rate: 194 <br> Death Count: 1512","Ohio <br> Death Rate: 128 <br> Death Count: 15097","Oklahoma <br> Death Rate: 132.4 <br> Death Count: 5248","Oregon <br> Death Rate: 37.9 <br> Death Count: 1608","Pennsylvania <br> Death Rate: 141.7 <br> Death Count: 18407","Rhode Island <br> Death Rate: 175.1 <br> Death Count: 1920","South Carolina <br> Death Rate: 111 <br> Death Count: 5697","South Dakota <br> Death Rate: 193.5 <br> Death Count: 1718","Tennessee <br> Death Rate: 114.5 <br> Death Count: 7927","Texas <br> Death Rate: 114.7 <br> Death Count: 33535","Utah <br> Death Rate: 50.4 <br> Death Count: 1656","Vermont <br> Death Rate: 23.3 <br> Death Count: 150","Virginia <br> Death Rate: 71.2 <br> Death Count: 6152","Washington <br> Death Rate: 47.9 <br> Death Count: 3701","West Virginia <br> Death Rate: 87.4 <br> Death Count: 1565","Wisconsin <br> Death Rate: 106.5 <br> Death Count: 6282","Wyoming <br> Death Rate: 79.5 <br> Death Count: 459"],"zmin":20,"zmax":230,"type":"choropleth","marker":{"line":{"colorbar":{"title":"","ticklen":2},"cmin":23.300000000000001,"cmax":195.69999999999999,"colorscale":[["0","rgba(252,251,253,1)"],["0.0416666666666667","rgba(248,246,250,1)"],["0.0833333333333333","rgba(243,242,248,1)"],["0.125","rgba(239,237,245,1)"],["0.166666666666667","rgba(232,231,242,1)"],["0.208333333333333","rgba(225,224,238,1)"],["0.25","rgba(218,218,235,1)"],["0.291666666666667","rgba(208,208,230,1)"],["0.333333333333333","rgba(198,199,225,1)"],["0.375","rgba(188,189,220,1)"],["0.416666666666667","rgba(178,177,213,1)"],["0.458333333333333","rgba(168,166,207,1)"],["0.5","rgba(158,154,200,1)"],["0.541666666666667","rgba(148,144,195,1)"],["0.583333333333333","rgba(138,135,191,1)"],["0.625","rgba(128,125,186,1)"],["0.666666666666667","rgba(121,110,178,1)"],["0.708333333333333","rgba(114,96,171,1)"],["0.75","rgba(106,81,163,1)"],["0.791666666666667","rgba(99,67,156,1)"],["0.833333333333333","rgba(92,54,150,1)"],["0.875","rgba(84,39,143,1)"],["0.916666666666667","rgba(77,28,137,1)"],["0.958333333333333","rgba(70,16,131,1)"],["1","rgba(63,0,125,1)"]],"showscale":false,"color":[133.30000000000001,35.299999999999997,129.80000000000001,133.59999999999999,84.799999999999997,87.700000000000003,174.90000000000001,110,150,101.09999999999999,97.299999999999997,25.399999999999999,83.700000000000003,130.80000000000001,144,149.5,119.09999999999999,102.59999999999999,151.90000000000001,34.100000000000001,109,145.59999999999999,122.09999999999999,102.2,173.09999999999999,131,116.5,114.8,113.09999999999999,60.899999999999999,195.69999999999999,135.90000000000001,191,84.099999999999994,194,128,132.40000000000001,37.899999999999999,141.69999999999999,175.09999999999999,111,193.5,114.5,114.7,50.399999999999999,23.300000000000001,71.200000000000003,47.899999999999999,87.400000000000006,106.5,79.5]}},"geo":"geo","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig_21</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-bb20a939fcab94656f55" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-bb20a939fcab94656f55">{"x":{"visdat":{"115ee5e28f01":["function () ","plotlyVisDat"]},"cur_data":"115ee5e28f01","attrs":{"115ee5e28f01":{"locationmode":"USA-states","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"z":{},"locations":{},"text":{},"color":{},"colors":"Purples","zmin":20,"zmax":230,"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"mapType":"geo","scene":{"zaxis":{"title":"death_rate"}},"geo":{"domain":{"x":[0,1],"y":[0,1]},"scope":"usa","projection":{"type":"albers usa"},"showlakes":true,"lakecolor":"rgba(255,255,255,1)"},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5},"title":"2021 US COVID-19 Death Rate"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"death rate  <br> (per 100,000 population)","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(252,251,253,1)"],["0.0416666666666667","rgba(248,246,250,1)"],["0.0833333333333333","rgba(243,242,248,1)"],["0.125","rgba(239,237,245,1)"],["0.166666666666667","rgba(232,231,242,1)"],["0.208333333333333","rgba(225,224,238,1)"],["0.25","rgba(218,218,235,1)"],["0.291666666666667","rgba(208,208,230,1)"],["0.333333333333333","rgba(198,199,225,1)"],["0.375","rgba(188,189,220,1)"],["0.416666666666667","rgba(178,177,213,1)"],["0.458333333333333","rgba(168,166,207,1)"],["0.5","rgba(158,154,200,1)"],["0.541666666666667","rgba(148,144,195,1)"],["0.583333333333333","rgba(138,135,191,1)"],["0.625","rgba(128,125,186,1)"],["0.666666666666667","rgba(121,110,178,1)"],["0.708333333333333","rgba(114,96,171,1)"],["0.75","rgba(106,81,163,1)"],["0.791666666666667","rgba(99,67,156,1)"],["0.833333333333333","rgba(92,54,150,1)"],["0.875","rgba(84,39,143,1)"],["0.916666666666667","rgba(77,28,137,1)"],["0.958333333333333","rgba(70,16,131,1)"],["1","rgba(63,0,125,1)"]],"showscale":true,"locationmode":"USA-states","z":[192.5,114.40000000000001,193.5,176.19999999999999,123.5,106.8,87,125.90000000000001,105.7,178.09999999999999,160.5,51.399999999999999,146,92.900000000000006,147.59999999999999,110.3,129.5,193,149.5,104.2,98.799999999999997,79.799999999999997,148.90000000000001,90.700000000000003,200.30000000000001,145,164.19999999999999,98.700000000000003,179.40000000000001,87.099999999999994,103.59999999999999,175,120.2,144.19999999999999,120.40000000000001,174.59999999999999,196.69999999999999,98.400000000000006,157.90000000000001,111,182.90000000000001,110.09999999999999,196.69999999999999,165.09999999999999,80,48.5,111.7,79.599999999999994,220.40000000000001,103.3,166.19999999999999],"locations":["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"],"text":["Alabama <br> Death Rate: 192.5 <br> Death Count: 9719","Alaska <br> Death Rate: 114.4 <br> Death Count: 840","Arizona <br> Death Rate: 193.5 <br> Death Count: 14060","Arkansas <br> Death Rate: 176.2 <br> Death Count: 5336","California <br> Death Rate: 123.5 <br> Death Count: 48331","Colorado <br> Death Rate: 106.8 <br> Death Count: 6207","Connecticut <br> Death Rate: 87 <br> Death Count: 3153","Delaware <br> Death Rate: 125.9 <br> Death Count: 1265","District of Columbia <br> Death Rate: 105.7 <br> Death Count: 707","Florida <br> Death Rate: 178.1 <br> Death Count: 38873","Georgia <br> Death Rate: 160.5 <br> Death Count: 17310","Hawaii <br> Death Rate: 51.4 <br> Death Count: 744","Idaho <br> Death Rate: 146 <br> Death Count: 2781","Illinois <br> Death Rate: 92.9 <br> Death Count: 11787","Indiana <br> Death Rate: 147.6 <br> Death Count: 10056","Iowa <br> Death Rate: 110.3 <br> Death Count: 3526","Kansas <br> Death Rate: 129.5 <br> Death Count: 3806","Kentucky <br> Death Rate: 193 <br> Death Count: 8696","Louisiana <br> Death Rate: 149.5 <br> Death Count: 6919","Maine <br> Death Rate: 104.2 <br> Death Count: 1435","Maryland <br> Death Rate: 98.8 <br> Death Count: 6101","Massachusetts <br> Death Rate: 79.8 <br> Death Count: 5579","Michigan <br> Death Rate: 148.9 <br> Death Count: 14945","Minnesota <br> Death Rate: 90.7 <br> Death Count: 5181","Mississippi <br> Death Rate: 200.3 <br> Death Count: 5907","Missouri <br> Death Rate: 145 <br> Death Count: 8945","Montana <br> Death Rate: 164.2 <br> Death Count: 1816","Nebraska <br> Death Rate: 98.7 <br> Death Count: 1939","Nevada <br> Death Rate: 179.4 <br> Death Count: 5645","New Hampshire <br> Death Rate: 87.1 <br> Death Count: 1208","New Jersey <br> Death Rate: 103.6 <br> Death Count: 9605","New Mexico <br> Death Rate: 175 <br> Death Count: 3705","New York <br> Death Rate: 120.2 <br> Death Count: 23860","North Carolina <br> Death Rate: 144.2 <br> Death Count: 15234","North Dakota <br> Death Rate: 120.4 <br> Death Count: 937","Ohio <br> Death Rate: 174.6 <br> Death Count: 20536","Oklahoma <br> Death Rate: 196.7 <br> Death Count: 7850","Oregon <br> Death Rate: 98.4 <br> Death Count: 4190","Pennsylvania <br> Death Rate: 157.9 <br> Death Count: 20546","Rhode Island <br> Death Rate: 111 <br> Death Count: 1218","South Carolina <br> Death Rate: 182.9 <br> Death Count: 9497","South Dakota <br> Death Rate: 110.1 <br> Death Count: 987","Tennessee <br> Death Rate: 196.7 <br> Death Count: 13705","Texas <br> Death Rate: 165.1 <br> Death Count: 48787","Utah <br> Death Rate: 80 <br> Death Count: 2671","Vermont <br> Death Rate: 48.5 <br> Death Count: 314","Virginia <br> Death Rate: 111.7 <br> Death Count: 9668","Washington <br> Death Rate: 79.6 <br> Death Count: 6165","West Virginia <br> Death Rate: 220.4 <br> Death Count: 3936","Wisconsin <br> Death Rate: 103.3 <br> Death Count: 6076","Wyoming <br> Death Rate: 166.2 <br> Death Count: 963"],"zmin":20,"zmax":230,"type":"choropleth","marker":{"line":{"colorbar":{"title":"","ticklen":2},"cmin":48.5,"cmax":220.40000000000001,"colorscale":[["0","rgba(252,251,253,1)"],["0.0416666666666667","rgba(248,246,250,1)"],["0.0833333333333333","rgba(243,242,248,1)"],["0.125","rgba(239,237,245,1)"],["0.166666666666667","rgba(232,231,242,1)"],["0.208333333333333","rgba(225,224,238,1)"],["0.25","rgba(218,218,235,1)"],["0.291666666666667","rgba(208,208,230,1)"],["0.333333333333333","rgba(198,199,225,1)"],["0.375","rgba(188,189,220,1)"],["0.416666666666667","rgba(178,177,213,1)"],["0.458333333333333","rgba(168,166,207,1)"],["0.5","rgba(158,154,200,1)"],["0.541666666666667","rgba(148,144,195,1)"],["0.583333333333333","rgba(138,135,191,1)"],["0.625","rgba(128,125,186,1)"],["0.666666666666667","rgba(121,110,178,1)"],["0.708333333333333","rgba(114,96,171,1)"],["0.75","rgba(106,81,163,1)"],["0.791666666666667","rgba(99,67,156,1)"],["0.833333333333333","rgba(92,54,150,1)"],["0.875","rgba(84,39,143,1)"],["0.916666666666667","rgba(77,28,137,1)"],["0.958333333333333","rgba(70,16,131,1)"],["1","rgba(63,0,125,1)"]],"showscale":false,"color":[192.5,114.40000000000001,193.5,176.19999999999999,123.5,106.8,87,125.90000000000001,105.7,178.09999999999999,160.5,51.399999999999999,146,92.900000000000006,147.59999999999999,110.3,129.5,193,149.5,104.2,98.799999999999997,79.799999999999997,148.90000000000001,90.700000000000003,200.30000000000001,145,164.19999999999999,98.700000000000003,179.40000000000001,87.099999999999994,103.59999999999999,175,120.2,144.19999999999999,120.40000000000001,174.59999999999999,196.69999999999999,98.400000000000006,157.90000000000001,111,182.90000000000001,110.09999999999999,196.69999999999999,165.09999999999999,80,48.5,111.7,79.599999999999994,220.40000000000001,103.3,166.19999999999999]}},"geo":"geo","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p>In examining the geographical distribution of COVID-19 death rates across the United States in 2020 and 2021, we observe regional variations. During 2020, higher death rates were observed in the Northeastern and Midwestern states, with New Jersey, New York, North Dakota, and South Dakota exhibiting higher figures. This could potentially reflect the initial outbreak hotspots. The Southern states presented varied death rates, generally hovering around an average of 120, while the Western states showed lower death rates.</p>
+<p>In 2021, a shift is evident. The Southern states, previously having moderate rates, show a significant increase in death rates. This illustrates the dynamic nature of COVID-19, potentially influenced by varying public health policies, vaccine rollouts, and virus variants. Meanwhile, the Northeastern and Midwestern states, which initially had the highest death rates in 2020, showed a decrease in death rates. This decrease could indicate the effectiveness of public health measures and heightened community awareness. Moreover, it’s noteworthy to highlight the case of Vermont, which stands out for its consistently low death rates in both 2020 and 2021.</p>
+</section>
+<section id="age-related-vulnerability" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="age-related-vulnerability"><span class="header-section-number">3.3</span> Age-Related Vulnerability</h2>
+<p>Having examined the geographical distribution of COVID-19 death rates across various regions, we will now extend our analysis to understand how the pandemic has impacted different age groups.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>age_group_over_time <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"United States"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>         Group <span class="sc">==</span> <span class="st">"By Month"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         Condition.Group <span class="sc">==</span> <span class="st">'COVID-19'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Age.Group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Not stated"</span>, <span class="st">"All Ages"</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  age_group_over_time,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(Start.Date, COVID.<span class="fl">19.</span>Deaths, <span class="at">group =</span> Age.Group, <span class="at">color =</span> <span class="fu">factor</span>(Age.Group))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time Period"</span>, <span class="at">y =</span> <span class="st">"COVID-19 Deaths"</span>, <span class="at">title=</span><span class="st">'Monthly COVID-19 Deaths Across Age Groups'</span>) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_reveal</span>(Start.Date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-5-1.gif" class="img-fluid"></p>
+</div>
+</div>
+<p>The graph above shows the monthly death toll within specific age cohorts. It is evident from the visualization that the virus has not affected age groups uniformly. Each age group exhibits distinct peaks and valleys, indicative of the waves of the pandemic. The highest peaks correspond to the older age groups, particularly those aged 65 and above, while the lowest peaks correspond to youngest age group, 0-24.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the COVID data to include only US data for the 'COVID-19' condition group, </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and exclude unspecified or 'All Ages' age groups. Then, create a new categorical variable </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># based on age to separate data into '65 and Older' and 'Under 65'.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>age_group_data <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"United States"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         Group <span class="sc">==</span> <span class="st">"By Month"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>         Condition.Group <span class="sc">==</span> <span class="st">'COVID-19'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Age.Group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Not stated"</span>, <span class="st">"All Ages"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Over_Under_65 =</span> <span class="fu">ifelse</span>(Age.Group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"65-74"</span>, <span class="st">"75-84"</span>, <span class="st">"85+"</span>),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"65 and Older"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Under 65"</span>))</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the start and end dates for the period of interest.</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>start_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2020-04-01"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>end_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2022-09-01"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Group data by month and age category, and summarize total deaths. </span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Then filter the data to include only the dates within the defined period.</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>monthly_deaths_age_group <span class="ot">&lt;-</span> age_group_data <span class="sc">%&gt;%</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">group_by</span>(Start.Date, Over_Under_65) <span class="sc">%&gt;%</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">summarize</span>(<span class="at">TotalDeaths =</span> <span class="fu">sum</span>(COVID.<span class="fl">19.</span>Deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">filter</span>(<span class="fu">between</span>(Start.Date, start_date, end_date))</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert the 'Over_Under_65' column to a factor with specified levels for proper ordering in the plot.</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>monthly_deaths_age_group<span class="sc">$</span>Over_Under_65 <span class="ot">&lt;-</span> <span class="fu">factor</span>(monthly_deaths_age_group<span class="sc">$</span>Over_Under_65, </span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>                                                 <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Under 65"</span>, <span class="st">"65 and Older"</span>))</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a sequence of breaks for the x-axis (dates).</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>date_breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(start_date, end_date, <span class="at">by =</span> <span class="st">"month"</span>)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the bar chart</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>age_bar_chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(monthly_deaths_age_group, <span class="fu">aes</span>(<span class="at">x =</span> Start.Date, <span class="at">y =</span> TotalDeaths, <span class="at">fill =</span> Over_Under_65)) <span class="sc">+</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>()) <span class="sc">+</span> </span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Annotate periods of interest with colored rectangles</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2021-06-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2021-12-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> <span class="st">"yellow"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">as.Date</span>(<span class="st">"2021-12-01"</span>), <span class="at">xmax =</span> <span class="fu">as.Date</span>(<span class="st">"2022-10-01"</span>), <span class="at">ymin =</span> <span class="sc">-</span><span class="cn">Inf</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">alpha =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add vertical lines to mark specific events</span></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(<span class="st">"2020-12-15"</span>), <span class="at">linetype =</span> <span class="st">"dotted"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">as.Date</span>(<span class="st">"2021-09-22"</span>), <span class="at">linetype =</span> <span class="st">"dotted"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add text annotations for vaccine approvals and variant emergence</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2020-10-15"</span>), <span class="at">y =</span> <span class="dv">50000</span>, <span class="at">label =</span> <span class="st">"First vaccine approved"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2021-7-22"</span>), <span class="at">y =</span> <span class="dv">50000</span>, <span class="at">label =</span> <span class="st">"First booster approved"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2021-8-01"</span>), <span class="at">y =</span> <span class="dv">80000</span>, <span class="at">label =</span> <span class="st">"Delta variant"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">"2022-4-15"</span>), <span class="at">y =</span> <span class="dv">80000</span>, <span class="at">label =</span> <span class="st">"Omicron variants"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Monthly COVID-19 Deaths in the US (Over and Under 65)"</span>,</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>          <span class="at">x =</span> <span class="st">"Time"</span>,</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> <span class="st">"Total Deaths"</span>,</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> <span class="st">"Age Group"</span>) <span class="sc">+</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Format the x-axis with the predefined date breaks</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">breaks =</span> date_breaks, <span class="at">date_labels =</span> <span class="st">"%Y-%m"</span>) <span class="sc">+</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the plot</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>age_bar_chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>As seen previously, age has been a determinant factor in COVID-19 mortality, especially when comparing the death counts in age groups above and below 65. The above is a stacked bar chart displaying monthly COVID-19 deaths in the United States, categorized by age groups: under 65 and 65 and older. Key milestones such as the approval of the first COVID-19 vaccine, the emergence of the Delta variant, the approval of the first booster, and the arrival of Omicron variants are marked on the timeline.</p>
+<ol type="1">
+<li><p><strong>Impact of Vaccinations and Booster:</strong> There is a noticeable decrease in deaths following the approval of the first vaccine, especially in the 65 and older age group, which likely received priority for vaccinations. We can see similar patterns after the approval and subsequent administration of booster shots. This suggests that vaccines and booster have had a positive impact in reducing COVID-19 mortality.</p></li>
+<li><p><strong>Variant-Related Surges:</strong> Although vaccinations have helped in reducing COVID-19 mortality, we see noticable surges in deaths after emergence of the Delta and Omicron variants. This indicates the significant challenges posed by new variants, which can be more transmissible or potentially more fatal. The spikes in deaths corresponding to these variants underscore the ongoing need for adaptation in public health responses.</p></li>
+<li><p><strong>Vulnerability of Older Adults:</strong> The data consistently shows that older age groups are more impacted by COVID-19.</p></li>
+</ol>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load COVID-19 data with population and filter it for the United States, </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># excluding 'All Ages' category, and then group by 'Age.Group'.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>age_group_death_and_pop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"covid_with_population.csv"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"United States"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         Condition.Group <span class="sc">==</span> <span class="st">'COVID-19'</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>         Age.Group <span class="sc">!=</span> <span class="st">'All Ages'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age.Group) <span class="sc">%&gt;%</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">COVID.19.Deaths =</span> <span class="fu">sum</span>(COVID.<span class="fl">19.</span>Deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">TotalPopulation =</span> <span class="fu">sum</span>(TotalPopulation, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the proportion of COVID-19 deaths and the proportion of the total population </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># for each age group.</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>age_group_death_and_pop <span class="ot">&lt;-</span> age_group_death_and_pop <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ProportionDeaths =</span> COVID.<span class="fl">19.</span>Deaths <span class="sc">/</span> <span class="fu">sum</span>(COVID.<span class="fl">19.</span>Deaths),</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ProportionPopulation =</span> TotalPopulation <span class="sc">/</span> <span class="fu">sum</span>(TotalPopulation)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the data to long format for plotting. </span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="co"># This creates a new column 'Category' for plotting purposes.</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>long_data <span class="ot">&lt;-</span> age_group_death_and_pop <span class="sc">%&gt;%</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"ProportionDeaths"</span>, <span class="st">"ProportionPopulation"</span>),</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Category"</span>,</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Proportion"</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Category =</span> <span class="fu">factor</span>(Category, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"ProportionPopulation"</span>, <span class="st">"ProportionDeaths"</span>)))</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a stacked bar chart to visualize the proportions.</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a><span class="co"># The chart will have two panels (facets) side by side for each category </span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="co"># (ProportionPopulation and ProportionDeaths).</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(long_data, <span class="fu">aes</span>(<span class="at">x =</span> Category, <span class="at">y =</span> Proportion, <span class="at">fill =</span> Age.Group)) <span class="sc">+</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Category, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Population and Death Proportions Across Age Groups (2020-2021)"</span>,</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Age Group"</span></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.spacing.x =</span> <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">"lines"</span>), <span class="co"># Remove space between facets</span></span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_blank</span>()       <span class="co"># Remove facet labels for a cleaner look</span></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>The above is a bar chart comparing the proportion of the population to the proportion of COVID-19 deaths across various age groups for the years 2020-2021. The left side of the chart displays the composition of the general population across age cohorts, while the right side shows the corresponding proportions of COVID-19 related deaths. The bar charts highlight the disproportionate impact of COVID-19 on different age groups. As we move to older age groups, the disparity becomes apparent: the proportion of deaths attributed to these groups exceeds their representation in the overall population. This disparity grows more pronounced with older age, illustrating the increased risk of older individuals to COVID-19.</p>
+</section>
+<section id="underlying-medical-conditions-associated-with-covid-19-deaths" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="underlying-medical-conditions-associated-with-covid-19-deaths"><span class="header-section-number">3.4</span> Underlying Medical Conditions Associated with COVID-19 Deaths</h2>
+<p>So far, the graphs we’ve examined illustrates how COVID-19 mortality rates rise with age, revealing that the older population are most impacted. The disproportionality of these figures compel us to look beyond age and delve into the underlying medical conditions that may have played a role in contributing these moralities.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the data to include only the total number of cases for all ages in the United States for the years 2020 and 2021</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>health_data_all_ages <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    State <span class="sc">==</span> <span class="st">"United States"</span>, <span class="co"># Filter for the United States</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    Group <span class="sc">==</span> <span class="st">"By Year"</span>,       <span class="co"># Data aggregated by year</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"2020"</span>, <span class="st">"2021"</span>), <span class="co"># Only for the years 2020 and 2021</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    Age.Group <span class="sc">==</span> <span class="st">"All Ages"</span>   <span class="co"># Include all age groups</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    Condition <span class="sc">==</span> <span class="st">"Intentional and unintentional injury, poisoning, and other adverse events"</span> <span class="sc">~</span> <span class="st">"Injury and poisoning"</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> Condition</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the total number of COVID-19 deaths for the year 2020</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>deaths_2020 <span class="ot">&lt;-</span> health_data_all_ages<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[health_data_all_ages<span class="sc">$</span>Condition <span class="sc">==</span> <span class="st">"COVID-19"</span> <span class="sc">&amp;</span> health_data_all_ages<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2020</span>]</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the total number of COVID-19 deaths for the year 2021</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>deaths_2021 <span class="ot">&lt;-</span> health_data_all_ages<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[health_data_all_ages<span class="sc">$</span>Condition <span class="sc">==</span> <span class="st">"COVID-19"</span> <span class="sc">&amp;</span> health_data_all_ages<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>]</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of deaths for each condition as a proportion of the total COVID-19 deaths for that year</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>health_data_all_ages <span class="ot">&lt;-</span> health_data_all_ages <span class="sc">%&gt;%</span> </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage_death =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>      Year <span class="sc">==</span> <span class="dv">2020</span> <span class="sc">~</span> (COVID.<span class="fl">19.</span>Deaths <span class="sc">/</span> deaths_2020)<span class="sc">*</span><span class="dv">100</span>, <span class="co"># Calculate percentage for 2020</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>      Year <span class="sc">==</span> <span class="dv">2021</span> <span class="sc">~</span> (COVID.<span class="fl">19.</span>Deaths <span class="sc">/</span> deaths_2021)<span class="sc">*</span><span class="dv">100</span>, <span class="co"># Calculate percentage for 2021</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span>                                           <span class="co"># If not 2020 or 2021, percentage is NA</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Condition <span class="sc">!=</span> <span class="st">'COVID-19'</span>) <span class="sc">%&gt;%</span> <span class="co"># Exclude the COVID-19 condition itself as this gives the total death</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.factor</span>(Year))      <span class="co"># Convert 'Year' to a factor for plotting purposes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare labels for the highest percentage death value for each condition</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>right_label <span class="ot">&lt;-</span> health_data_all_ages <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> percentage_death, <span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare labels for the second highest percentage death value for each condition</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>left_label <span class="ot">&lt;-</span> health_data_all_ages <span class="sc">%&gt;%</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> percentage_death, <span class="at">n =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">row_number</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="co"># To exclude the top value which is already included in right_label</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(health_data_all_ages, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Condition, percentage_death), <span class="at">y =</span> percentage_death)) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> Condition, <span class="at">color =</span> <span class="fu">as.factor</span>(Year))) <span class="sc">+</span> <span class="co"># Connect points with lines for each condition and color by year</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="co"># Flip the coordinates to make the conditions appear on the y-axis</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="fu">as.factor</span>(Year))) <span class="sc">+</span> <span class="co"># Plot points for each year with different colors</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> right_label, </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(percentage_death, <span class="dv">0</span>), <span class="at">color =</span> <span class="fu">as.factor</span>(Year)),</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.5</span>) <span class="sc">+</span> <span class="co"># Add labels for the highest value to the right of the points</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> left_label, </span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(percentage_death, <span class="dv">0</span>), <span class="at">color =</span> <span class="fu">as.factor</span>(Year)),</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="fl">1.5</span>) <span class="sc">+</span> <span class="co"># Add labels for the second highest value to the left of the points</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Prevalence of Different Health Conditions in COVID-19 Deaths (2020 vs 2021)"</span>, <span class="co"># Title of the plot</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Condition"</span>, </span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Percentage Death"</span>, </span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Year"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>In 2020, the CDC released a detailed account of health complications accompanying COVID-19 deaths in the United States. The figures reveal a significant insight: only about 6% of the reported fatalities were solely due to COVID-19, suggesting that nearly all patients who died had pre-existing conditions. The most prevalent conditions include respiratory diseases like influenza and pneumonia, respiratory failure, diabetes, various types of dementia, and heart-related ailments - which is consistent with what we are seeing in the graph above.</p>
+<p>The year-over-year percentage comparison between 2020 and 2021 highlighted in the graph indicates the following:</p>
+<ol type="1">
+<li><p><strong>Increase in proportion involving influenza and pneumonia, respiratory failure:</strong> The increase in proportions of people with deaths related to respiratory conditions may reflect the emergence of new, more virulent virus strains, which are more contagious and fatal.</p></li>
+<li><p><strong>Decline in proportion of hypertensive diseases:</strong> On the flip side, the observed decline in proportion of deaths associated with conditions like hypertensive diseases could be linked to the increased protective measures and medical interventions that became available over time, including the administration of vaccines.</p></li>
+<li><p><strong>Decline in proportion of vascular and unspecified dementia:</strong> Similar to the point above, administration of COVID-19 vaccines in 2021 may have reduced the severity of the disease, particularly among the elderly and those with underlying health conditions like dementia, which could explain the decrease in associated deaths.</p></li>
+</ol>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the COVID data for the United States, by month, for all ages, </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and for the top 5 conditions only.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>top5_condition_data <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"United States"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>         Group <span class="sc">==</span> <span class="st">"By Month"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>         Condition <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Influenza and pneumonia"</span>, <span class="st">"Respiratory failure"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                          <span class="st">"Hypertensive diseases"</span>, <span class="st">"Diabetes"</span>, <span class="st">"Cardiac arrest"</span>),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>         Age.Group <span class="sc">==</span> <span class="st">"All Ages"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Group the data by quarter and year, and summarize the total COVID-19 deaths</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># for each condition within each quarter-year.</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>top5_condition_quarter <span class="ot">&lt;-</span> top5_condition_data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Quarter =</span> <span class="fu">ceiling</span>(Month<span class="sc">/</span><span class="dv">3</span>),  <span class="co"># Calculate the quarter number from the month</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">Quarter_Year =</span> <span class="fu">paste0</span>(Year, <span class="st">"_Q"</span>, Quarter)) <span class="sc">%&gt;%</span>  <span class="co"># Create a new column combining year and quarter</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Quarter_Year, Condition) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">COVID.19.Deaths =</span> <span class="fu">sum</span>(COVID.<span class="fl">19.</span>Deaths))  <span class="co"># Sum the deaths for each quarter and condition</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the line chart</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Each condition will have its own line and points, colored uniquely.</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top5_condition_quarter, <span class="fu">aes</span>(<span class="at">x =</span> Quarter_Year, <span class="at">y =</span> COVID.<span class="fl">19.</span>Deaths, <span class="at">group =</span> Condition, <span class="at">color =</span> Condition)) <span class="sc">+</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span>  </span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Quarter"</span>, <span class="at">y =</span> <span class="st">"Number of COVID-19 Deaths"</span>, </span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"COVID-19 Deaths by Condition Over Quarters"</span>, <span class="at">color =</span> <span class="st">"Condition"</span>) <span class="sc">+</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># Rotate x-axis labels for better readability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>The graph above takes a closer look at the 5 most prevelant conditions in COVID-19 deaths and their prevelance has changed over time, from 2020 to 2023. All five conditions plotted in the graph follow a similar trend over time, particularly with respect to the peaks and troughs that coincide with the quarters. This could imply that individuals who died from COVID-19 often had multiple underlying health issues, which is consistent with the understanding that comorbidities can increase the risk of death from COVID-19.</p>
+<p>Influenza and pneumonia, as well as respiratory failure, show significant spikes at certain points, which could correlate with the direct impact of COVID-19 on respiratory health. By 2022 and into 2023, the lines representing each condition level off, indicating a stabilization in the number of deaths, which might suggest that the public health measures and medical interventions are having a positive effect, or that the most vulnerable populations had already been significantly impacted in the earlier phases of the pandemic.</p>
+<p>These trends will be further explored in the ‘Interactive Graph’ section of our report.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the COVID data for the United States by year for 2020 and 2021, excluding the 'COVID-19' condition</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and removing unspecified or 'All Ages' age groups.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>health_data_age_group <span class="ot">&lt;-</span> covid_data <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    State <span class="sc">==</span> <span class="st">"United States"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    Group <span class="sc">==</span> <span class="st">"By Year"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"2020"</span>, <span class="st">"2021"</span>),</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    Condition <span class="sc">!=</span> <span class="st">'COVID-19'</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>Age.Group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Not stated"</span>, <span class="st">"All Ages"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">case_when</span>(</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    Condition <span class="sc">==</span> <span class="st">"Intentional and unintentional injury, poisoning, and other adverse events"</span> <span class="sc">~</span> <span class="st">"Injury and poisoning"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> Condition</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>aggregated_data <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(COVID.<span class="fl">19.</span>Deaths <span class="sc">~</span> Condition <span class="sc">+</span> Age.Group, <span class="at">data =</span> health_data_age_group, sum)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the aggregated data into a wide format suitable for a heatmap</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> <span class="fu">dcast</span>(aggregated_data, Condition <span class="sc">~</span> Age.Group, <span class="at">value.var =</span> <span class="st">"COVID.19.Deaths"</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace NA with 0 for the heatmap (if needed)</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>wide_data[<span class="fu">is.na</span>(wide_data)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the heatmap</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">melt</span>(wide_data), <span class="fu">aes</span>(<span class="at">x =</span> variable, <span class="at">y =</span> Condition, <span class="at">fill =</span> value)) <span class="sc">+</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"D"</span>) <span class="sc">+</span></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"COVID-19 Deaths by Age Group and Underlying Health Conditions"</span>, <span class="at">x =</span> <span class="st">"Age Group"</span>, <span class="at">y =</span> <span class="st">"Condition"</span>, <span class="at">fill =</span> <span class="st">"COVID-19 Deaths"</span>) <span class="sc">+</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>Next, we will delve deeper into the nuances of COVID-19 mortality across age groups by examining the specific underlying health conditions associated with the deaths. The heat map above visualizes the distribution of COVID-19 deaths across different age groups, against a variety of present health conditions. It offers a granular perspective, illustrating not just the age-related vulnerability to COVID-19, but also how various pre-existing medical conditions have influenced the mortality rates within each age bracket. For example, while the bar charts we’ve seen in the previous sections indicated a general increase in mortality with age, the heat map allows us to see precisely which conditions most frequently accompany these deaths.</p>
+<p>Notably, the lighter colors—which indicate the highest number of deaths—are predominantly seen in the older age groups, particularly those aged 55+. This is consistent with data suggesting that older individuals are at a greater risk of severe outcomes when contracting COVID-19, often worsened by pre-existing health issues. In the older age groups, the heat map shows that conditions such as respiratory failure and influenza and pneumonia are the most prevalent ones, which is expected as these complications often come with COVID-19.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recategorize the age groups into broader categories and convert to a factor with specified levels.</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>health_data_age_groups <span class="ot">&lt;-</span> health_data_age_group <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Age_Group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>      Age.Group <span class="sc">==</span> <span class="st">"0-24"</span> <span class="sc">~</span> <span class="st">"Young (0-24)"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      Age.Group <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"25-34"</span>, <span class="st">"35-44"</span>, <span class="st">"45-54"</span>) <span class="sc">~</span> <span class="st">"Middle-Aged (25-54)"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Old (55+)"</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Age_Group =</span> <span class="fu">factor</span>(Age_Group, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Young (0-24)"</span>, <span class="st">"Middle-Aged (25-54)"</span>, <span class="st">"Old (55+)"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition, Age_Group) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">COVID.19.Deaths =</span> <span class="fu">sum</span>(COVID.<span class="fl">19.</span>Deaths)) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the top conditions within each age group and sort them.</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>top_conditions_by_age_group <span class="ot">&lt;-</span> health_data_age_groups <span class="sc">%&gt;%</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age_Group, Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">COVID.19.Deaths =</span> <span class="fu">sum</span>(COVID.<span class="fl">19.</span>Deaths, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Age_Group, <span class="fu">desc</span>(COVID.<span class="fl">19.</span>Deaths)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Age_Group) <span class="sc">%&gt;%</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(COVID.<span class="fl">19.</span>Deaths, <span class="at">n =</span> <span class="dv">5</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with the original data to create a flag for the top conditions for use in coloring the plot.</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>health_data_age_groups <span class="ot">&lt;-</span> health_data_age_groups <span class="sc">%&gt;%</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(top_conditions_by_age_group, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Age_Group"</span>, <span class="st">"Condition"</span>), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">".top"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Is_Top_Condition =</span> <span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(COVID.<span class="fl">19.</span>Deaths.top), <span class="st">"Top 5"</span>, <span class="st">"Other"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>COVID.<span class="fl">19.</span>Deaths.top) <span class="co"># Remove the auxiliary column after creating the flag.</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart, flipping the coordinates for a horizontal chart,</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="co"># and using facets to create separate plots for each age group.</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(health_data_age_groups, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Condition, COVID.<span class="fl">19.</span>Deaths), <span class="at">y =</span> COVID.<span class="fl">19.</span>Deaths, <span class="at">fill =</span> Is_Top_Condition)) <span class="sc">+</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Age_Group, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Top 5"</span> <span class="ot">=</span> <span class="st">"red3"</span>, <span class="st">"Other"</span> <span class="ot">=</span> <span class="st">"darkgrey"</span>)) <span class="sc">+</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">'Top Comorbidities Associated with COVID-19 Deaths Across Age Groups'</span>,</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Health Conditions"</span>, </span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of Deaths"</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>Building on the insights from the heat map, we now focus on the comparative impact of specific health conditions across different age cohorts. The chart above categorizes the frequency of conditions accompanying COVID-19 deaths, highlighting the top five deadliest comorbidities within distinct age groups: young (0-24), middle-aged (25-54), and older (55+). Several key observations emerge from this analysis:</p>
+<ol type="1">
+<li><p><strong>Prevalence of Obesity in Younger Age Groups:</strong> Interestingly, obesity appears as a significant comorbidity in the younger demographic. This contrasts with older age groups, where conditions like hypertensive disease, respiratory diseases, and diabetes predominate and pose greater mortality risks. The absence of obesity as a top comorbidity in older age groups might reflect a survivorship bias: individuals with severe obesity may face higher mortality at younger ages, thus reducing their representation among older COVID-19 fatalities.</p></li>
+<li><p><strong>Comorbidity Trends in Middle to Older Age Group:</strong> As we examine the middle-aged group, the visualization shifts to reveal a broader range of health issues leading to death, with top conditions like diabetes and hypertensive diseases becoming more prominent. These findings underscore the relationship between chronic conditions and COVID-19, which may not be as common in younger populations but pose a risk in the older age brackets.</p></li>
+<li><p><strong>Multiplicity of Co-existing Conditions</strong>: Particularly in the older age group, the presence of multiple comorbidities among the top causes of death highlights that COVID-19-related fatalities often involve an interplay of health conditions.</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -191,23 +880,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -272,92 +947,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -412,12 +1001,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
   </div>
 </footer>
