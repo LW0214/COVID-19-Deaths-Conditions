@@ -227,7 +227,7 @@ new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Total", -1, Month))
 new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Year", -1, Month))
 ```
 
-## Missing value analysis
+### Missing value analysis
 
 ```{r message=FALSE, warning=FALSE}
 # count nans
@@ -321,7 +321,7 @@ We export the preprocessed dataset for covid.
 write.csv(new_covid, "preproc_covid.csv", row.names=FALSE)
 ```
 
-Preprocessing covid dataset to be joined with population dataset.
+### Preprocessing covid dataset to be joined with population dataset.
 
 ```{r message=FALSE, warning=FALSE}
 # delete useless columns
@@ -339,8 +339,9 @@ write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
 # read_csv("year_covid_20_21.csv")
 ```
 
-Code and Documentation for merging covid conditions dataset with
-population dataset
+### Code and Documentation for merging covid conditions dataset with population dataset
+
+  It's worth noting that the annual population estimate is taken as of July each year, while we decide to use our annual COVID data as starting from January to December each year due to the limited amount of fully-updated data available. However, the discrepancy in the start and end months of these intervals won't have much impact since the overall population of a state will not fluctuate by a really large amount across months, especially when both intervals are annual nonetheless. Thus, we believe we can simply join the population estimates with the COVID data for each state.
 
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
