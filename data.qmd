@@ -161,32 +161,17 @@ R.
 
 ## Research plan
 
-1.  Impact of Specific Health Conditions on COVID-19 Mortality Rates
+1.  Trends Over Time
 
-    Investigate how certain pre-existing conditions (like respiratory
-    diseases, cardiovascular diseases, diabetes, etc.) affect the
-    mortality rates among COVID-19 patients.
+    Assess how the mortality rates and associated conditions have
+    changed over time from 2020 to 2023. This can provide insights into
+    the evolving nature of the pandemic and its impact on public health.
 
-    How: Analyze 'COVID-19 Deaths' in relation to 'Conditions' and
-    'Conditions group' to identify which pre-existing conditions have
-    higher mortality rates within covid-19 patients. We can use
-    correlation analysis to understand the relationship between specific
-    health conditions and mortality rates. Regression analysis can also
-    be applied to control for other variables like age.
+    How: Time series analysis can be used to track the evolution of the
+    pandemic. For example, identifying peaks in mortality rates and
+    changes in prevalence of comorbidity over time.
 
-2.  Age-Related Vulnerability
-
-    Analyze how age groups differ in their vulnerability to COVID-19,
-    considering the number of deaths and associated health conditions.
-
-    How: Conduct age-wise comparison to see how mortality rates differ
-    across age groups. Descriptive statistics (like mean, median) and
-    graphical representations (like bar charts, age-wise mortality
-    curves) would be useful here. We also plan to calculate the average
-    mortality rate per age group and analyzing the frequency and type of
-    comorbidities in each age group.
-
-3.  Geographical Variation
+2.  Geographical Variation
 
     Examine the differences in COVID-19 mortality rates and associated
     health conditions across different states. This could reveal how
@@ -202,35 +187,32 @@ R.
     states report deaths weekly or monthly. We will also normalize the
     death counts to account for population differences between states.
 
-4.  Trends Over Time
+3.  Age-Related Vulnerability
 
-    Assess how the mortality rates and associated conditions have
-    changed over time from 2020 to 2023. This can provide insights into
-    the evolving nature of the pandemic and its impact on public health.
+    Analyze how age groups differ in their vulnerability to COVID-19,
+    considering the number of deaths and associated health conditions.
 
-    How: Time series analysis can be used to track the evolution of the
-    pandemic. For example, identifying peaks in mortality rates and
-    changes in prevalence of comorbidity over time.
+    How: Conduct age-wise comparison to see how mortality rates differ
+    across age groups. Descriptive statistics (like mean, median) and
+    graphical representations (like bar charts, age-wise mortality
+    curves) would be useful here. We also plan to analyze the frequency
+    and type of comorbidities in each age group.
 
-5.  Comparison Between Provisional and Final Data
+4.  Impact of Specific Health Conditions on COVID-19 Mortality Rates
 
-    Compare the provisional data for 2022 and 2023 with the final data
-    for 2020 and 2021. This could reveal insights into the progression
-    of the pandemic and the accuracy of provisional data in real-time
-    tracking of the pandemic.
+    Investigate how certain pre-existing conditions (like respiratory
+    diseases, cardiovascular diseases, diabetes, etc.) affect the
+    mortality rates among COVID-19 patients.
 
-    How: Provisional data are not yet complete, counts will not include
-    all deaths However, we can estimate how complete the provisional
-    numbers are by looking at the average number of deaths reported in
-    previous years. This can be done by calculating the percentage of
-    completeness of provisional data by comparing it with the historical
-    average in 2020 and 2021. For example, if historically 90% of deaths
-    are reported within the first 30 days, we can estimate the
-    completeness of the provisional data accordingly.
-
+    How: Analyze 'COVID-19 Deaths' in relation to 'Conditions' and to
+    identify which pre-existing conditions have higher mortality rates
+    within covid-19 patients. We can use correlation analysis to
+    understand the relationship between specific health conditions and
+    mortality rates.
 
 ## Data Preprocessing
-```{r}
+
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggplot2)
 
@@ -247,7 +229,8 @@ new_covid=new_covid %>% mutate(Month = ifelse(Group == "By Year", -1, Month))
 ```
 
 ## Missing value analysis
-```{r}
+
+```{r message=FALSE, warning=FALSE}
 # count nans
 nan_cols=colMeans(is.na(new_covid))
 nan_cols=data.frame(nan_cols)
@@ -272,7 +255,7 @@ plot
 Under the column "Age Group", there's a value "Not stated" that covers
 10% of the entire dataset, which isn't much, and can be deleted.
 
-```{r}
+```{r include=FALSE}
 # imputation for age group: not stated, delete
 new_covid=new_covid[!(new_covid$Age.Group %in% "Not stated"),]
 # sanity check if not stated is there
@@ -282,9 +265,23 @@ new_covid=new_covid[!(new_covid$Age.Group %in% "Not stated"),]
 As mentioned earlier, "COVID-19 Deaths"and "Number of Mentions"are
 already suppressed to NAN values if the number of deaths is \<10 and the
 "Flag" column is indicated for such entries. Such entries occupy 30% of
-the dataset, which is quite large. Apparently "all ages" already calculates the suppressed counts in age group, though if a state or condition has more than 1 age groups that are both suppresed, there's no way for us to know for sure how many values are there in each of the age group. Still, we decide to impute the entries for "COVID-19 Deaths"and "Number of Mentions" as the average between 0 to 10, which is 5. The only time there'll be large over and unestimation with imputation of death count is when we want to query by each state by each condition, and by each year, but none of our analysis includes such a precise query.In our analysis, we either query across all age groups, all covid death conditions for each state; or we query across each age group, each condition but across all of US, or across all age groups, all of US and by each condition, so the number of total deaths will be quite large for a value of hundreds to thousands. And in this case, an 5 is relatively small in comparison.
+the dataset, which is quite large. Apparently "all ages" already
+calculates the suppressed counts in age group, though if a state or
+condition has more than 1 age groups that are both suppresed, there's no
+way for us to know for sure how many values are there in each of the age
+group. Still, we decide to impute the entries for "COVID-19 Deaths"and
+"Number of Mentions" as the average between 0 to 10, which is 5. The
+only time there'll be large over and unestimation with imputation of
+death count is when we want to query by each state by each condition,
+and by each year, but none of our analysis includes such a precise
+query.In our analysis, we either query across all age groups, all covid
+death conditions for each state; or we query across each age group, each
+condition but across all of US, or across all age groups, all of US and
+by each condition, so the number of total deaths will be quite large for
+a value of hundreds to thousands. And in this case, an 5 is relatively
+small in comparison.
 
-```{r}
+```{r include=FALSE}
 # want to check how all ages are calculated
 
 # check which state has nan deaths for covid-19
@@ -295,9 +292,10 @@ subset(new_covid,Year==2020 & Group=="By Year" & State=="Alaska" & Condition.Gro
 
 ```
 
-Since we don't use "Number of Mentions" column in our analysis, we only impute for covid death.
+Since we don't use "Number of Mentions" column in our analysis, we only
+impute for covid death.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # impute: when flag for an age group is not "", impute COVID.19.Deaths with 5
 # # sanity check: the flag should all be "one or more..."
 # new_covid$Flag[is.na(new_covid$COVID.19.Deaths)] |> unique()
@@ -308,7 +306,6 @@ new_covid$COVID.19.Deaths[is.na(new_covid$COVID.19.Deaths)] <- 5
 # new_covid$COVID.19.Deaths[which(new_covid[,"Flag"] != '')] |> unique()
 ```
 
-
 At first glance, if an entry's column "Group" has values "By Total", its
 "Year" and "Month" are both missing, because of course that row is an
 aggregation of all past data. Similarly, if an entry's column "Group"
@@ -318,12 +315,14 @@ missing values in these rows with a dummy value "-1", it appears that
 there are no actual nan values in these columns anymore. 
 
 We export the preprocessed dataset for covid.
-```{r}
+
+```{r message=FALSE, warning=FALSE}
 write.csv(new_covid, "preproc_covid.csv", row.names=FALSE)
 ```
 
 Preprocessing covid dataset to be joined with population dataset.
-```{r}
+
+```{r message=FALSE, warning=FALSE}
 # delete useless columns
 df <- subset(new_covid, select = -c(Data.As.Of,Start.Date,End.Date
 ))
@@ -339,25 +338,24 @@ write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
 # read_csv("year_covid_20_21.csv")
 ```
 
-Code and Documentation for merging covid conditions dataset with population dataset
+Code and Documentation for merging covid conditions dataset with
+population dataset
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 library(dplyr)
 library(readr)
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 population_data <- read_csv("Single-Race Population Estimates 2020-2022 by State and Single-Year Age.csv")
 
 # Modifying 'Single-Year Ages Code' column:
 # If 'Single-Year Ages Code' is "85+", replace it with "85", otherwise keep it as is.
 population_data <- population_data %>%
   mutate(`Single-Year Ages Code` = if_else(`Single-Year Ages Code` == "85+", "85", `Single-Year Ages Code`))
-
-population_data
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 # Rename the 'Single-Year Ages Code' column to 'Age' for clarity
 population_data_formatted <- population_data %>%
   rename(Age = `Single-Year Ages Code`) %>%
@@ -406,7 +404,7 @@ all_data_population <- all_data %>%
   rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
 ```
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 covid_yearly_data <- read_csv("year_covid_20_21.csv")
 
 # Merge the population data with the COVID data
