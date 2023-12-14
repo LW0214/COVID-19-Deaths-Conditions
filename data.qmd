@@ -276,7 +276,7 @@ Under the column "Age Group", there's a value "Not stated" that covers
 # imputation for age group: not stated, delete
 new_covid=new_covid[!(new_covid$Age.Group %in% "Not stated"),]
 # sanity check if not stated is there
-new_covid$ Age.Group |> unique()
+#new_covid$ Age.Group |> unique()
 ```
 
 As mentioned earlier, "COVID-19 Deaths"and "Number of Mentions"are
@@ -287,9 +287,9 @@ the dataset, which is quite large. Apparently "all ages" already calculates the 
 ```{r}
 # want to check how all ages are calculated
 
-# R: check which state has nan deaths for covid-19
-subset(new_covid,is.na(COVID.19.Deaths)) |> filter(Condition.Group=="COVID-19" & Age.Group!="Not stated")
-# check Alaska
+# check which state has nan deaths for covid-19
+#subset(new_covid,is.na(COVID.19.Deaths)) |> filter(Condition.Group=="COVID-19" & Age.Group!="Not stated")
+# one of the above results shows Alaska
 subset(new_covid,Year==2020 & Group=="By Year" & State=="Alaska" & Condition.Group=="COVID-19" )
 # Alaska: sum of known age groups: 249, all ages: 253, 2 age groups unknown
 
@@ -299,13 +299,13 @@ Since we don't use "Number of Mentions" column in our analysis, we only impute f
 
 ```{r}
 # impute: when flag for an age group is not "", impute COVID.19.Deaths with 5
-# sanity check: the flag should all be "one or more..."
-new_covid$Flag[is.na(new_covid$COVID.19.Deaths)] |> unique()
+# # sanity check: the flag should all be "one or more..."
+# new_covid$Flag[is.na(new_covid$COVID.19.Deaths)] |> unique()
 # impute with 5
 new_covid$COVID.19.Deaths[is.na(new_covid$COVID.19.Deaths)] <- 5
 
-# saniry check: if these are all 5
-new_covid$COVID.19.Deaths[which(new_covid[,"Flag"] != '')] |> unique()
+# # saniry check: if these are all 5
+# new_covid$COVID.19.Deaths[which(new_covid[,"Flag"] != '')] |> unique()
 ```
 
 
@@ -335,8 +335,8 @@ row.names(df) <- NULL
 
 # export
 write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
-# sanity check:
-read_csv("year_covid_20_21.csv")
+# # sanity check:
+# read_csv("year_covid_20_21.csv")
 ```
 
 Code and Documentation for merging covid conditions dataset with population dataset
