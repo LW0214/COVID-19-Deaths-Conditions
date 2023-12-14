@@ -215,7 +215,7 @@ R.
 library(tidyverse)
 library(ggplot2)
 
-covid_data=read.csv("covid.csv")
+covid_data=read.csv("Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Age__Provisional_2020-2023.csv")
 
 # if group is total, fill all year and month by -1
 
@@ -264,7 +264,7 @@ new_covid=new_covid[!(new_covid$Age.Group %in% "Not stated"),]
 As mentioned earlier, "COVID-19 Deaths"and "Number of Mentions"are
 already suppressed to NAN values if the number of deaths is \<10 and the
 "Flag" column is indicated for such entries. Such entries occupy 30% of
-the dataset, which is quite large. Apparently "all ages" already
+the dataset, which is quite large. As shown in the below code for Alaska, apparently "all ages" already
 calculates the suppressed counts in age group, though if a state or
 condition has more than 1 age groups that are both suppresed, there's no
 way for us to know for sure how many values are there in each of the age
@@ -281,13 +281,15 @@ a value of hundreds to thousands. And in this case, an 5 is relatively
 small in comparison.
 
 ```{r include=FALSE}
-# want to check how all ages are calculated
+# want to check how death for age.group= all_ages are calculated, especially if there're age groups with suppressed (nan) deaths 
 
-# check which state has nan deaths for covid-19
+## check which state has suppressed deaths for covid-19
 #subset(new_covid,is.na(COVID.19.Deaths)) |> filter(Condition.Group=="COVID-19" & Age.Group!="Not stated")
+
 # one of the above results shows Alaska
 subset(new_covid,Year==2020 & Group=="By Year" & State=="Alaska" & Condition.Group=="COVID-19" )
-# Alaska: sum of known age groups: 249, all ages: 253, 2 age groups unknown
+
+# Alaska: sum of deaths for un-suppressed age groups: 249, sum of deaths of age.group=all_ages: 253, 2 age groups suppressed
 
 ```
 
@@ -309,7 +311,7 @@ At first glance, if an entry's column "Group" has values "By Total", its
 "Year" and "Month" are both missing, because of course that row is an
 aggregation of all past data. Similarly, if an entry's column "Group"
 has values "By Year", its "Month" values are missing, because that row
-is an aggregation of all months in that year. After replacing the fake
+is an aggregation of all months in that year. After replacing these implicit
 missing values in these rows with a dummy value "-1", it appears that
 there are no actual nan values in these columns anymore. 
 
