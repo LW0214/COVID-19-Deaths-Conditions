@@ -60,7 +60,7 @@ g <- ggplot(us_data_monthly, aes(x = Start.Date, y = COVID.19.Deaths)) +
   scale_x_date(breaks = date_breaks, date_labels = "%Y-%m") +
   labs(
     title = "Monthly COVID-19 Deaths in the US",
-    x = "Month-Year",
+    x = "Year-Month",
     y = "Total Deaths",
     subtitle = "Orange = Summer Months \nBlue = Winter Months"
   ) +
@@ -272,7 +272,7 @@ p <- ggplot(
   ) +
   geom_line() +
   scale_color_viridis_d() +
-  labs(x = "Time Period", y = "COVID-19 Deaths", title='Monthly COVID-19 Deaths Across Age Groups') +
+  labs(x = "Time Period", y = "COVID-19 Deaths", title='Monthly COVID-19 Deaths Across Age Groups', color = "Age Group") +
   theme(legend.position = "right")
 
 p + 
@@ -328,7 +328,7 @@ age_bar_chart <- ggplot(monthly_deaths_age_group, aes(x = Start.Date, y = TotalD
   annotate("text", x = as.Date("2021-7-22"), y = 50000, label = "First booster approved", color = "black", size = 4, vjust = -1) +
   annotate("text", x = as.Date("2021-8-01"), y = 80000, label = "Delta variant", color = "red", size = 4, vjust = -1) +
   annotate("text", x = as.Date("2022-4-15"), y = 80000, label = "Omicron variants", color = "red", size = 4, vjust = -1) +
-     labs(title = "Monthly COVID-19 Deaths in the US (Over and Under 65)",
+     labs(title = "Monthly COVID-19 Deaths in the US (Over and Under Age 65)",
           x = "Time",
           y = "Total Deaths",
           fill = "Age Group") +
@@ -499,7 +499,7 @@ ggplot(top5_condition_quarter, aes(x = Quarter_Year, y = COVID.19.Deaths, group 
   geom_line() +  
   geom_point() + 
   theme_minimal() +
-  labs(x = "Quarter", y = "Number of COVID-19 Deaths", 
+  labs(x = "Quarter", y = "COVID-19 Deaths", 
        title = "COVID-19 Deaths by Condition Over Quarters", color = "Condition") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotate x-axis labels for better readability
 
@@ -592,7 +592,8 @@ ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = 
   scale_y_continuous(labels = scales::comma, name = "Number of Deaths (in Thousands)") +  # Adjust y-axis labels
   labs(title = 'Top Comorbidities Associated with COVID-19 Deaths Across Age Groups',
        x = "Health Conditions", 
-       y = "Number of Deaths (in Thousands)"
+       y = "Number of Deaths (in Thousands)",
+       color = "Is Top Condition"
   ) +
   theme_minimal()
 ```
