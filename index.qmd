@@ -26,7 +26,7 @@ This project will delve into the following areas:
     from 2020-2023, will shed light on the changing patterns of the
     virus.
 
-2.  **Geographical variation in covid-19 impact**
+2.  **Geographical variation in COVID-19 impact**
 
     Comparing state-wise data to explore how regional disparities
     influence outcomes
@@ -38,7 +38,7 @@ This project will delve into the following areas:
     protective measures, especially for the older segments of the
     population.
 
-4.  **Impact of specific health conditions on covid-19 mortality rates**
+4.  **Impact of specific health conditions on COVID-19 mortality rates**
 
     This aspect aims to identify which medical conditions correlate with
     mortality rates. Understanding this correlation allows for more
