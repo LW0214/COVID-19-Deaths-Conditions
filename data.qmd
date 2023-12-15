@@ -2,6 +2,7 @@
 editor:
   markdown:
     wrap: 72
+    code-fold: true
 ---
 
 # Data
@@ -217,7 +218,7 @@ R.
 library(tidyverse)
 library(ggplot2)
 
-covid_data=read.csv("Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Age__Provisional_2020-2023.csv")
+covid_data=read.csv("data/raw/Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Age__Provisional_2020-2023.csv")
 
 # if group is total, fill all year and month by -1
 
@@ -320,7 +321,7 @@ appears that there are no actual NaN values in these columns anymore. 
 We export the preprocessed dataset for COVID.
 
 ```{r message=FALSE, warning=FALSE}
-write.csv(new_covid, "preproc_covid.csv", row.names=FALSE)
+write.csv(new_covid, "data/clean/preproc_covid.csv", row.names=FALSE)
 ```
 
 ### Preprocessing COVID dataset to be joined with population dataset.
@@ -336,9 +337,9 @@ df = df |> subset(Year %in% c(2020,2021))
 row.names(df) <- NULL
 
 # export
-write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
+write.csv(df, "data/preprocess/year_covid_20_21.csv", row.names=FALSE)
 # # sanity check:
-# read_csv("year_covid_20_21.csv")
+# read_csv("data/preprocess/year_covid_20_21.csv")
 ```
 
 ### Code and Documentation for merging COVID conditions dataset with population dataset
@@ -357,7 +358,7 @@ for each state.
 library(dplyr)
 library(readr)
 
-population_data <- read_csv("Single-Race Population Estimates 2020-2022 by State and Single-Year Age.csv")
+population_data <- read_csv("data/clean/Single-Race Population Estimates 2020-2022 by State and Single-Year Age.csv")
 
 # Modifying 'Single-Year Ages Code' column:
 # If 'Single-Year Ages Code' is "85+", replace it with "85", otherwise keep it as is.
@@ -411,7 +412,7 @@ all_data <- rbind(us_data_formatted, population_data_grouped)
 all_data_population <- all_data %>%
   rename(Age.Group=AgeGroup, State=States, Year=`Yearly July 1st Estimates`)
 
-covid_yearly_data <- read_csv("year_covid_20_21.csv")
+covid_yearly_data <- read_csv("data/preprocess/year_covid_20_21.csv")
 
 # Merge the population data with the COVID data
 # Using a left join to keep all rows from 'covid_yearly_data'
@@ -421,5 +422,5 @@ covid_with_population <- left_join(
   all_data_population,
   by = c("Age.Group", "State", "Year"))
 
-write_csv(covid_with_population,"covid_with_population.csv")
+write_csv(covid_with_population,"data/preprocess/covid_with_population.csv")
 ```

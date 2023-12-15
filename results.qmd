@@ -1,3 +1,9 @@
+---
+editor:
+  markdown:
+    wrap: 72
+    code-fold: true
+---
 # Results
 
 ```{r message=FALSE, warning=FALSE}
@@ -16,7 +22,7 @@ library(gifski)
 ```
 
 ```{r message=FALSE, warning=FALSE}
-covid_data <- read.csv("preproc_covid.csv")
+covid_data <- read.csv("data/clean/preproc_covid.csv")
 
 covid_data$Start.Date <- as.Date(covid_data$Start.Date,
                                       format = "%m/%d/%Y")
@@ -91,7 +97,7 @@ For death rate, we used the standard way of calculating "The number of deaths pe
 
 ```{r message=FALSE, warning=FALSE}
 # 2020
-data=read.csv("covid_with_population.csv")
+data=read.csv("data/preprocess/covid_with_population.csv")
 
 geo_df20 = data |> filter(Year==2020)
 # # sanity check: year should all be 2020
@@ -121,7 +127,7 @@ aggr_20$death_rate=round(aggr_20$COVID.19.Deaths/(aggr_20$TotalPopulation/100000
 # aggr_20
 
 #import state abbrev
-df_states=read_csv("states.csv")
+df_states=read_csv("data/clean/states.csv")
 
 # aggr_20$State |> unique() |> length()
 # df_states$State |> unique() |> length()
@@ -164,7 +170,7 @@ aggr_21$death_rate=round(aggr_21$COVID.19.Deaths/(aggr_21$TotalPopulation/100000
 # aggr_21
 
 #import state abbrev
-df_states=read_csv("states.csv")
+df_states=read_csv("data/clean/states.csv")
 
 # aggr_21$State |> unique() |> length()
 # df_states$State |> unique() |> length()
@@ -346,7 +352,7 @@ As seen previously, age has been a determinant factor in COVID-19 mortality, esp
 ```{r message=FALSE, warning=FALSE,fig.width=10, fig.height=6}
 # Load COVID-19 data with population and filter it for the United States, 
 # excluding 'All Ages' category, and then group by 'Age.Group'.
-age_group_death_and_pop <- read_csv("covid_with_population.csv") %>% 
+age_group_death_and_pop <- read_csv("data/preprocess/covid_with_population.csv") %>% 
   filter(State == "United States",
          Condition.Group == 'COVID-19',
          Age.Group != 'All Ages') %>% 

@@ -63,8 +63,8 @@ const data_21q4 = [
    {group: groups[4], value: 12661}]
 
 // set the dimensions and margins of the graph
-const margin = {top: 50, right: 30, bottom: 70, left: 100},
-    width = 1000 - margin.left - margin.right,
+const margin = {top: 50, right: 30, bottom: 70, left: 80},
+    width = 800 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
@@ -82,7 +82,6 @@ const x = d3.scaleBand()
   .padding(0.2);
 svg.append("g")
   .attr("transform", `translate(0,${height})`)
-  .style("font", "16px times")
   .call(d3.axisBottom(x))
   //add label
   //https://observablehq.com/@jeantimex/simple-line-chart-with-axis-labels
@@ -91,9 +90,8 @@ svg.append("g")
   .text("Conditions")
   .attr('x', margin.left + (width - margin.left - margin.right) / 2)
   .attr("fill", "black")
-  .style("font", "17px times")
+  .style("font", "16px times")
   .attr('y', 50) // Relative to the x axis.
-
 
 // Add Y axis
 const y = d3.scaleLinear()
@@ -101,7 +99,6 @@ const y = d3.scaleLinear()
   .range([ height, 0]);
 svg.append("g")
   .attr("class", "myYaxis")
-  .style("font", "16px times")
   .call(d3.axisLeft(y))
   //add label
   .append('text')
@@ -110,8 +107,8 @@ svg.append("g")
   .attr('transform', 'rotate(-90)')
   .attr('x', -(margin.top + (height - margin.top - margin.bottom) / 2))
   .attr("fill", "black")
-  .style("font", "17px times")
-  .attr('y', -70) // Relative to the y axis.
+  .style("font", "16px times")
+  .attr('y', -50) // Relative to the y axis.
 
 // adds labels
 d3.select("svg").append("g").attr("id","labels");
