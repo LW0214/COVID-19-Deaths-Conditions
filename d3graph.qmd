@@ -61,15 +61,13 @@
 </button>
 
 <!-- Create a div where the graph will take place -->
-
-::: {#my_dataviz}
-:::
+<div id="my_dataviz"></div>
 
 <h1>COVID-19 death counts of top 5 conditions by quarter in 2020-2021</h1>
 
 <p>
 
-The [percentage]{style="color:red;"} shows the change of the current value you're [currently on]{style="color:#6a3d9a;"} compared to the prevous value you've [previously clicked]{style="color:#b15928;"}. Note: percentage only shows up once you've clicked on a button, red indicates percentage increase or no change, and green indicates decrease.
+The [percentage]{style="color:red;"} shows the change of the current value you're [currently on]{style="color:#6a3d9a;"} compared to the previous value you've [previously clicked]{style="color:#b15928;"}. Note: percentage only shows up once you've clicked on a button, red indicates percentage increase or no change, and green indicates decrease.
 
 The [blue]{style="color:#1f78b4;"} number shows the total number of death of the quarter you're currently on.<br>
 

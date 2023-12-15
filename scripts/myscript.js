@@ -93,20 +93,6 @@ svg.append("g")
   .style("font", "16px times")
   .attr('y', 50) // Relative to the x axis.
 
-//   var insertLinebreaks = function (d) {
-//     var el = d3.select(this);
-//     var words = d.split(' ');
-//     el.text('');
-
-//     for (var i = 0; i < words.length; i++) {
-//         var tspan = el.append('tspan').text(words[i]);
-//         if (i > 0)
-//             tspan.attr('x', 0).attr('dy', '15');
-//     }
-// };
-
-// svg.selectAll('g.x.axis g text').each(insertLinebreaks);
-
 // Add Y axis
 const y = d3.scaleLinear()
   .domain([0, 90000]) // max value of death
@@ -123,10 +109,6 @@ svg.append("g")
   .attr("fill", "black")
   .style("font", "16px times")
   .attr('y', -50) // Relative to the y axis.
-
-// value of the previous click
-// var u = svg.selectAll("rect")
-//     .data(data)
 
 // adds labels
 d3.select("svg").append("g").attr("id","labels");
