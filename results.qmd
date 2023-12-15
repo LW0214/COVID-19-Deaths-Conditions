@@ -85,9 +85,9 @@ Conversely, during summer, while outdoor activities may generally reduce the tra
 
 We have observed a recurring pattern in COVID-19 deaths over time, with seasonal factors playing a notable role in the fluctuation of death rates. While time allows us to track flow of the pandemic's impact, geography provides another critical aspect for understanding the spread and toll of the virus.
 
-To do an interactive Choropleth of COVID-19 deaths across US states in Plotly, we need to obtain the 2-letter abbreviations, which can be downloaded here: https://github.com/jasonong/List-of-US-States/blob/master/states.csv
+To do an interactive Choropleth of COVID-19 deaths across US states in Plotly, we need to obtain the 2-letter abbreviations, which can be downloaded in [this github repo](https://github.com/jasonong/List-of-US-States/blob/master/states.csv).
 
-For death rate, we used the standard way of calculating "The number of deaths per 100,000 total population" as noted from https://www.cdc.gov/nchs/pressroom/sosmap/covid19_mortality_final/COVID19.htm. We'll also compare our death rate choropleth maps to the ones from this official source.
+For death rate, we used the standard way of calculating "The number of deaths per 100,000 total population" as noted from [CDC's website](https://www.cdc.gov/nchs/pressroom/sosmap/covid19_mortality_final/COVID19.htm). We'll also compare our death rate Choropleth maps to the ones from this official source.
 
 ```{r message=FALSE, warning=FALSE}
 # 2020
@@ -195,7 +195,6 @@ g <- list(
 #c(plot_df_20$death_rate,plot_df_21$death_rate) |> max()
 ```
 
-
 ```{r message=FALSE, warning=FALSE}
 # plot
 m <- list(
@@ -248,7 +247,7 @@ In examining the geographical distribution of COVID-19 death rates across the Un
 
 In 2021, a shift is evident. The Southern states, previously having moderate rates, show a significant increase in death rates. This illustrates the dynamic nature of COVID-19, potentially influenced by varying public health policies, vaccine rollouts, and virus variants. Meanwhile, the Northeastern and Midwestern states, which initially had the highest death rates in 2020, showed a decrease in death rates. This decrease could indicate the effectiveness of public health measures and heightened community awareness. Moreover, it's noteworthy to highlight the case of Vermont, which stands out for its consistently low death rates in both 2020 and 2021.
 
-It is also worth noting that the state-wise patterns in our maps are quite similar to the ones from the official source: https://www.cdc.gov/nchs/pressroom/sosmap/covid19_mortality_final/COVID19.htm. There may be numerical discrepancies in both death rate and death count: as mentioned earlier, our annual population estimates and annual COVID death have different start and end months which may contribute to some deviations, the official source notes that its calculation of death rate is "adjusted for differences in age-distribution and population size".
+It is also worth noting that the state-wise patterns in our maps are quite similar to the ones from [CDC's website](https://www.cdc.gov/nchs/pressroom/sosmap/covid19_mortality_final/COVID19.htm). There may be numerical discrepancies in both death rate and death count: as mentioned earlier, our annual population estimates and annual COVID death have different start and end months which may contribute to some deviations, the official source notes that its calculation of death rate is "adjusted for differences in age-distribution and population size".
 
 ## Age-Related Vulnerability
 
@@ -340,7 +339,7 @@ As seen previously, age has been a determinant factor in COVID-19 mortality, esp
 
 1.  **Impact of Vaccinations and Booster:** There is a noticeable decrease in deaths following the approval of the first vaccine, especially in the 65 and older age group, which likely received priority for vaccinations. We can see similar patterns after the approval and subsequent administration of booster shots. This suggests that vaccines and booster have had a positive impact in reducing COVID-19 mortality.
 
-2.  **Variant-Related Surges:** Although vaccinations have helped in reducing COVID-19 mortality, we see noticable surges in deaths after emergence of the Delta and Omicron variants. This indicates the significant challenges posed by new variants, which can be more transmissible or potentially more fatal. The spikes in deaths corresponding to these variants underscore the ongoing need for adaptation in public health responses.
+2.  **Variant-Related Surges:** Although vaccinations have helped in reducing COVID-19 mortality, we see noticeable surges in deaths after emergence of the Delta and Omicron variants. This indicates the significant challenges posed by new variants, which can be more transmissible or potentially more fatal. The spikes in deaths corresponding to these variants underscore the ongoing need for adaptation in public health responses.
 
 3.  **Vulnerability of Older Adults:** The data consistently shows that older age groups are more impacted by COVID-19.
 
@@ -500,7 +499,7 @@ ggplot(top5_condition_quarter, aes(x = Quarter_Year, y = COVID.19.Deaths, group 
 
 ```
 
-The graph above takes a closer look at the 5 most prevelant conditions in COVID-19 deaths and their prevelance has changed over time, from 2020 to 2023. All five conditions plotted in the graph follow a similar trend over time, particularly with respect to the peaks and troughs that coincide with the quarters. This could imply that individuals who died from COVID-19 often had multiple underlying health issues, which is consistent with the understanding that comorbidities can increase the risk of death from COVID-19.
+The graph above takes a closer look at the 5 most prevalent conditions in COVID-19 deaths and their prevalence has changed over time, from 2020 to 2023. All five conditions plotted in the graph follow a similar trend over time, particularly with respect to the peaks and troughs that coincide with the quarters. This could imply that individuals who died from COVID-19 often had multiple underlying health issues, which is consistent with the understanding that comorbidities can increase the risk of death from COVID-19.
 
 Influenza and pneumonia, as well as respiratory failure, show significant spikes at certain points, which could correlate with the direct impact of COVID-19 on respiratory health. By 2022 and into 2023, the lines representing each condition level off, indicating a stabilization in the number of deaths, which might suggest that the public health measures and medical interventions are having a positive effect, or that the most vulnerable populations had already been significantly impacted in the earlier phases of the pandemic.
 
@@ -575,7 +574,6 @@ health_data_age_groups <- health_data_age_groups %>%
   mutate(Is_Top_Condition = ifelse(!is.na(COVID.19.Deaths.top), "Top 5", "Other")) %>%
   select(-COVID.19.Deaths.top) # Remove the auxiliary column after creating the flag.
 ```
-
 
 ```{r message=FALSE, warning=FALSE,fig.width=10, fig.height=6}
 # Create a bar chart, flipping the coordinates for a horizontal chart,
