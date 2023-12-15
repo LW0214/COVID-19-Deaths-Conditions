@@ -10,6 +10,9 @@ library(ggalluvial)
 library(readr)
 library(tidyr)
 library(plotly)
+library(png)
+library(gifski)
+
 ```
 
 ```{r message=FALSE, warning=FALSE}
@@ -82,6 +85,10 @@ Conversely, during summer, while outdoor activities may generally reduce the tra
 
 We have observed a recurring pattern in COVID-19 deaths over time, with seasonal factors playing a notable role in the fluctuation of death rates. While time allows us to track flow of the pandemic's impact, geography provides another critical aspect for understanding the spread and toll of the virus.
 
+To do an interactive Choropleth of COVID-19 deaths across US states in Plotly, we need to obtain the 2-letter abbreviations, which can be downloaded here: https://github.com/jasonong/List-of-US-States/blob/master/states.csv
+
+For death rate, we used the standard way of calculating "The number of deaths per 100,000 total population" as noted from https://www.cdc.gov/nchs/pressroom/sosmap/covid19_mortality_final/COVID19.htm. We'll also compare our death rate choropleth maps to the ones from this official source.
+
 ```{r message=FALSE, warning=FALSE}
 # 2020
 data=read.csv("covid_with_population.csv")
@@ -128,7 +135,7 @@ plot_df_20 <- aggr_20 %>% left_join(df_states,by="State")
 plot_df_20=plot_df_20 |> drop_na(Abbreviation)
 #plot_df_20
 
-# copy
+# Year 2021
 geo_df21=data |> filter(Year==2021)
 # # sanity check: year should all be 2021
 # geo_df21$Year |> unique()
@@ -182,6 +189,23 @@ g <- list(
   showlakes = TRUE,
   lakecolor = toRGB('white')
 )
+
+# find min and max values for plot scale
+#c(plot_df_20$death_rate,plot_df_21$death_rate) |> min() 
+#c(plot_df_20$death_rate,plot_df_21$death_rate) |> max()
+```
+
+
+```{r message=FALSE, warning=FALSE}
+# plot
+m <- list(
+  l = 5,
+  r = 5,
+  b = 5,
+  t = 40,
+  pad = 4
+)
+
 # 2020 plot
 plot_df_20$hover <- with(plot_df_20, paste(State, '<br>', "Death Rate:", death_rate, '<br>', "Death Count:",COVID.19.Deaths))
 
@@ -195,7 +219,8 @@ fig_20 <- fig_20 %>% colorbar(title = "death rate <br> (per 100,000 population)"
 
 fig_20 <- fig_20 %>% layout(
     title = '2020 US COVID-19 Death Rate',
-    geo = g
+    geo = g,
+    autosize = T, margin = m
   )
 
 # 2021 plot
@@ -211,12 +236,9 @@ fig_21 <- fig_21 %>% colorbar(title = "death rate  <br> (per 100,000 population)
 
 fig_21 <- fig_21 %>% layout(
     title = '2021 US COVID-19 Death Rate',
-    geo = g
+    geo = g,
+    autosize = T, margin = m
   )
-
-# find min and max values for scale
-c(plot_df_20$death_rate,plot_df_21$death_rate) |> min() 
-c(plot_df_20$death_rate,plot_df_21$death_rate) |> max()
 
 fig_20
 fig_21
@@ -225,6 +247,8 @@ fig_21
 In examining the geographical distribution of COVID-19 death rates across the United States in 2020 and 2021, we observe regional variations. During 2020, higher death rates were observed in the Northeastern and Midwestern states, with New Jersey, New York, North Dakota, and South Dakota exhibiting higher figures. This could potentially reflect the initial outbreak hotspots. The Southern states presented varied death rates, generally hovering around an average of 120, while the Western states showed lower death rates.
 
 In 2021, a shift is evident. The Southern states, previously having moderate rates, show a significant increase in death rates. This illustrates the dynamic nature of COVID-19, potentially influenced by varying public health policies, vaccine rollouts, and virus variants. Meanwhile, the Northeastern and Midwestern states, which initially had the highest death rates in 2020, showed a decrease in death rates. This decrease could indicate the effectiveness of public health measures and heightened community awareness. Moreover, it's noteworthy to highlight the case of Vermont, which stands out for its consistently low death rates in both 2020 and 2021.
+
+It is also worth noting that the state-wise patterns in our maps are quite similar to the ones from the official source: https://www.cdc.gov/nchs/pressroom/sosmap/covid19_mortality_final/COVID19.htm. There may be numerical discrepancies in both death rate and death count: as mentioned earlier, our annual population estimates and annual COVID death have different start and end months which may contribute to some deviations, the official source notes that its calculation of death rate is "adjusted for differences in age-distribution and population size".
 
 ## Age-Related Vulnerability
 
@@ -550,7 +574,10 @@ health_data_age_groups <- health_data_age_groups %>%
   left_join(top_conditions_by_age_group, by = c("Age_Group", "Condition"), suffix = c("", ".top")) %>%
   mutate(Is_Top_Condition = ifelse(!is.na(COVID.19.Deaths.top), "Top 5", "Other")) %>%
   select(-COVID.19.Deaths.top) # Remove the auxiliary column after creating the flag.
+```
 
+
+```{r message=FALSE, warning=FALSE,fig.width=10, fig.height=6}
 # Create a bar chart, flipping the coordinates for a horizontal chart,
 # and using facets to create separate plots for each age group.
 ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = COVID.19.Deaths, fill = Is_Top_Condition)) +
