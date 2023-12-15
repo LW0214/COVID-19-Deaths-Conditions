@@ -189,8 +189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing"><span class="header-section-number">2.3</span> Data Preprocessing</a>
   <ul class="collapse">
   <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3.1</span> Missing value analysis</a></li>
-  <li><a href="#preprocessing-covid-dataset-to-be-joined-with-population-dataset." id="toc-preprocessing-covid-dataset-to-be-joined-with-population-dataset." class="nav-link" data-scroll-target="#preprocessing-covid-dataset-to-be-joined-with-population-dataset."><span class="header-section-number">2.3.2</span> Preprocessing covid dataset to be joined with population dataset.</a></li>
-  <li><a href="#code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" id="toc-code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" class="nav-link" data-scroll-target="#code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset"><span class="header-section-number">2.3.3</span> Code and Documentation for merging covid conditions dataset with population dataset</a></li>
+  <li><a href="#preprocessing-covid-dataset-to-be-joined-with-population-dataset." id="toc-preprocessing-covid-dataset-to-be-joined-with-population-dataset." class="nav-link" data-scroll-target="#preprocessing-covid-dataset-to-be-joined-with-population-dataset."><span class="header-section-number">2.3.2</span> Preprocessing COVID dataset to be joined with population dataset.</a></li>
+  <li><a href="#code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" id="toc-code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" class="nav-link" data-scroll-target="#code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset"><span class="header-section-number">2.3.3</span> Code and Documentation for merging COVID conditions dataset with population dataset</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -222,15 +222,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p>Contributing to COVID-19 Deaths, by State and Age, Provisional 2020-2023</p>
 <p>The main dataset for this project is collected and managed by the NCHS as part of the National Vital Statistics System (NVSS). The NVSS compiles official death certificate data from various jurisdictions, including the 50 states, the District of Columbia, New York City, and 5 US territories. Death certificates, completed by funeral directors and certifiers, provide both demographic and death-related information, which is then coded using the International Classification of Diseases, Tenth Revision (ICD-10). COVID-19 deaths are specifically coded under ICD-10 code U071.</p>
-<p>Source:[Conditions Contributing to COVID-19 Deaths, by State and Age, Provisional 2020-2023] (https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm)</p></li>
+<p>Source: <a href="https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm">Conditions Contributing to COVID-19 Deaths, by State and Age, Provisional 2020-2023</a></p></li>
 <li><p>Single-Race Population Estimates 2020-2022 by State and Single-Year Age</p>
 <p>To further our analysis, we will also be utilizing US population data obtained from CDC Wonder. CDC provides annual estimates of the population for each state in the United States, including demographic breakdowns by age. The CDC obtains population data by integrating various data sources and applying advanced statistical methodologies. The primary foundation is decennial census data, which offers a comprehensive snapshot of the US population. However, given the ten-year interval between censuses, the CDC supplements this with other data sources to capture more current population dynamics.</p>
-<p>Source: https://wonder.cdc.gov/single-race-population.html</p></li>
+<p>Source: <a href="https://wonder.cdc.gov/single-race-population.html">Single-Race Population Estimates</a></p></li>
 </ol>
 </section>
 <section id="data-format-and-dimensions" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="data-format-and-dimensions"><span class="header-section-number">2.1.2</span> Data Format and Dimensions</h3>
-<p>The main dataset, last updated on September 27, 2023, contains approximately 621K rows, 14 columns. Each row details a COVID-19 death, categorized by age group, condition, jurisdiction, year and month. The dataset includes the following columns: “Date as of”, “Start Date”, “End Date”, “Group”, “Year”, “Month”, “State”, “Condition Group”, “Condition”, “ICD10_codes”, “Age Group”, “Covid-19 Deaths”, “Number of Mentions” and “Flag”.</p>
+<p>The main dataset, last updated on September 27, 2023, contains approximately 621K rows, 14 columns. Each row details a COVID-19 death, categorized by age group, condition, jurisdiction, year and month. The dataset includes the following columns: “Date as of”, “Start Date”, “End Date”, “Group”, “Year”, “Month”, “State”, “Condition Group”, “Condition”, “ICD10_codes”, “Age Group”, “COVID-19 Deaths”, “Number of Mentions” and “Flag”.</p>
 </section>
 <section id="breakdown-of-columns" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="breakdown-of-columns"><span class="header-section-number">2.1.3</span> Breakdown of columns</h3>
@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Geography-related columns</p>
 <p>“State” column indicates the geographical states of each record. Some has values “United States” which is already a sum of other states.</p></li>
 <li><p>Medical conditions columns</p>
-<p>The columns “Condition groups”, “Conditions”, and “ICD10_codes” are categories and subcategories describing the contributors to death by COVID-19. There’s a condition named “Covid-19” which we believe indicates the actual covid-19 deaths as indicated by the name of the data source.</p></li>
+<p>The columns “Condition groups”, “Conditions”, and “ICD10_codes” are categories and subcategories describing the contributors to death by COVID-19. There’s a condition named “COVID-19” which we believe indicates the actual COVID-19 deaths as indicated by the name of the data source.</p></li>
 <li><p>Age-related column</p>
 <p>There is one age-related column called the “Age Group”. There’s a value “All Ages” which is a sum of the other age groups.</p></li>
 <li><p>Death-related columns</p>
@@ -264,11 +264,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="2.1.6" class="anchored" data-anchor-id="issues"><span class="header-section-number">2.1.6</span> Issues</h3>
 <ol type="1">
 <li><p>Double Counting of Deaths by Conditions</p>
-<p>Death for different conditions can be double counted, for example, a person died from Covid may have both diabetes and obesity at their time of death, as the source notes that “​​To avoid counting the same death multiple times, the numbers for different conditions should not be summated.”</p></li>
+<p>Death for different conditions can be double counted, for example, a person died from COVID may have both diabetes and obesity at their time of death, as the source notes that “​​To avoid counting the same death multiple times, the numbers for different conditions should not be summed.”</p></li>
 <li><p>Delay or Incomplete Data</p>
 <p>The sources notes “2022 and 2023 data are provisional. Estimates for 2020 and 2021 are based on final data.” as record reporting for recent years of 2022 and 2923 may be “affected or delayed by COVID-19 related response activities.” So we will use 2020 and 2021 data for our analysis as these are up-to-date.</p></li>
-<li><p>Discrepancy Between Covid 19 Deaths vs Mentions for Conditions Other Than Covid-19</p>
-<p>There’s another numerical column named “Mentions”. For conditions of “Covid-19”, “number of deaths” is equal to “number of mentions”, which makes sense. Yet for almost all other conditions, their “number of mentions” is almost always larger than “number of deaths”. We suspect it’s because if a person passed away due to covid-19, but had a history of diabetes, their relatives may still put it as on his death certificate despite the hospital never diagnosed it as a contributor of death. For our research, we will use “Covid 19 Deaths” rather than mentions since if it’s produced by the hospital, it may be more authoritative and accurate.</p></li>
+<li><p>Discrepancy Between COVID 19 Deaths vs Mentions for Conditions Other Than COVID-19</p>
+<p>There’s another numerical column named “Mentions”. For conditions of “COVID-19”, “number of deaths” is equal to “number of mentions”, which makes sense. Yet for almost all other conditions, their “number of mentions” is almost always larger than “number of deaths”. We suspect it’s because if a person passed away due to COVID-19, but had a history of diabetes, their relatives may still put it as on his death certificate despite the hospital never diagnosed it as a contributor of death. For our research, we will use “COVID 19 Deaths” rather than mentions since if it’s produced by the hospital, it may be more authoritative and accurate.</p></li>
 </ol>
 </section>
 </section>
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Methodology: Conduct age-wise comparison to see how mortality rates differ across age groups. Descriptive statistics (like mean, median) and graphical representations would be useful here. We also plan to analyze the frequency and type of comorbidities in each age group.</p></li>
 <li><p>Impact of Specific Health Conditions on COVID-19 Mortality Rates</p>
 <p>Investigate how certain pre-existing conditions (like respiratory diseases, cardiovascular diseases, diabetes, etc.) affect the mortality rates among COVID-19 patients.</p>
-<p>How: Analyze ‘COVID-19 Deaths’ in relation to ‘Conditions’ and to identify which pre-existing conditions have higher mortality rates within covid-19 patients. We can use correlation analysis to understand the relationship between specific health conditions and mortality rates.</p></li>
+<p>How: Analyze ‘COVID-19 Deaths’ in relation to ‘Conditions’ and to identify which pre-existing conditions have higher mortality rates within COVID-19 patients. We can use correlation analysis to understand the relationship between specific health conditions and mortality rates.</p></li>
 </ol>
 </section>
 <section id="data-preprocessing" class="level2" data-number="2.3">
@@ -339,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Under the column “Age Group”, there’s a value “Not stated” that covers 10% of the entire dataset, which isn’t much, and can be deleted.</p>
-<p>As mentioned earlier, “COVID-19 Deaths”and “Number of Mentions”are already suppressed to NAN values if the number of deaths is &lt;10 and the “Flag” column is indicated for such entries. Such entries occupy 30% of the dataset, which is quite large. As shown in the below code for Alaska, apparently “all ages” already calculates the suppressed counts in age group, though if a state or condition has more than 1 age groups that are both suppresed, there’s no way for us to know for sure how many values are there in each of the age group. Still, we decide to impute the entries for “COVID-19 Deaths”and “Number of Mentions” as the average between 0 to 10, which is 5. The only time there’ll be large over and unestimation with imputation of death count is when we want to query by each state by each condition, and by each year, but none of our analysis includes such a precise query.In our analysis, we either query across all age groups, all covid death conditions for each state; or we query across each age group, each condition but across all of US, or across all age groups, all of US and by each condition, so the number of total deaths will be quite large for a value of hundreds to thousands. And in this case, an 5 is relatively small in comparison.</p>
+<p>As mentioned earlier, “COVID-19 Deaths”and “Number of Mentions”are already suppressed to NAN values if the number of deaths is &lt;10 and the “Flag” column is indicated for such entries. Such entries occupy 30% of the dataset, which is quite large. As shown in the below code for Alaska, apparently “all ages” already calculates the suppressed counts in age group, though if a state or condition has more than 1 age groups that are both suppressed, there’s no way for us to know for sure how many values are there in each of the age group. Still, we decide to impute the entries for “COVID-19 Deaths”and “Number of Mentions” as the average between 0 to 10, which is 5. The only time there’ll be large over- or under-estimation with imputation of death count is when we want to query by each state by each condition, and by each year, but none of our analysis includes such a precise query.In our analysis, we either query across all age groups, all COVID death conditions for each state; or we query across each age group, each condition but across all of US, or across all age groups, all of US and by each condition, so the number of total deaths will be quite large for a value of hundreds to thousands. And in this case, an 5 is relatively small in comparison.</p>
 <p>Since we don’t use “Number of Mentions” column in our analysis, we only impute for covid death.</p>
 <div class="cell">
 <details>
@@ -354,8 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># new_covid$COVID.19.Deaths[which(new_covid[,"Flag"] != '')] |&gt; unique()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>At first glance, if an entry’s column “Group” has values “By Total”, its “Year” and “Month” are both missing, because of course that row is an aggregation of all past data. Similarly, if an entry’s column “Group” has values “By Year”, its “Month” values are missing, because that row is an aggregation of all months in that year. After replacing these implicit missing values in these rows with a dummy value “-1”, it appears that there are no actual nan values in these columns anymore.&nbsp;</p>
-<p>We export the preprocessed dataset for covid.</p>
+<p>At first glance, if an entry’s column “Group” has values “By Total”, its “Year” and “Month” are both missing, because of course that row is an aggregation of all past data. Similarly, if an entry’s column “Group” has values “By Year”, its “Month” values are missing, because that row is an aggregation of all months in that year. After replacing these implicit missing values in these rows with a dummy value “-1”, it appears that there are no actual NaN values in these columns anymore.&nbsp;</p>
+<p>We export the preprocessed dataset for COVID.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -364,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="preprocessing-covid-dataset-to-be-joined-with-population-dataset." class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="preprocessing-covid-dataset-to-be-joined-with-population-dataset."><span class="header-section-number">2.3.2</span> Preprocessing covid dataset to be joined with population dataset.</h3>
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="preprocessing-covid-dataset-to-be-joined-with-population-dataset."><span class="header-section-number">2.3.2</span> Preprocessing COVID dataset to be joined with population dataset.</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -385,7 +385,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset"><span class="header-section-number">2.3.3</span> Code and Documentation for merging covid conditions dataset with population dataset</h3>
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset"><span class="header-section-number">2.3.3</span> Code and Documentation for merging COVID conditions dataset with population dataset</h3>
 <p>It’s worth noting that the annual population estimate is taken as of July each year, while we decide to use our annual COVID data as starting from January to December each year due to the limited amount of fully-updated data available. However, the discrepancy in the start and end months of these intervals won’t have much impact since the overall population of a state will not fluctuate by a really large amount across months, especially when both intervals are annual nonetheless. Thus, we believe we can simply join the population estimates with the COVID data for each state.</p>
 <div class="cell">
 <details>

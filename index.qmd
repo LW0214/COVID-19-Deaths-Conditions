@@ -25,7 +25,7 @@ This project will delve into the following areas:
     Tracing the trajectory of the pandemic over the span of 4 years,
     from 2020-2023, will shed light on the changing patterns of the
     virus.
-    
+
 2.  **Geographical variation in covid-19 impact**
 
     Comparing state-wise data to explore how regional disparities
@@ -38,13 +38,12 @@ This project will delve into the following areas:
     protective measures, especially for the older segments of the
     population.
 
-1.  **Impact of specific health conditions on covid-19 mortality rates**
+4.  **Impact of specific health conditions on covid-19 mortality rates**
 
     This aspect aims to identify which medical conditions correlate with
     mortality rates. Understanding this correlation allows for more
     effective medical interventions and prioritizing resources for
     high-risk groups.
-
 
 Through the project, we aim to contribute a nuanced understanding of
 COVID-19. The findings are expected to offer valuable insights for
