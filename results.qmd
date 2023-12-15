@@ -580,14 +580,15 @@ health_data_age_groups <- health_data_age_groups %>%
 ```{r message=FALSE, warning=FALSE,fig.width=10, fig.height=6}
 # Create a bar chart, flipping the coordinates for a horizontal chart,
 # and using facets to create separate plots for each age group.
-ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = COVID.19.Deaths, fill = Is_Top_Condition)) +
+ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = COVID.19.Deaths / 1000, fill = Is_Top_Condition)) +
   geom_bar(stat = "identity", position = "dodge") +
   coord_flip() +
   facet_wrap(~Age_Group, scales = "free_x") +
   scale_fill_manual(values = c("Top 5" = "red3", "Other" = "darkgrey")) +
-  labs(title ='Top Comorbidities Associated with COVID-19 Deaths Across Age Groups',
-    x = "Health Conditions", 
-    y = "Number of Deaths"
+  scale_y_continuous(labels = scales::comma, name = "Number of Deaths (in Thousands)") +  # Adjust y-axis labels
+  labs(title = 'Top Comorbidities Associated with COVID-19 Deaths Across Age Groups',
+       x = "Health Conditions", 
+       y = "Number of Deaths (in Thousands)"
   ) +
   theme_minimal()
 ```
