@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Conditions Contributing to COVID-19 Deaths - 2&nbsp; Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./results.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Conditions Contributing to COVID-19 Deaths</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./results.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./d3graph.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Interactive graph</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Conclusion</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#technical-description" id="toc-technical-description" class="nav-link active" data-scroll-target="#technical-description"><span class="header-section-number">2.1</span> Technical description</a>
+  <ul class="collapse">
+  <li><a href="#data-source-and-collection-conditions" id="toc-data-source-and-collection-conditions" class="nav-link" data-scroll-target="#data-source-and-collection-conditions"><span class="header-section-number">2.1.1</span> Data Source and Collection Conditions</a></li>
+  <li><a href="#data-format-and-dimensions" id="toc-data-format-and-dimensions" class="nav-link" data-scroll-target="#data-format-and-dimensions"><span class="header-section-number">2.1.2</span> Data Format and Dimensions</a></li>
+  <li><a href="#breakdown-of-columns" id="toc-breakdown-of-columns" class="nav-link" data-scroll-target="#breakdown-of-columns"><span class="header-section-number">2.1.3</span> Breakdown of columns</a></li>
+  <li><a href="#frequency-of-updates" id="toc-frequency-of-updates" class="nav-link" data-scroll-target="#frequency-of-updates"><span class="header-section-number">2.1.4</span> Frequency of Updates</a></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import"><span class="header-section-number">2.1.5</span> Import</a></li>
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="header-section-number">2.1.6</span> Issues</a></li>
+  </ul></li>
+  <li><a href="#research-plan" id="toc-research-plan" class="nav-link" data-scroll-target="#research-plan"><span class="header-section-number">2.2</span> Research plan</a></li>
+  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link" data-scroll-target="#data-preprocessing"><span class="header-section-number">2.3</span> Data Preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3.1</span> Missing value analysis</a></li>
+  <li><a href="#preprocessing-covid-dataset-to-be-joined-with-population-dataset." id="toc-preprocessing-covid-dataset-to-be-joined-with-population-dataset." class="nav-link" data-scroll-target="#preprocessing-covid-dataset-to-be-joined-with-population-dataset."><span class="header-section-number">2.3.2</span> Preprocessing covid dataset to be joined with population dataset.</a></li>
+  <li><a href="#code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" id="toc-code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" class="nav-link" data-scroll-target="#code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset"><span class="header-section-number">2.3.3</span> Code and Documentation for merging covid conditions dataset with population dataset</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/LW0214/COVID-19-Deaths-Conditions.git/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="technical-description" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="technical-description"><span class="header-section-number">2.1</span> Technical description</h2>
+<section id="data-source-and-collection-conditions" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="data-source-and-collection-conditions"><span class="header-section-number">2.1.1</span> Data Source and Collection Conditions</h3>
+<ol type="1">
+<li><p>Contributing to COVID-19 Deaths, by State and Age, Provisional 2020-2023</p>
+<p>The main dataset for this project is collected and managed by the NCHS as part of the National Vital Statistics System (NVSS). The NVSS compiles official death certificate data from various jurisdictions, including the 50 states, the District of Columbia, New York City, and 5 US territories. Death certificates, completed by funeral directors and certifiers, provide both demographic and death-related information, which is then coded using the International Classification of Diseases, Tenth Revision (ICD-10). COVID-19 deaths are specifically coded under ICD-10 code U071.</p>
+<p>Source: https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm</p></li>
+<li><p>Single-Race Population Estimates 2020-2022 by State and Single-Year Age</p>
+<p>To further our analysis, we will also be utilizing US population data obtained from CDC Wonder. CDC provides annual estimates of the population for each state in the United States, including demographic breakdowns by age. The CDC obtains population data by integrating various data sources and applying advanced statistical methodologies. The primary foundation is decennial census data, which offers a comprehensive snapshot of the US population. However, given the ten-year interval between censuses, the CDC supplements this with other data sources to capture more current population dynamics.</p>
+<p>Source: https://wonder.cdc.gov/single-race-population.html</p></li>
+</ol>
+</section>
+<section id="data-format-and-dimensions" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="data-format-and-dimensions"><span class="header-section-number">2.1.2</span> Data Format and Dimensions</h3>
+<p>The main dataset, last updated on September 27, 2023, contains approximately 621K rows, 14 columns. Each row details a COVID-19 death, categorized by age group, condition, jurisdiction, year and month. The dataset includes the following columns: “Date as of”, “Start Date”, “End Date”, “Group”, “Year”, “Month”, “State”, “Condition Group”, “Condition”, “ICD10_codes”, “Age Group”, “Covid-19 Deaths”, “Number of Mentions” and “Flag”.</p>
+</section>
+<section id="breakdown-of-columns" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="breakdown-of-columns"><span class="header-section-number">2.1.3</span> Breakdown of columns</h3>
+<ol type="1">
+<li><p>Types in each column</p>
+<p>Most columns are categorical data, and the column “COVID.19.Deaths” are numerical data. The first 3 columns “Data.As.Of”, “Start.Date” and “End.Date” are timestamps.</p></li>
+<li><p>Time-related columns</p>
+<p>Column “Year” and “Month” that indicates said time periods of death recorded, thus, the smallest granularity of time interval is month. “Group” column indicates by what time interval the deaths are recorded, whose values can be “by Total”, “by Month” and “by Year”. If an entry has Group=by Year and Year=2020, then its death count is the sum of all entries’ death count where Year=2020 and Group=by Month. Similarly, if an entry has Group=by total, then its death count is the sum over the entire period of the whole dataset.</p>
+<p>The first column “Data As Of” can be dropped as all of them are “9/24/2023” which probably indicates the last date where any records are added to the database, especially since the last date in “End.Date” is “09/23/2023”. The other columns “Start.Date” and “End.Date” corresponds to “Group”, “Year” and “Month”. For example if group=by year, year=2020, then start.date=01/01/2020 and end.Date=12/31/2020. Thus, we decide that “Data As Of”, “Start.Date” and “End.Date” aren’t that useful as their information is already captured in more precise columns of “Group”, “Year” and “Month”.</p></li>
+<li><p>Geography-related columns</p>
+<p>“State” column indicates the geographical states of each record. Some has values “United States” which is already a sum of other states.</p></li>
+<li><p>Medical conditions columns</p>
+<p>The columns “Condition groups”, “Conditions”, and “ICD10_codes” are categories and subcategories describing the contributors to death by COVID-19. There’s a condition named “Covid-19” which we believe indicates the actual covid-19 deaths as indicated by the name of the data source.</p></li>
+<li><p>Age-related column</p>
+<p>There is one age-related column called the “Age Group”. There’s a value “All Ages” which is a sum of the other age groups.</p></li>
+<li><p>Death-related columns</p>
+<p>There are two death-related columns, “COVID-19 Deaths” and “Number of Mentions”. There’s little documentation about the difference between them, upon further research, we assume “Number of Mentions” may be the number of times a condition is mentioned on the death certificate, while “COVID-19 Deaths” is the number of times a condition is recorded as a contributor of death by the hospital.</p></li>
+<li><p>“Flag” column</p>
+<p>Has a value if the number of deaths is &lt;10. For said entries, “COVID-19 Deaths” and “Number of Mentions” are already suppressed to NAN values to be in accordance with NCHS confidentiality standards.</p></li>
+</ol>
+</section>
+<section id="frequency-of-updates" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="frequency-of-updates"><span class="header-section-number">2.1.4</span> Frequency of Updates</h3>
+<p>Data is created on 5/8/2022. Data is last updated by 9/27/2023, and this is the only update to the dataset. The dataset will no longer be updated. It’s also stated that data for 2022 and 2023 are provisional, while “Estimates for 2020 and 2021 are based on final data.”.</p>
+</section>
+<section id="import" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="import"><span class="header-section-number">2.1.5</span> Import</h3>
+<p>We imported the data by downloading its csv format and importing it to R.</p>
+</section>
+<section id="issues" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="issues"><span class="header-section-number">2.1.6</span> Issues</h3>
+<ol type="1">
+<li><p>Double Counting of Deaths by Conditions</p>
+<p>Death for different conditions can be double counted, for example, a person died from Covid may have both diabetes and obesity at their time of death, as the source notes that “​​To avoid counting the same death multiple times, the numbers for different conditions should not be summated.”</p></li>
+<li><p>Delay or Incomplete Data</p>
+<p>The sources notes “2022 and 2023 data are provisional. Estimates for 2020 and 2021 are based on final data.” as record reporting for recent years of 2022 and 2923 may be “affected or delayed by COVID-19 related response activities.” So we will use 2020 and 2021 data for our analysis as these are up-to-date.</p></li>
+<li><p>Discrepancy Between Covid 19 Deaths vs Mentions for Conditions Other Than Covid-19</p>
+<p>There’s another numerical column named “Mentions”. For conditions of “Covid-19”, “number of deaths” is equal to “number of mentions”, which makes sense. Yet for almost all other conditions, their “number of mentions” is almost always larger than “number of deaths”. We suspect it’s because if a person passed away due to covid-19, but had a history of diabetes, their relatives may still put it as on his death certificate despite the hospital never diagnosed it as a contributor of death. For our research, we will use “Covid 19 Deaths” rather than mentions since if it’s produced by the hospital, it may be more authoritative and accurate.</p></li>
+</ol>
+</section>
+</section>
+<section id="research-plan" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="research-plan"><span class="header-section-number">2.2</span> Research plan</h2>
+<ol type="1">
+<li><p>Trends Over Time</p>
+<p>Assess how the mortality rates and associated conditions have changed over time from 2020 to 2023. This can provide insights into the evolving nature of the pandemic and its impact on public health.</p>
+<p>Methodology: Time series analysis can be used to track the evolution of the pandemic. For example, identifying peaks in mortality rates and changes in prevalence of comorbidity over time.</p></li>
+<li><p>Geographical Variation</p>
+<p>Examine the differences in COVID-19 mortality rates and associated health conditions across different states. This could reveal how geographic factors, healthcare infrastructure, or policies might influence COVID-19 outcomes.</p>
+<p>Methodology: When analyzing geographical variations, we will only be using data in years 2020-2021 (estimates for this year are based on final data) as 2022 and 2023 data are provisional. We will do this by aggregating the death counts by state for the years 2020-2021 to reduce noise from short term fluctuations due to differences in reporting. Some states report deaths on a daily basis, while other states report deaths weekly or monthly. We will also normalize the death counts to account for population differences between states.</p></li>
+<li><p>Age-Related Vulnerability</p>
+<p>Analyze how age groups differ in their vulnerability to COVID-19, considering the number of deaths and associated health conditions.</p>
+<p>Methodology: Conduct age-wise comparison to see how mortality rates differ across age groups. Descriptive statistics (like mean, median) and graphical representations would be useful here. We also plan to analyze the frequency and type of comorbidities in each age group.</p></li>
+<li><p>Impact of Specific Health Conditions on COVID-19 Mortality Rates</p>
+<p>Investigate how certain pre-existing conditions (like respiratory diseases, cardiovascular diseases, diabetes, etc.) affect the mortality rates among COVID-19 patients.</p>
+<p>How: Analyze ‘COVID-19 Deaths’ in relation to ‘Conditions’ and to identify which pre-existing conditions have higher mortality rates within covid-19 patients. We can use correlation analysis to understand the relationship between specific health conditions and mortality rates.</p></li>
+</ol>
+</section>
+<section id="data-preprocessing" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="data-preprocessing"><span class="header-section-number">2.3</span> Data Preprocessing</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>covid_data<span class="ot">=</span><span class="fu">read.csv</span>(<span class="st">"Conditions_Contributing_to_COVID-19_Deaths__by_State_and_Age__Provisional_2020-2023.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># if group is total, fill all year and month by -1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#when group = by total, replace all year and month by -1</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>covid_data <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Total"</span>, <span class="sc">-</span><span class="dv">1</span>, Year))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>new_covid <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Total"</span>, <span class="sc">-</span><span class="dv">1</span>, Month))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># when group = by year, replace all month by -1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>new_covid<span class="ot">=</span>new_covid <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">Month =</span> <span class="fu">ifelse</span>(Group <span class="sc">==</span> <span class="st">"By Year"</span>, <span class="sc">-</span><span class="dv">1</span>, Month))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="missing-value-analysis" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3.1</span> Missing value analysis</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count nans</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nan_cols<span class="ot">=</span><span class="fu">colMeans</span>(<span class="fu">is.na</span>(new_covid))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>nan_cols<span class="ot">=</span><span class="fu">data.frame</span>(nan_cols)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>nan_cols <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">newColName =</span> <span class="fu">rownames</span>(nan_cols), nan_cols)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(nan_cols) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(nan_cols)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#plot nans</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(nan_cols),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>               <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">fct_reorder</span>(newColName,<span class="sc">-</span>nan_cols),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>nan_cols)) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"NaN Percentage of All Columns"</span>) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">vjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hjust=</span><span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span> <span class="st">"NaN percentage"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"columns"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Under the column “Age Group”, there’s a value “Not stated” that covers 10% of the entire dataset, which isn’t much, and can be deleted.</p>
+<p>As mentioned earlier, “COVID-19 Deaths”and “Number of Mentions”are already suppressed to NAN values if the number of deaths is &lt;10 and the “Flag” column is indicated for such entries. Such entries occupy 30% of the dataset, which is quite large. As shown in the below code for Alaska, apparently “all ages” already calculates the suppressed counts in age group, though if a state or condition has more than 1 age groups that are both suppresed, there’s no way for us to know for sure how many values are there in each of the age group. Still, we decide to impute the entries for “COVID-19 Deaths”and “Number of Mentions” as the average between 0 to 10, which is 5. The only time there’ll be large over and unestimation with imputation of death count is when we want to query by each state by each condition, and by each year, but none of our analysis includes such a precise query.In our analysis, we either query across all age groups, all covid death conditions for each state; or we query across each age group, each condition but across all of US, or across all age groups, all of US and by each condition, so the number of total deaths will be quite large for a value of hundreds to thousands. And in this case, an 5 is relatively small in comparison.</p>
+<p>Since we don’t use “Number of Mentions” column in our analysis, we only impute for covid death.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># impute: when flag for an age group is not "", impute COVID.19.Deaths with 5</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check: the flag should all be "one or more..."</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># new_covid$Flag[is.na(new_covid$COVID.19.Deaths)] |&gt; unique()</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># impute with 5</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>new_covid<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths[<span class="fu">is.na</span>(new_covid<span class="sc">$</span>COVID.<span class="fl">19.</span>Deaths)] <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # saniry check: if these are all 5</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># new_covid$COVID.19.Deaths[which(new_covid[,"Flag"] != '')] |&gt; unique()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>At first glance, if an entry’s column “Group” has values “By Total”, its “Year” and “Month” are both missing, because of course that row is an aggregation of all past data. Similarly, if an entry’s column “Group” has values “By Year”, its “Month” values are missing, because that row is an aggregation of all months in that year. After replacing these implicit missing values in these rows with a dummy value “-1”, it appears that there are no actual nan values in these columns anymore.&nbsp;</p>
+<p>We export the preprocessed dataset for covid.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(new_covid, <span class="st">"preproc_covid.csv"</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="preprocessing-covid-dataset-to-be-joined-with-population-dataset." class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="preprocessing-covid-dataset-to-be-joined-with-population-dataset."><span class="header-section-number">2.3.2</span> Preprocessing covid dataset to be joined with population dataset.</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># delete useless columns</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">subset</span>(new_covid, <span class="at">select =</span> <span class="sc">-</span><span class="fu">c</span>(Data.As.Of,Start.Date,End.Date</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">|&gt;</span> <span class="fu">subset</span>(Group<span class="sc">==</span><span class="st">"By Year"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> df <span class="sc">|&gt;</span> <span class="fu">subset</span>(Year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2020</span>,<span class="dv">2021</span>))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(df) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># export</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">"year_covid_20_21.csv"</span>, <span class="at">row.names=</span><span class="cn">FALSE</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># # sanity check:</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># read_csv("year_covid_20_21.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="code-and-documentation-for-merging-covid-conditions-dataset-with-population-dataset"><span class="header-section-number">2.3.3</span> Code and Documentation for merging covid conditions dataset with population dataset</h3>
+<p>It’s worth noting that the annual population estimate is taken as of July each year, while we decide to use our annual COVID data as starting from January to December each year due to the limited amount of fully-updated data available. However, the discrepancy in the start and end months of these intervals won’t have much impact since the overall population of a state will not fluctuate by a really large amount across months, especially when both intervals are annual nonetheless. Thus, we believe we can simply join the population estimates with the COVID data for each state.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>population_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Single-Race Population Estimates 2020-2022 by State and Single-Year Age.csv"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Modifying 'Single-Year Ages Code' column:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># If 'Single-Year Ages Code' is "85+", replace it with "85", otherwise keep it as is.</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>population_data <span class="ot">&lt;-</span> population_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Single-Year Ages Code</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Single-Year Ages Code</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"85+"</span>, <span class="st">"85"</span>, <span class="st">`</span><span class="at">Single-Year Ages Code</span><span class="st">`</span>))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename the 'Single-Year Ages Code' column to 'Age' for clarity</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>population_data_formatted <span class="ot">&lt;-</span> population_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Age =</span> <span class="st">`</span><span class="at">Single-Year Ages Code</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert the Age column to integer type</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Age =</span> <span class="fu">as.integer</span>(Age),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Categorize ages into groups based on age ranges</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">AgeGroup =</span> <span class="fu">case_when</span>(</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&lt;=</span> <span class="dv">24</span> <span class="sc">~</span> <span class="st">"0-24"</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">between</span>(Age, <span class="dv">25</span>, <span class="dv">34</span>) <span class="sc">~</span> <span class="st">"25-34"</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">between</span>(Age, <span class="dv">35</span>, <span class="dv">44</span>) <span class="sc">~</span> <span class="st">"35-44"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">between</span>(Age, <span class="dv">45</span>, <span class="dv">54</span>) <span class="sc">~</span> <span class="st">"45-54"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">between</span>(Age, <span class="dv">55</span>, <span class="dv">64</span>) <span class="sc">~</span> <span class="st">"55-64"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">between</span>(Age, <span class="dv">65</span>, <span class="dv">74</span>) <span class="sc">~</span> <span class="st">"65-74"</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>      <span class="fu">between</span>(Age, <span class="dv">75</span>, <span class="dv">84</span>) <span class="sc">~</span> <span class="st">"75-84"</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>      Age <span class="sc">&gt;=</span> <span class="dv">85</span> <span class="sc">~</span> <span class="st">"85+"</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span> <span class="co"># Assign NA to rows not fitting any category</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Rename 'Age' back to 'Single-Year Ages Code'</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">Single-Year Ages Code</span><span class="st">`</span> <span class="ot">=</span> Age)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate data across all states for 'United States'</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>us_data <span class="ot">&lt;-</span> population_data_formatted <span class="sc">%&gt;%</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Yearly July 1st Estimates</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Yearly July 1st Estimates</span><span class="st">`</span>, AgeGroup) <span class="sc">%&gt;%</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TotalPopulation =</span> <span class="fu">sum</span>(Population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Format US data and add State column</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>us_data_formatted <span class="ot">&lt;-</span> us_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">States =</span> <span class="st">"United States"</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Group population data for each state by age group</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>population_data_grouped <span class="ot">&lt;-</span> population_data_formatted <span class="sc">%&gt;%</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="st">`</span><span class="at">Yearly July 1st Estimates</span><span class="st">`</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Yearly July 1st Estimates</span><span class="st">`</span>, AgeGroup, States) <span class="sc">%&gt;%</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">TotalPopulation =</span> <span class="fu">sum</span>(Population, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine US data with data for individual states</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>all_data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(us_data_formatted, population_data_grouped)</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Select and rename relevant columns for the final data</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>all_data_population <span class="ot">&lt;-</span> all_data <span class="sc">%&gt;%</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Age.Group=</span>AgeGroup, <span class="at">State=</span>States, <span class="at">Year=</span><span class="st">`</span><span class="at">Yearly July 1st Estimates</span><span class="st">`</span>)</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>covid_yearly_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"year_covid_20_21.csv"</span>)</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the population data with the COVID data</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Using a left join to keep all rows from 'covid_yearly_data'</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="co"># and matching rows from 'all_data_population'</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>covid_with_population <span class="ot">&lt;-</span> <span class="fu">left_join</span>(</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>  covid_yearly_data,</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>  all_data_population,</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"Age.Group"</span>, <span class="st">"State"</span>, <span class="st">"Year"</span>))</span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(covid_with_population,<span class="st">"covid_with_population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./results.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Results</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
