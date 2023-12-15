@@ -593,7 +593,7 @@ ggplot(health_data_age_groups, aes(x = reorder(Condition, COVID.19.Deaths), y = 
   labs(title = 'Top Comorbidities Associated with COVID-19 Deaths Across Age Groups',
        x = "Health Conditions", 
        y = "Number of Deaths (in Thousands)",
-       color = "Is Top Condition"
+       fill = "Ranks in Top Condition"
   ) +
   theme_minimal()
 ```
