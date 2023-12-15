@@ -16,7 +16,7 @@ As we conclude our exploration, we reflect on the insights gained and their broa
 
 1.  Data Completeness: Our analysis may not fully capture unreported or misclassified COVID-19 deaths, especially in the case of provisional data for 2022 and 2023.
 
-2.  Comorbidity Reporting: The data on comorbidities is dependent on the accuracy of medical reporting. Inconsistent documentation across jurisdictions may have led to under or overestimation of certain health conditions\' impact.
+2.  Comorbidity Reporting: The data on comorbidities is dependent on the accuracy of medical reporting. Inconsistent documentation across jurisdictions may have led to under or overestimation of certain health conditions' impact.
 
 3.  Temporal Delays: The lag in data reporting, particularly for recent years, may have affected the timeliness and relevance of our findings.
 
@@ -34,8 +34,8 @@ As we conclude our exploration, we reflect on the insights gained and their broa
 
 Throughout this exploration, we learned about the many contributors to COVID-19 death rate, namely age, geographical location, and conditions, and the interesting interaction effects between them, for example the prevalence of obesity in young age groups.
 
-This exploration also unravelled patterns that we've never dwelt on before aobut COVID-19. For example, it seems reasonable to assume that COVID-19 will be more prevalent in states with a higher population density like New York, especially in the year when COVID-19 first broke out. Yet interestingly in 2021, the pattern of state-wise COVID-19 death features a shift between Northern and Southern states, where Northern states generally improve while Southern state aggravates. Whether this phenomenon is due to any shared public health practices and community awareness in Northern or Sourthern states requires future analysis.
+This exploration also unraveled patterns that we've never dwelt on before about COVID-19. For example, it seems reasonable to assume that COVID-19 will be more prevalent in states with a higher population density like New York, especially in the year when COVID-19 first broke out. Yet interestingly in 2021, the pattern of state-wise COVID-19 death features a shift between Northern and Southern states, where Northern states generally improve while Southern state aggravates. Whether this phenomenon is due to any shared public health practices and community awareness in Northern or Southern states requires future analysis.
 
 It is interesting how the COVID-19 death counts of most conditions are positively correlated through time, suggesting the presence of comorbidity, which will be interesting for future analysis.
- 
-Last but not least, we learned about how different visualization graphs can aid with analysis and interpretation of the topic in different ways. For example, time series line chart is adept at showing macroscopic trends, while interactive D3 graphs can depict the microscopic changes between 2 time periods with the aid of animation. 
+
+Last but not least, we learned about how different visualization graphs can aid with analysis and interpretation of the topic in different ways. For example, time series line chart is adept at showing macroscopic trends, while interactive D3 graphs can depict the microscopic changes between 2 time periods with the aid of animation.

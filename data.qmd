@@ -23,8 +23,9 @@ editor:
     International Classification of Diseases, Tenth Revision (ICD-10).
     COVID-19 deaths are specifically coded under ICD-10 code U071.
 
-    Source:
-    https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm
+    Source: [Conditions Contributing to COVID-19 Deaths, by State and
+    Age, Provisional
+    2020-2023](https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm)
 
 2.  Single-Race Population Estimates 2020-2022 by State and Single-Year
     Age
@@ -40,7 +41,8 @@ editor:
     this with other data sources to capture more current population
     dynamics.
 
-    Source: https://wonder.cdc.gov/single-race-population.html
+    Source: [Single-Race Population
+    Estimates](https://wonder.cdc.gov/single-race-population.html)
 
 ### Data Format and Dimensions
 
@@ -49,7 +51,7 @@ approximately 621K rows, 14 columns. Each row details a COVID-19 death,
 categorized by age group, condition, jurisdiction, year and month. The
 dataset includes the following columns: "Date as of", "Start Date", "End
 Date", "Group", "Year", "Month", "State", "Condition Group",
-"Condition", "ICD10_codes", "Age Group", "Covid-19 Deaths", "Number of
+"Condition", "ICD10_codes", "Age Group", "COVID-19 Deaths", "Number of
 Mentions" and "Flag".
 
 ### Breakdown of columns
@@ -91,8 +93,8 @@ Mentions" and "Flag".
 
     The columns "Condition groups", "Conditions", and "ICD10_codes" are
     categories and subcategories describing the contributors to death by
-    COVID-19. There's a condition named "Covid-19" which we believe
-    indicates the actual covid-19 deaths as indicated by the name of the
+    COVID-19. There's a condition named "COVID-19" which we believe
+    indicates the actual COVID-19 deaths as indicated by the name of the
     data source.
 
 5.  Age-related column
@@ -132,10 +134,10 @@ R.
 1.  Double Counting of Deaths by Conditions
 
     Death for different conditions can be double counted, for example, a
-    person died from Covid may have both diabetes and obesity at their
+    person died from COVID may have both diabetes and obesity at their
     time of death, as the source notes that "​​To avoid counting the same
     death multiple times, the numbers for different conditions should
-    not be summated."
+    not be summed."
 
 2.  Delay or Incomplete Data
 
@@ -145,18 +147,18 @@ R.
     COVID-19 related response activities." So we will use 2020 and 2021
     data for our analysis as these are up-to-date.
 
-3.  Discrepancy Between Covid 19 Deaths vs Mentions for Conditions Other
-    Than Covid-19
+3.  Discrepancy Between COVID 19 Deaths vs Mentions for Conditions Other
+    Than COVID-19
 
     There's another numerical column named "Mentions". For conditions of
-    "Covid-19", "number of deaths" is equal to "number of mentions",
+    "COVID-19", "number of deaths" is equal to "number of mentions",
     which makes sense. Yet for almost all other conditions, their
     "number of mentions" is almost always larger than "number of
     deaths". We suspect it's because if a person passed away due to
-    covid-19, but had a history of diabetes, their relatives may still
+    COVID-19, but had a history of diabetes, their relatives may still
     put it as on his death certificate despite the hospital never
     diagnosed it as a contributor of death. For our research, we will
-    use "Covid 19 Deaths" rather than mentions since if it's produced by
+    use "COVID 19 Deaths" rather than mentions since if it's produced by
     the hospital, it may be more authoritative and accurate.
 
 ## Research plan
@@ -205,7 +207,7 @@ R.
 
     How: Analyze 'COVID-19 Deaths' in relation to 'Conditions' and to
     identify which pre-existing conditions have higher mortality rates
-    within covid-19 patients. We can use correlation analysis to
+    within COVID-19 patients. We can use correlation analysis to
     understand the relationship between specific health conditions and
     mortality rates.
 
@@ -264,21 +266,21 @@ new_covid=new_covid[!(new_covid$Age.Group %in% "Not stated"),]
 As mentioned earlier, "COVID-19 Deaths"and "Number of Mentions"are
 already suppressed to NAN values if the number of deaths is \<10 and the
 "Flag" column is indicated for such entries. Such entries occupy 30% of
-the dataset, which is quite large. As shown in the below code for Alaska, apparently "all ages" already
-calculates the suppressed counts in age group, though if a state or
-condition has more than 1 age groups that are both suppresed, there's no
-way for us to know for sure how many values are there in each of the age
-group. Still, we decide to impute the entries for "COVID-19 Deaths"and
-"Number of Mentions" as the average between 0 to 10, which is 5. The
-only time there'll be large over and unestimation with imputation of
-death count is when we want to query by each state by each condition,
-and by each year, but none of our analysis includes such a precise
-query.In our analysis, we either query across all age groups, all covid
-death conditions for each state; or we query across each age group, each
-condition but across all of US, or across all age groups, all of US and
-by each condition, so the number of total deaths will be quite large for
-a value of hundreds to thousands. And in this case, an 5 is relatively
-small in comparison.
+the dataset, which is quite large. As shown in the below code for
+Alaska, apparently "all ages" already calculates the suppressed counts
+in age group, though if a state or condition has more than 1 age groups
+that are both suppressed, there's no way for us to know for sure how
+many values are there in each of the age group. Still, we decide to
+impute the entries for "COVID-19 Deaths"and "Number of Mentions" as the
+average between 0 to 10, which is 5. The only time there'll be large
+over- or under-estimation with imputation of death count is when we want
+to query by each state by each condition, and by each year, but none of
+our analysis includes such a precise query.In our analysis, we either
+query across all age groups, all COVID death conditions for each state;
+or we query across each age group, each condition but across all of US,
+or across all age groups, all of US and by each condition, so the number
+of total deaths will be quite large for a value of hundreds to
+thousands. And in this case, an 5 is relatively small in comparison.
 
 ```{r include=FALSE}
 # want to check how death for age.group= all_ages are calculated, especially if there're age groups with suppressed (nan) deaths 
@@ -311,17 +313,17 @@ At first glance, if an entry's column "Group" has values "By Total", its
 "Year" and "Month" are both missing, because of course that row is an
 aggregation of all past data. Similarly, if an entry's column "Group"
 has values "By Year", its "Month" values are missing, because that row
-is an aggregation of all months in that year. After replacing these implicit
-missing values in these rows with a dummy value "-1", it appears that
-there are no actual nan values in these columns anymore. 
+is an aggregation of all months in that year. After replacing these
+implicit missing values in these rows with a dummy value "-1", it
+appears that there are no actual NaN values in these columns anymore. 
 
-We export the preprocessed dataset for covid.
+We export the preprocessed dataset for COVID.
 
 ```{r message=FALSE, warning=FALSE}
 write.csv(new_covid, "preproc_covid.csv", row.names=FALSE)
 ```
 
-### Preprocessing covid dataset to be joined with population dataset.
+### Preprocessing COVID dataset to be joined with population dataset.
 
 ```{r message=FALSE, warning=FALSE}
 # delete useless columns
@@ -339,9 +341,17 @@ write.csv(df, "year_covid_20_21.csv", row.names=FALSE)
 # read_csv("year_covid_20_21.csv")
 ```
 
-### Code and Documentation for merging covid conditions dataset with population dataset
+### Code and Documentation for merging COVID conditions dataset with population dataset
 
-  It's worth noting that the annual population estimate is taken as of July each year, while we decide to use our annual COVID data as starting from January to December each year due to the limited amount of fully-updated data available. However, the discrepancy in the start and end months of these intervals won't have much impact since the overall population of a state will not fluctuate by a really large amount across months, especially when both intervals are annual nonetheless. Thus, we believe we can simply join the population estimates with the COVID data for each state.
+It's worth noting that the annual population estimate is taken as of
+July each year, while we decide to use our annual COVID data as starting
+from January to December each year due to the limited amount of
+fully-updated data available. However, the discrepancy in the start and
+end months of these intervals won't have much impact since the overall
+population of a state will not fluctuate by a really large amount across
+months, especially when both intervals are annual nonetheless. Thus, we
+believe we can simply join the population estimates with the COVID data
+for each state.
 
 ```{r message=FALSE, warning=FALSE}
 library(dplyr)
