@@ -245,11 +245,11 @@ plot <- ggplot(data.frame(nan_cols),
                    y=nan_cols)) +
   geom_bar(stat="identity") +
   geom_bar(stat = "identity") +
-  ggtitle("NaN Percentage of All Columns") +
+  ggtitle("NaN Proportion of All Columns") +
   theme(axis.text.x = element_text(angle = 90,
                                    vjust = 0.5,
                                    hjust=1)) +
-  labs(y= "NaN percentage",
+  labs(y= "NaN Proportion",
        x = "columns")
 plot
 ```
